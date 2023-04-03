@@ -9,7 +9,7 @@ import Display from './Components/SearchPages/Searchdisplay';
 function App() {
   return (
     <div className="">
-        <Singin/>
+        <Display/>
      
     </div>
   );

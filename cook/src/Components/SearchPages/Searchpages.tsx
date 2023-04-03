@@ -26,9 +26,6 @@ interface SearchpagesProps {
 
 
 // export default function Searchpages(props) {
-   
-
-
 //   return (
 //     <>
      

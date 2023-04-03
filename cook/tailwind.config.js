@@ -4,8 +4,14 @@ module.exports = {
     './src/**/*.{js,jsx,ts,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        lobster : ["Lobster", "cursive"],
+        Noto : ["Noto Serif", "cursive"],
+      },
+    },
   },
   plugins: [],
+
 }
 

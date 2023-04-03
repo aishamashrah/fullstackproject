@@ -1,6 +1,6 @@
 import Searchpages from './Searchpages'
 import Searchbar from './searchbar'
-import img from '../../Assets/Images/Unknown.jpeg'
+import img from '../../Assets/Unknown.jpeg'
 export default function Display() {
     return (
         <>
