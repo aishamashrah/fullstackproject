@@ -2,6 +2,7 @@ import React from 'react'
 
 export default function Searchbar() {
     return (
+      
         <div className=" gap-4 header p-5  mb-30  ">
             <div className=" flex sm:text-xs items-center relative">
                 <div className="text-4xl font-lobster  absolute left-5 sm:block hidden">
