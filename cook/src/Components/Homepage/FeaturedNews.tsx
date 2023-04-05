@@ -25,26 +25,26 @@ interface NewsProps {
       <>
               <div className=' justify-center lg:w-2/3 xl:text-2xl'>
             <div ><p className='text-center mb-14 text-5xl font-Noto font-semibold'>News & Articles</p></div>
-            <div className='flex  gap-10 '>
+            <button className='flex  gap-10 '>
                 <img src={img} className='w-16 h-16 xl:w-20 xl:h-20'/> 
                 <p className='lg:px-2'>{text}</p>
-            </div>
-            <div className='flex  gap-10 mt-12'>
+            </button>
+            <button className='flex  gap-10 mt-12'>
                 <img src={img2} className='w-16 h-16 xl:w-20 xl:h-20'/> 
                 <p className='lg:px-2'>{text2}</p>
-            </div>
-            <div className='flex  gap-10 mt-12'>
+            </button>
+            <button className='flex  gap-10 mt-12'>
                 <img src={img3} className='w-16 h-16 xl:w-20 xl:h-20'/> 
                 <p className='lg:px-2'>{text3}</p>
-            </div>
-            <div className='flex  gap-10 mt-12'>
+            </button>
+            <button className='flex  gap-10 mt-12'>
                 <img src={img4} className='w-16 h-16 xl:w-20 xl:h-20'/> 
                 <p className='lg:px-2'>{text4}</p>
-            </div>
-            <div className='flex  gap-10 mt-12'>
+            </button>
+            <button className='flex  gap-10 mt-12'>
                 <img src={img5} className=' w-16 h-16 xl:w-20 xl:h-20'/> 
                 <p className='lg:px-2'>{text5}</p>
-            </div>
+            </button>
         </div>
 
       </>

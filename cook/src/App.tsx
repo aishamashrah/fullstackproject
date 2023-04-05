@@ -5,11 +5,13 @@ import CookEaseFooter from './Components/Footer/Footer';
 import Singin from './Components/Singinpage/Singin';
 
 import Display from './Components/SearchPages/Searchdisplay';
+import HomePage from './Components/Homepage/HomePage';
 
 function App() {
   return (
     <div className="">
-        <Display/>
+        {/* <Display/> */}
+        <HomePage />
      
     </div>
   );
