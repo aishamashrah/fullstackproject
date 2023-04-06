@@ -4,8 +4,8 @@ import React from "react";
 export default function CreateAccount() {
     return (
         <>
-        <br></br>
-        <br></br>
+            <br></br>
+            <br></br>
             <div className="grid gap-4 grid-cols-2 header p-5  border-black border  mb-24 ">
                 <div className="text-5xl font-lobster ">Create Account</div>
             </div>
