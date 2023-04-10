@@ -1,10 +1,13 @@
 import Searchpages from './Searchpages'
 import Searchbar from './searchbar'
 import img from '../../Assets/Unknown.jpeg'
+import CookEaseHeader from '../Header/Header'
 export default function Display() {
     return (
         <>
-       
+       <div>
+        <CookEaseHeader />
+      </div>
             <br></br>
             <br></br>
                    

@@ -9,7 +9,7 @@ export default function HamburgerMenu() {
     <nav>
     <div className={classNames('tham tham-e-squeeze tham-w-6', { 'tham-active': opened })} onClick={() => setOpened(!opened)}>
 
-      <div className="tham-box">
+      {/* <div className="tham-box">
        <ul className={classNames('menu', { 'menu-open': opened })}>
       <li><a href="/">Home</a></li>
       <li><a href="/about">About</a></li>
@@ -20,7 +20,7 @@ export default function HamburgerMenu() {
           
         </div>
  
-      </div>
+      </div> */}
 
     </div>
 

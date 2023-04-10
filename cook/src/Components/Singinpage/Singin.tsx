@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 export default function Signin() {
   return (
     <>
@@ -32,9 +32,11 @@ export default function Signin() {
       </div>
       <p className="text-center text-xs ml-28 ">Don’t have an account? sign up</p>
       <div className="flex items-center justify-center mt-14">
+      <Link to="/login">
         <button className="px-4 py-2 justify-stretch text-white font-semibold bg-blue-600 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue active:bg-blue-800 transition duration-150 ease-in-out w-72">
           SIGN IN
         </button>
+        </Link>
       </div>
     </>
   );

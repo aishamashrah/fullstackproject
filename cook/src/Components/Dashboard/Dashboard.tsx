@@ -2,6 +2,7 @@ import React from 'react'
 import img from '../../Assets/cook-book-removebg-preview.png'
 import img2 from '../../Assets/211209-delish-quarterly-pasta-chicken-parm-pasta-vertical-utensils-071-eb-1640015465.jpg'
 import chefHat2 from '../../Assets/profile.png'
+import CookEaseHeader from '../Header/Header'
 export default function Dashboard() {
   interface SearchpagesProps {
     img: string;
@@ -9,7 +10,11 @@ export default function Dashboard() {
     text: string;
   }
   return (
-    <>
+    
+
+          <div>
+        <CookEaseHeader />
+        <div/>
       <br></br>
       <br></br>
       <div className=" gap-4 header p-14  mb-30  ">
@@ -98,6 +103,6 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
-    </>
+   </div>
   )
 }
