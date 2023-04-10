@@ -1,38 +1,29 @@
+import classNames from 'classnames';
 
+import React, { useState } from 'react';
 
+export default function HamburgerMenu() {
+  const [opened, setOpened] = useState(false);
 
-export default function Header(){
+  return (
+    <nav>
+    <div className={classNames('tham tham-e-squeeze tham-w-6', { 'tham-active': opened })} onClick={() => setOpened(!opened)}>
 
-    return(
-        <>
-        <nav className="container flex justify-between px-4 py-8 mx-auto bg-white">
-  <div>
-    <h3 className="text-2xl font-medium text-blue-500">LOGO</h3>
-  </div>
-  <div className="hidden space-x-8 lg:flex">
-    <a href="#">Menu 1</a>
-    <a href="#">Menu 2</a>
-    <a href="#">Menu 3</a>
-    <a href="#">Menu 4</a>
-  </div>
-  <div className="flex lg:hidden">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-6 h-6"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M4 6h16M4 12h16M4 18h16"
-      />
-    </svg>
-  </div>
-</nav>
+      <div className="tham-box">
+       <ul className={classNames('menu', { 'menu-open': opened })}>
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+        <div className="tham-inner">
+   
+          
+        </div>
+ 
+      </div>
 
-        </>
-    )
+    </div>
+
+  </nav>
+  );
 }
