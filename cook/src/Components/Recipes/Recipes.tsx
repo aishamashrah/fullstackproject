@@ -3,6 +3,9 @@ import React from 'react'
 export default function Recipes() {
     return (
         <>
+
+      
+      
             <br></br>
             <br></br>
             <div className=" gap-4 header p-14  mb-30  ">
@@ -32,7 +35,7 @@ export default function Recipes() {
 
                             <p>Difficulty </p>
                             <label htmlFor="input1" className="font-bold flex items-center mb-4">
-                                <input placeholder="Medium"  type="text" className="border inputbg md:w-96rounded-md" />
+                                <input placeholder="Medium"  type="text" className="border inputbg md:w-96 rounded-md" />
                             </label>
 
                             <p>Procedures</p>

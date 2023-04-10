@@ -7,9 +7,11 @@ import Articles from './Components/Articlepage/Articles';
 import Display from './Components/SearchPages/Searchdisplay';
 import Dashboard from './Components/Dashboard/Dashboard';
 import Recipes from './Components/Recipes/Recipes';
+import Header from './Components/Header/Header';
 function App() {
   return (
     <div className="">
+      <Header></Header>
         <Recipes/>
         
      
