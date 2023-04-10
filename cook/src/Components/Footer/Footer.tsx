@@ -1,8 +1,8 @@
-import chefHat from '../../Assets/Images/chef.png'
-import facebook from '../../Assets/Images/facebook.png'
-import pinterest from '../../Assets/Images/pinterest.png'
-import twitter from '../../Assets/Images/twitter.png'
-import instagram from '../../Assets/Images/instagram.png'
+import chefHat from '../../Assets/chef.png'
+import facebook from '../../Assets/facebook.png'
+import pinterest from '../../Assets/pinterest.png'
+import twitter from '../../Assets/twitter.png'
+import instagram from '../../Assets/instagram.png'
 
 export default function CookEaseFooter() {
 
