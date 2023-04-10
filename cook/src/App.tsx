@@ -6,10 +6,12 @@ import Singin from './Components/Singinpage/Singin';
 import Articles from './Components/Articlepage/Articles';
 import Display from './Components/SearchPages/Searchdisplay';
 import Dashboard from './Components/Dashboard/Dashboard';
+import Recipes from './Components/Recipes/Recipes';
 function App() {
   return (
     <div className="">
-        <CookEaseFooter/>
+        <Recipes/>
+        
      
     </div>
   );
