@@ -1,8 +1,30 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+
+
+
+
+
+
+
+
+
 export default function Signin() {
+  let navigate = useNavigate();
+
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  
+
+  
+  
+  
   return (
     <>
+      
+      
+
+
       <br></br>
       <br></br>
       <div className="grid gap-4 grid-cols-2 header p-5 border-black border mb-36">
@@ -12,7 +34,7 @@ export default function Signin() {
       <h1 className="text-center title text-4xl font-Noto Serif p-4">Sign In</h1>
       <div className="flex items-center justify-center">
         <label className="block p-5">
-          <input
+          <input 
             type="email"
             name="email"
             className="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-72 rounded-md sm:text-sm focus:ring-1"

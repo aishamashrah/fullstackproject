@@ -8,6 +8,7 @@ import Articles from './Components/Articlepage/Articles';
 import Display from './Components/SearchPages/Searchdisplay';
 import HomePage from './Components/Homepage/HomePage';
 import Dashboard from './Components/Dashboard/Dashboard';
+import CreateAccount from './Components/CreateAccount/CreateAccount';
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
         <Route path='/RecipeBook' element={<Display/>} />
         <Route path='/Search' element={<Display/>} />
         <Route path='/homepage' element={<HomePage/>} />
-        
+        <Route path='/Create' element={<CreateAccount/>} />
        
       </Routes>
     </BrowserRouter>
