@@ -24,7 +24,8 @@ function App() {
         <Route path='/Search' element={<Display/>} />
         <Route path='/homepage' element={<HomePage/>} />
         <Route path='/Create' element={<CreateAccount/>} />
-       
+        <Route path='/signin' element={<Singin/>} />
+        
       </Routes>
     </BrowserRouter>
   </>
