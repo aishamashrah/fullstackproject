@@ -9,7 +9,7 @@ import Display from './Components/SearchPages/Searchdisplay';
 import HomePage from './Components/Homepage/HomePage';
 import Dashboard from './Components/Dashboard/Dashboard';
 import CreateAccount from './Components/CreateAccount/CreateAccount';
- 
+import Recipes from './Components/Recipes/Recipes';
 function App() {
   return (
     
@@ -20,7 +20,7 @@ function App() {
         <Route path='/login' element={<HomePage/>} />
         <Route path='/News' element={<Articles/>} />
         <Route path='/Dash' element={<Dashboard/>} />
-        <Route path='/RecipeBook' element={<Display/>} />
+        <Route path='/RecipeBook' element={<Recipes/>} />
         <Route path='/Search' element={<Display/>} />
         <Route path='/homepage' element={<HomePage/>} />
         <Route path='/Create' element={<CreateAccount/>} />
