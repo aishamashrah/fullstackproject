@@ -4,7 +4,7 @@ import './App.css';
 import CookEaseHeader from './Components/Header/Header';
 import CookEaseFooter from './Components/Footer/Footer';
 import Signin from './Components/Singinpage/Singin';
-import Articles from './Components/Articlepage/Articles';
+import Articles from './Components/Articlepage/Articel';
 import Display from './Components/SearchPages/Searchdisplay';
 import HomePage from './Components/Homepage/HomePage';
 import Dashboard from './Components/Dashboard/Dashboard';
