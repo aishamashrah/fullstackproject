@@ -4,7 +4,7 @@ export default function Recipespart1() {
   return (
     <div>
         <div className="">
-        <div className="mx-auto Recipesbg p-10 mt-20 ml-20">
+        <div className="mx-auto Recipesbg p-10 mt-20 lg:ml-20 ">
           <div className="bgEAF4F4 p-3">
             <div className="grid grid-cols-3 gap-4">
                         <form className="flex flex-wrap  ">

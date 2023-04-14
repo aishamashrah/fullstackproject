@@ -18,7 +18,7 @@ export default function Recipes() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2">
-                <div className="w-full md:w-11/12">
+                <div className="w-full sm:w-11/12 ">
                     <Recipespart1 />
                 </div>
                 <div className="w-full md:w-10/12">

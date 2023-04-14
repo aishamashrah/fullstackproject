@@ -5,168 +5,168 @@ export default function Recipespart2() {
   return (
     <>
       <div className="">
-        <div className="mx-auto Recipesbg p-10 mt-20 ml-20">
+        <div className="mx-auto Recipesbg p-10 mt-20 lg:ml-20">
           <div className="bgEAF4F4 p-3">
             <div className="grid grid-cols-4 gap-4">
-              <div>Ingredient</div>
-              <div>Ratio</div>
-              <div>Weight</div>
-              <div>unit</div>
+            <div className='flex justify-center'>Ingredient</div>
+            <div className='flex justify-center'>Ratio</div>
+            <div className='flex justify-center'>Weight</div>
+            <div className='flex justify-center'>unit</div>
               {/* <svg className="w-96 h-10">
                 <line y1="4" x2="100%" y2="4" className="stroke-current text-black-500" stroke-width="3" />
               </svg> */}
-              <div className='mr-20'>
+              <div className='flex justify-center'>
                 <label className="font-bold">
                   <input placeholder="Tomato" type="text" className="border inputbg w-24 rounded-md inputbackground" />
                 </label>
               </div>
-              <div>
+              <div className='flex justify-center'>
                 <label htmlFor="input1" className="font-bold">
                   <input placeholder="100" type="text" className="border inputbg w-10 rounded-md inputbackground" />
                 </label>%
               </div>
-              <div>
+              <div className='flex justify-center'>
                 <label htmlFor="input1" className="font-bold">
                   <input placeholder="200" type="text" className="border inputbg w-20 rounded-md inputbackground" />
                 </label>
               </div>
-              <div>grams</div>
+              <div className='flex justify-center'>grams</div>
 
-              <div className='mr-20'>
+              <div className='flex justify-center'>
                 <label className="font-bold">
                   <input placeholder="Tomato" type="text" className="border inputbg w-24 rounded-md inputbackground" />
                 </label>
               </div>
-              <div>
+              <div className='flex justify-center'>
                 <label htmlFor="input1" className="font-bold">
                   <input placeholder="100" type="text" className="border inputbg w-10 rounded-md inputbackground" />
                 </label>%
               </div>
-              <div>
+              <div className='flex justify-center'>
                 <label htmlFor="input1" className="font-bold">
                   <input placeholder="200" type="text" className="border inputbg w-20 rounded-md inputbackground" />
                 </label>
               </div>
-              <div>grams</div>
+              <div className='flex justify-center'>grams</div>
 
-              <div className='mr-20'>
+              <div className='flex justify-center'>
                 <label className="font-bold">
                   <input placeholder="Tomato" type="text" className="border inputbg w-24 rounded-md inputbackground" />
                 </label>
               </div>
-              <div>
+              <div className='flex justify-center'>
                 <label htmlFor="input1" className="font-bold">
                   <input placeholder="100" type="text" className="border inputbg w-10 rounded-md inputbackground" />
                 </label>%
               </div>
-              <div>
+              <div className='flex justify-center'>
                 <label htmlFor="input1" className="font-bold">
                   <input placeholder="200" type="text" className="border inputbg w-20 rounded-md inputbackground" />
                 </label>
               </div>
-              <div>grams</div>
+              <div className='flex justify-center'>grams</div>
 
-              <div className='mr-20'>
+              <div className='flex justify-center'>
                 <label className="font-bold">
                   <input placeholder="Tomato" type="text" className="border inputbg w-24 rounded-md inputbackground" />
                 </label>
               </div>
-              <div>
+              <div className='flex justify-center'>
                 <label htmlFor="input1" className="font-bold">
                   <input placeholder="100" type="text" className="border inputbg w-10 rounded-md inputbackground" />
                 </label>%
               </div>
-              <div>
+              <div className='flex justify-center'>
                 <label htmlFor="input1" className="font-bold">
                   <input placeholder="200" type="text" className="border inputbg w-20 rounded-md inputbackground" />
                 </label>
               </div>
-              <div>grams</div>
+              <div className='flex justify-center'>grams</div>
 
-              <div className='mr-20'>
+              <div className='flex justify-center'>
                 <label className="font-bold">
                   <input placeholder="Tomato" type="text" className="border inputbg w-24 rounded-md inputbackground" />
                 </label>
               </div>
-              <div>
+              <div className='flex justify-center'>
                 <label htmlFor="input1" className="font-bold">
                   <input placeholder="100" type="text" className="border inputbg w-10 rounded-md inputbackground" />
                 </label>%
               </div>
-              <div>
+              <div className='flex justify-center'>
                 <label htmlFor="input1" className="font-bold">
                   <input placeholder="200" type="text" className="border inputbg w-20 rounded-md inputbackground" />
                 </label>
               </div>
-              <div>grams</div>
+              <div className='flex justify-center'>grams</div>
 
-              <div className='mr-20'>
+              <div className='flex justify-center'>
                 <label className="font-bold">
                   <input placeholder="Tomato" type="text" className="border inputbg w-24 rounded-md inputbackground" />
                 </label>
               </div>
-              <div>
+              <div className='flex justify-center'>
                 <label htmlFor="input1" className="font-bold">
                   <input placeholder="100" type="text" className="border inputbg w-10 rounded-md inputbackground" />
                 </label>%
               </div>
-              <div>
+              <div className='flex justify-center'>
                 <label htmlFor="input1" className="font-bold">
                   <input placeholder="200" type="text" className="border inputbg w-20 rounded-md inputbackground" />
                 </label>
               </div>
-              <div>grams</div>
+              <div className='flex justify-center'>grams</div>
 
-              <div className='mr-20'>
+              <div className='flex justify-center'>
                 <label className="font-bold">
                   <input placeholder="Tomato" type="text" className="border inputbg w-24 rounded-md inputbackground" />
                 </label>
               </div>
-              <div>
+              <div className='flex justify-center'>
                 <label htmlFor="input1" className="font-bold">
                   <input placeholder="100" type="text" className="border inputbg w-10 rounded-md inputbackground" />
                 </label>%
               </div>
-              <div>
+              <div className='flex justify-center'>
                 <label htmlFor="input1" className="font-bold">
                   <input placeholder="200" type="text" className="border inputbg w-20 rounded-md inputbackground" />
                 </label>
               </div>
-              <div>grams</div>
+               <div className='flex justify-center'>grams</div>
 
-              <div className='mr-20'>
+               <div className='flex justify-center'>
                 <label className="font-bold">
                   <input placeholder="Tomato" type="text" className="border inputbg w-24 rounded-md inputbackground" />
                 </label>
               </div>
-              <div>
+              <div className='flex justify-center'>
                 <label htmlFor="input1" className="font-bold">
                   <input placeholder="100" type="text" className="border inputbg w-10 rounded-md inputbackground" />
                 </label>%
               </div>
-              <div>
+              <div className='flex justify-center'>
                 <label htmlFor="input1" className="font-bold">
                   <input placeholder="200" type="text" className="border inputbg w-20 rounded-md inputbackground" />
                 </label>
               </div>
-              <div>grams</div>
+              <div className='flex justify-center'>grams</div>
 
-              <div className='mr-20'>
+              <div className='flex justify-center'>
                 <label className="font-bold">
                   <input placeholder="Tomato" type="text" className="border inputbg w-24 rounded-md inputbackground" />
                 </label>
               </div>
-              <div>
+              <div className='flex justify-center'>
                 <label htmlFor="input1" className="font-bold">
                   <input placeholder="100" type="text" className="border inputbg w-10 rounded-md inputbackground" />
                 </label>%
               </div>
-              <div>
+              <div className='flex justify-center '>
                 <label htmlFor="input1" className="font-bold">
-                  <input placeholder="200" type="text" className="border inputbg w-20 rounded-md inputbackground" />
+                  <input placeholder="200" type="text" className=" border inputbg w-20 rounded-md inputbackground" />
                 </label>
               </div>
-              <div>grams</div>
+              <div className='flex justify-center'>grams</div>
               
             </div>
             <div className='mt-4'> 

@@ -59,6 +59,12 @@ async function getLoggedInUserData(username: any) {
 }
 
 
+ async function getAllArticel() {
+    let response = await fetch(`https://cookeaseapi.azurewebsites.net/Recipe/GetAllRecipeItems`);
+    let data = await response.json();
+    userData = data;
+    console.log(userData);
+}
 
 
 
@@ -70,6 +76,4 @@ async function getLoggedInUserData(username: any) {
 
 
 
-
-
-export { CreateAccountFetch, login, getLoggedInUserData };
+export { CreateAccountFetch, login, getLoggedInUserData ,getAllArticel};
