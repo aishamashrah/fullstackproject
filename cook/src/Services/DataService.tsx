@@ -58,13 +58,18 @@ async function getLoggedInUserData(username: any) {
     console.log(userData);
 }
 
-
- async function getAllArticel() {
+async function GetAllSearchpage() {
     let response = await fetch(`https://cookeaseapi.azurewebsites.net/Recipe/GetAllRecipeItems`);
     let data = await response.json();
-    userData = data;
-    console.log(userData);
-}
+    return data;
+  }
+  
+  async function GetAllArticel() {
+    let response = await fetch(`https://cookeaseapi.azurewebsites.net/Article/GetAllArticleItems`);
+    let data = await response.json();
+    return data;
+  }
+  
 
 
 
@@ -76,4 +81,4 @@ async function getLoggedInUserData(username: any) {
 
 
 
-export { CreateAccountFetch, login, getLoggedInUserData ,getAllArticel};
+export { CreateAccountFetch, login, getLoggedInUserData ,GetAllSearchpage,GetAllArticel};

@@ -1,5 +1,5 @@
 import React from 'react';
-import img from '../../Assets/Screenshot\ 2023-04-13\ at\ 3.40.53\ PM.png';
+import img from '../../Assets/chef.png';
 
 export default function Recipespart2() {
   return (

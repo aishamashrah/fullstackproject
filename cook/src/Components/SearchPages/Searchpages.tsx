@@ -1,24 +1,18 @@
-import React from 'react'
-import  { useEffect } from 'react';
-import { getAllArticel } from '../../Services/DataService';
-import { useState } from 'react'
+import React, { useState, useEffect } from 'react';
+import { GetAllSearchpage } from '../../Services/DataService';
 
-
-  
- export default function Searchpages()  {
-
-  const [blogItem, setBlogItems] = useState([]);
+export default function Searchpages() {
+  const [blogItems, setBlogItems] = useState([]);
 
   useEffect(() => {
-        const fetchData = async () => {
-            let res = await getAllArticel();
-            // setBlogItems(res);
-            console.log(res);
-            console.log("test")
-        };
-        fetchData();
-    }, [])
+    const fetchData = async () => {
+      let res = await GetAllSearchpage();
+      setBlogItems(res);
+      console.log(res);
 
+    };
+    fetchData();
+  }, []);
 
 //   const [blogItem, setBlogItems] = useState([
 //     {
@@ -150,26 +144,26 @@ import { useState } from 'react'
 
   
       
+return (
+  <>
+  
+  {blogItems.map((item: { id: number, image: string, title: string, description: string }) => (
+  <div key={item.id}>
+    <div className="gap-4 max-w-5xl mt-8 Image">
+      <img src={item.image} className="w-full h-40 object-cover mb-4 rounded-lg" />
+      <div className="p-5 rounded-lg shadow-md">
+        <h1>{item.title}</h1>
+        <p className="text-gray-600">{item.description}</p>
+      </div>
+    </div>
+  </div>
+))}
 
-    return (
-      <>
-        {/* {blogItem.map(item => (
-      <div key={item.id}>
-        <div className="gap-4 max-w-5xl mt-8 Image">
-          <img src={item.image} className="w-full h-40 object-cover mb-4 rounded-lg" />
-          <div className="p-5 rounded-lg shadow-md">
-            <h1>{item.title}</h1>
-            <p className="text-gray-600">{item.description}</p>
-          </div>
-        </div>
-        </div>
-         ))} */}
-      </>
-    );
-  };
-  
+  </>
+);
+
  
-  
+    }
 
 
 // export default function Searchpages(props) {
