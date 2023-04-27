@@ -5,28 +5,9 @@ import ArticelData from '../Articlepage/Articel';
 export default function Searchpages() {
   const [blogItems, setBlogItems] = useState([]);
   const [articelItems, setArticelItems] = useState([]);
-  const [userID, setuserID] = useState('');
-  const [date, setdate] = useState('');
-  const [publisherName, setpublisherName] = useState('');
-  const [title, settitle] = useState('');
-  const [image, setimage] = useState('');
-  const [description, setdescription] = useState('');
+  
   
 
- const handleSubmit = () => {
-    let Data = {
-        Id: 0,
-        userID:userID,
-        date: date,
-        publisherName: publisherName,
-        title:title,
-        image:image,
-        description:description
-    }
-    console.log(Data);
-    ArticelData();
-  
-}
 
   useEffect(() => {
     const fetchData = async () => {
@@ -194,7 +175,7 @@ return (
   
 ))}
 {articelItems.map((item: { id: number, image: string, title: string, description: string }) => (
-  <button onClick={handleSubmit} key={item.id}>
+  <button key={item.id}>
     <div className="gap-4 max-w-5xl mt-8 Image">
       <img src={item.image} className="w-full h-40 object-cover mb-4 rounded-lg" />
       <div className="p-5 rounded-lg shadow-md">

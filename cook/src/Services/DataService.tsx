@@ -91,7 +91,7 @@ async function GetAllSearchpage() {
 
     let data = await response.json();
     console.log(data);
-    return data;
+   
     // POST so no return needed (not getting anything)
 }
 
