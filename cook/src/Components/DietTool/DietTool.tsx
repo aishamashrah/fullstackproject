@@ -6,6 +6,9 @@ interface Ingredient {
     name: string;
     weight: number;
 }
+
+interface Props {}
+
 interface Flour {
     name: string;
     calories: number;
@@ -15,12 +18,20 @@ interface Flour {
     sodium: number;
 }
 
+interface TotalCalories {
+    totalCalories: number;
+}
+
 const ingredients: Ingredient[] = [
     { name: 'Flour', weight: 1 },
     { name: 'Sugar', weight: 1 },
     { name: 'Eggs', weight: 1 },
+    { name: 'butter', weight: 1 },
     // add more ingredients here as needed
 ];
+
+
+const totalCalories: TotalCalories [] = [];
 
 
 const nutrionalInfo: Flour[] = [
@@ -28,8 +39,9 @@ const nutrionalInfo: Flour[] = [
 ];
 
 
-export default function DietTool() {
+export default function DietTool(props: Props) {
     const [weight, setWeight] = useState(0);
+    const [calorieArray, setCalorieArray] = useState<number[]>([]);
     const [totalWeight, setTotalWeight] = useState(() => {{
         return ingredients.reduce((sum, ingredient) => sum + ingredient.weight, 0);
       }});
@@ -66,7 +78,9 @@ export default function DietTool() {
 
 
 
-
+//   function handleCalorieChange(numberToAdd: number) {
+//     setCalorieArray([...calorieArray, numberToAdd]);
+//   }
 
 
 
@@ -80,8 +94,24 @@ export default function DietTool() {
     }
 
 
+    // function handleCalorie(numberToAdd: number) {
+    //     setCalorieArray([...calorieArray, numberToAdd]);
+    //   }
+
+    function handleCalorie(index: number, numberToAdd: number) {
+        setCalorieArray((prevArray) => {
+            const newArray = [...prevArray];
+            newArray[index] = numberToAdd;
+            return newArray;
+        });
+    }
+
+
+
+
 
 console.log(totalWeight)
+console.log(calorieArray)
 
     return (
         <>
@@ -97,12 +127,18 @@ console.log(totalWeight)
                                 name={ingredient.name} 
                                 weight={ingredient.weight}  
                                 // updateTotalWeight={updateTotalWeight}
+                                calorieArray={calorieArray}
                                 onWeightChange={handleWeightChange}
+                                onCalorieChange={(numberToAdd) => handleCalorie(index, numberToAdd)}
+                                
                                 />
                             </div>
                         </li>
                     ))}
                 </ul>
+            </div>
+            <div>
+                <p className='text-4xl'>Total Calories {totalWeight}</p>
             </div>
         </>
     )
