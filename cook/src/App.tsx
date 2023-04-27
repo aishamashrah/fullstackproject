@@ -10,16 +10,17 @@ import HomePage from './Components/Homepage/HomePage';
 import Dashboard from './Components/Dashboard/Dashboard';
 import CreateAccount from './Components/CreateAccount/CreateAccount';
 import Recipes from './Components/Recipes/Recipes';
+import Articelpage2 from './Components/articalpage2/articalpage2';
 function App() {
   return (
     
   <>
-  
+ 
    <BrowserRouter>
       <Routes>
         <Route path='/' element={<Signin/>} />
         <Route path='/login' element={<HomePage/>} />
-        <Route path='/News' element={<Articles/>} />
+        <Route path='/News' element={<Articelpage2/>} />
         <Route path='/Dash' element={<Dashboard/>} />
         <Route path='/RecipeBook' element={<Recipes/>} />
         <Route path='/Search' element={<Display/>} />

@@ -30,22 +30,9 @@ export default function Display() {
           <Searchpages/>
                
                 </div>
-                <div className="grid gap-8  mx-10
-                        md:grid-cols-3 
-                        lg:grid-cols-3  lg:mx-10
-                      
-                        ">
-          <Searchpages/>
+             
                
-                </div>
-                <div className="grid gap-8  mx-10
-                        md:grid-cols-3 
-                        lg:grid-cols-3  lg:mx-10
-                      
-                        ">
-          <Searchpages/>
-               
-                </div>
+             
 
  
 

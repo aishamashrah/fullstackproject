@@ -74,11 +74,30 @@ async function GetAllSearchpage() {
 
 
 
+  async function ArticelData(loginUser: object) {
+    const response = await fetch('https://cookeaseapi.azurewebsites.net/Article/GetAllArticleItems', {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(loginUser)
+    });
+
+    // Check if no error for duplicate account
+    if(!response.ok) {
+        const message = `An error has occured ${response.status}`;
+        throw new Error(message);
+    }
+
+    let data = await response.json();
+    console.log(data);
+    return data;
+    // POST so no return needed (not getting anything)
+}
 
 
 
 
 
 
-
-export { CreateAccountFetch, login, getLoggedInUserData ,GetAllSearchpage,GetAllArticel};
+export { CreateAccountFetch, login, getLoggedInUserData ,GetAllSearchpage,GetAllArticel,ArticelData};

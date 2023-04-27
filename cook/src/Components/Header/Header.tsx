@@ -40,7 +40,7 @@ export default function CookEaseHeader() {
                     </Link>
                     <Link to="/News">
                     <button className='mt-5'>
-                        <p className='font-Noto'>News</p>
+                        <p className='font-Noto'>Article</p>
                     </button>
                     </Link>
                     <Link to="/Dash">

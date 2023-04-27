@@ -2,6 +2,7 @@ import React from 'react'
 import chefHat2 from '../../Assets/profile.png'
 import CookEaseHeader from '../Header/Header';
 import img2 from '../../Assets/Screenshot\ 2023-04-05\ at\ 10.15.15\ PM.png';
+
 export default function Articles() {
     return (
         <>

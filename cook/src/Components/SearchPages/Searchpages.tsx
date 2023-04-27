@@ -1,17 +1,49 @@
 import React, { useState, useEffect } from 'react';
 import { GetAllSearchpage } from '../../Services/DataService';
-
+import { GetAllArticel } from '../../Services/DataService';
+import ArticelData from '../Articlepage/Articel';
 export default function Searchpages() {
   const [blogItems, setBlogItems] = useState([]);
+  const [articelItems, setArticelItems] = useState([]);
+  const [userID, setuserID] = useState('');
+  const [date, setdate] = useState('');
+  const [publisherName, setpublisherName] = useState('');
+  const [title, settitle] = useState('');
+  const [image, setimage] = useState('');
+  const [description, setdescription] = useState('');
+  
+
+ const handleSubmit = () => {
+    let Data = {
+        Id: 0,
+        userID:userID,
+        date: date,
+        publisherName: publisherName,
+        title:title,
+        image:image,
+        description:description
+    }
+    console.log(Data);
+    ArticelData();
+  
+}
 
   useEffect(() => {
     const fetchData = async () => {
-      let res = await GetAllSearchpage();
-      setBlogItems(res);
-      console.log(res);
+      let searchRes = await GetAllSearchpage();
+      setBlogItems(searchRes);
+      console.log(searchRes);
+    
+      let articelRes = await GetAllArticel();
+      setArticelItems(articelRes);
+      console.log(articelRes);
 
+      
+
+      
     };
     fetchData();
+    
   }, []);
 
 //   const [blogItem, setBlogItems] = useState([
@@ -148,15 +180,29 @@ return (
   <>
   
   {blogItems.map((item: { id: number, image: string, title: string, description: string }) => (
-  <div key={item.id}>
+  <button key={item.id}>
+    {/* <button className='w-82'> */}
     <div className="gap-4 max-w-5xl mt-8 Image">
       <img src={item.image} className="w-full h-40 object-cover mb-4 rounded-lg" />
       <div className="p-5 rounded-lg shadow-md">
         <h1>{item.title}</h1>
-        <p className="text-gray-600">{item.description}</p>
+        <p className="text-gray-600">{item.description.substring(0,100)}</p>
       </div>
     </div>
-  </div>
+    {/* </button> */}
+  </button>
+  
+))}
+{articelItems.map((item: { id: number, image: string, title: string, description: string }) => (
+  <button onClick={handleSubmit} key={item.id}>
+    <div className="gap-4 max-w-5xl mt-8 Image">
+      <img src={item.image} className="w-full h-40 object-cover mb-4 rounded-lg" />
+      <div className="p-5 rounded-lg shadow-md">
+        <h1>{item.title}</h1>
+        <p className="text-gray-600">{item.description.substring(0,100)}</p>
+      </div>
+    </div>
+  </button>
 ))}
 
   </>
