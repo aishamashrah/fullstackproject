@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface DietToolRowProps {
     name: string;
     weight: number;
-    calorieArray: number[];
     onWeightChange: (name: string, newWeight: number) => void;
     onCalorieChange: (numberToAdd: number) => void;
+    onProteinChange: (numberToAdd: number) => void;
+    onCarbChange: (numberToAdd: number) => void;
+    onFatChange: (numberToAdd: number) => void; 
+    onSodiumChange: (numberToAdd: number) => void;
 }
 
 interface Flour {
@@ -23,10 +26,10 @@ function DietToolRow(props: DietToolRowProps) {
     const [fatValue, setFat] = useState(1 * weightValue);
     const [carbsValue, setCarbs] = useState(2 * weightValue);
     const [proteinValue, setProtein] = useState(3 * weightValue);
-    const [sodiumValue, setSodium] = useState(4);
-    const [caloriesValue, setCalories] = useState(5);
+    const [sodiumValue, setSodium] = useState(4 * weightValue);
+    const [caloriesValue, setCalories] = useState(5 * weightValue);
  
-    const { calorieArray, onCalorieChange } = props;
+    const {  onCalorieChange, onProteinChange, onCarbChange, onFatChange, onSodiumChange } = props;
 
     
 
@@ -55,13 +58,23 @@ function DietToolRow(props: DietToolRowProps) {
         setSodium(4 * newWeight);
 
         onCalorieChange(5 * newWeight);
+        onProteinChange(3 * newWeight);
+        onCarbChange(2 * newWeight);
+        onFatChange(1 * newWeight);
+        onSodiumChange(4 * newWeight);
 
         
       }
     
 
-
-
+      useEffect(() => {
+        onCalorieChange(5 * weight);
+        onProteinChange(3 * weight);
+        onCarbChange(2 * weight);
+        onFatChange(1 * weight);
+        onSodiumChange(4 * weight);
+      }, []);
+ 
 
     // const nutrionalInfo: Flour[] = [
     //     { name: 'Flour', calories: 1.5, protein: 0.5, fat: 0.2, carbs: 0.2, sodium: 0.2 },
@@ -72,16 +85,17 @@ function DietToolRow(props: DietToolRowProps) {
     // console.log(nutrionalInfo[0]);
 
     return (
-
+            
         <>
+       
             <div className='grid grid-cols-7 justify-evenly gap-10'>
 
                 <div>{props.name}</div>
                 <div><input type="" value={weightValue} onChange={handleWeightChange} className='w-10' /></div>
                 <div>{caloriesValue}</div>
                 <div>{proteinValue}</div>
-                <div>{fatValue}</div>
                 <div>{carbsValue}</div>
+                <div>{fatValue}</div>
                 <div>{sodiumValue}</div>
                 <div></div>
             </div>
