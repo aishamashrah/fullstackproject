@@ -1,6 +1,7 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import DietToolRow from './DietToolRow';
+import { PieChart } from './PieChart';
 
 interface Ingredient {
     name: string;
@@ -26,6 +27,7 @@ interface TotalCalories {
 
 export default function DietTool(props: Props) {
     const [weight, setWeight] = useState(0);
+    const [testArray, setTestArray] = useState<number[]>([]);
     const [calorieArray, setCalorieArray] = useState<number[]>([]);
     const [proteinArray, setProteinArray] = useState<number[]>([]);
     const [carbArray, setCarbArray] = useState<number[]>([]);
@@ -37,7 +39,7 @@ export default function DietTool(props: Props) {
         { name: 'Eggs', weight: 1 },
         { name: 'butter', weight: 1 },
         // add more ingredients here as needed
-      ]);
+    ]);
     const [totalWeight, setTotalWeight] = useState(() => {
         {
             return ingredients.reduce((sum, ingredient) => sum + ingredient.weight, 0);
@@ -47,16 +49,75 @@ export default function DietTool(props: Props) {
         return calorieArray.reduce((sum, calorie) => sum + calorie, 0);
     });
     const [totalProtein, setTotalProtein] = useState(() => {
-        return calorieArray.reduce((sum, protein) => sum + protein, 0);
+        return proteinArray.reduce((sum, protein) => sum + protein, 0);
     });
     const [totalCarbs, setTotalCarbs] = useState(() => {
-        return calorieArray.reduce((sum, carb) => sum + carb, 0);
+        return carbArray.reduce((sum, carb) => sum + carb, 0);
     });
     const [totalFat, setTotalFat] = useState(() => {
-        return calorieArray.reduce((sum, fat) => sum + fat, 0);
+        return fatArray.reduce((sum, fat) => sum + fat, 0);
     });
     const [totalSodium, setTotalSodium] = useState(() => {
-        return calorieArray.reduce((sum, sodium) => sum + sodium, 0);
+        return sodiumArray.reduce((sum, sodium) => sum + sodium, 0);
+    });
+
+
+    const [pieChartCalories, setPieChartCalories] = useState({
+        labels: ingredients.map((data) => data.name),
+        datasets: [
+            {
+                label: "Total Calories",
+                data:  calorieArray.map((data) => data),
+                backgroundColor: [
+                    "rgba(75,192,192,1)",
+                    "#ecf0f1",
+                    "#50AF95",
+                    "#f3ba2f",
+                    "#2a71d0",
+                ],
+                borderColor: "black",
+                borderWidth: 2,
+            },
+        ],
+    });
+
+
+    const [pieChartWeights, setPieChartWeights] = useState({
+        labels: ingredients.map((data) => data.name),
+        datasets: [
+            {
+                label: "Total Weight",
+                data: ingredients.map((data) => data.weight),
+                backgroundColor: [
+                    "rgba(75,192,192,1)",
+                    "#ecf0f1",
+                    "#50AF95",
+                    "#f3ba2f",
+                    "#2a71d0",
+                ],
+                borderColor: "black",
+                borderWidth: 2,
+            },
+        ],
+    });
+
+    const [pieChartMacros, setPieChartMacros] = useState({
+        labels: ["Protein", "Carbs", "Fat", "Sodium"],  
+        datasets: [
+            {
+                label: "Total Calories",
+                data:  [totalProtein,totalCarbs,totalFat,totalSodium],
+                backgroundColor: [
+                    "rgba(75,192,192,1)",
+                    "#ecf0f1",
+                    "#50AF95",
+                    "#f3ba2f",
+                    "#2a71d0",
+                ],
+                borderColor: "black",
+                borderWidth: 2,
+            },
+        ],
     });
 
 
@@ -72,6 +133,49 @@ export default function DietTool(props: Props) {
             (sum, ingredient) => sum + ingredient.weight,
             0
         );
+
+
+        // create a new array of updated weights
+        const updatedWeights = updatedIngredients.map((ingredient) => ingredient.weight);
+
+        // update the pieChartWeights state object with the new weights
+        setPieChartWeights({
+            labels: ingredients.map((data) => data.name),
+            datasets: [
+                {
+                    label: "Total Weight",
+                    data: updatedWeights,
+                    backgroundColor: [
+                        "rgba(75,192,192,1)",
+                        "#ecf0f1",
+                        "#50AF95",
+                        "#f3ba2f",
+                        "#2a71d0",
+                    ],
+                    borderColor: "black",
+                    borderWidth: 2,
+                },
+            ],
+        });
+        setPieChartCalories({
+            labels: ingredients.map((data) => data.name),
+            datasets: [
+                {
+                    label: "Total Calories",
+                    data: calorieArray.length > 0 ? calorieArray.map((data) => data) : [1,2,3,4,],
+                    backgroundColor: [
+                        "rgba(75,192,192,1)",
+                        "#ecf0f1",
+                        "#50AF95",
+                        "#f3ba2f",
+                        "#2a71d0",
+                    ],
+                    borderColor: "black",
+                    borderWidth: 2,
+                },
+            ],
+        });
+        
         setIngredients(updatedIngredients);
         setTotalWeight(newTotalWeight);
 
@@ -127,11 +231,48 @@ export default function DietTool(props: Props) {
             return newArray;
         });
     }
+    
+    useEffect(() => {
+        setPieChartCalories({
+          labels: ingredients.map((data) => data.name),
+          datasets: [
+            {
+              label: "Total Calories",
+              data: calorieArray.length > 0 ? calorieArray.map((data) => data) : [1,2,3,4,],
+              backgroundColor: [
+                "rgba(75,192,192,1)",
+                "#ecf0f1",
+                "#50AF95",
+                "#f3ba2f",
+                "#2a71d0",
+              ],
+              borderColor: "black",
+              borderWidth: 2,
+            },
+          ],
+        });
+        setPieChartMacros({
+            labels: ["Protein", "Carbs", "Fat", "Sodium"],
+            datasets: [
+                {
+                    label: "Total Calories",
+                    data:  [totalProtein,totalCarbs,totalFat,totalSodium],
+                    backgroundColor: [
+                        "rgba(75,192,192,1)",
+                        "#ecf0f1",
+                        "#50AF95",
+                        "#f3ba2f",
+                        "#2a71d0",
+                    ],
+                    borderColor: "black",
+                    borderWidth: 2,
+                },
+            ],
+        });
+      }, [calorieArray, ingredients]);
 
-   
-
-    console.log(totalWeight)
-    console.log(ingredients)
+    // console.log(totalWeight)
+    // console.log(ingredients)
 
     return (
         <>
@@ -168,6 +309,18 @@ export default function DietTool(props: Props) {
                 <p className='text-4xl'>Total Fat {totalFat}</p>
                 <p className='text-4xl'>Total Sodium {totalSodium}</p>
 
+            </div>
+
+            <div className='h-1/4 w-1/4'>
+
+                <PieChart
+                    data={pieChartWeights}
+                />
+                   <PieChart
+                    data={pieChartMacros}
+                />
+
+                
             </div>
         </>
     )
