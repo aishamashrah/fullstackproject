@@ -311,7 +311,7 @@ export default function DietTool(props: Props) {
 
             </div>
 
-            <div className='h-1/4 w-1/4'>
+            <div className='grid grid-cols-2 file:h-1/2 w-1/2'>
 
                 <PieChart
                     data={pieChartWeights}

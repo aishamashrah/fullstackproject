@@ -59,6 +59,12 @@ async function getLoggedInUserData(username: any) {
 }
 
 
+async function GetIngredientByName() {
+    let response = await fetch('https://cookeaseapi.azurewebsites.net/Nutrition/GetItemsByName/flour');
+    let data = await response.json();
+    userData = data;
+    console.log(userData);
+}
 
 
 
@@ -72,4 +78,5 @@ async function getLoggedInUserData(username: any) {
 
 
 
-export { CreateAccountFetch, login, getLoggedInUserData };
+
+export { CreateAccountFetch, login, getLoggedInUserData, GetIngredientByName };
