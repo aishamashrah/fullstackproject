@@ -2,6 +2,7 @@ import React from 'react'
 import { useState,useEffect } from 'react';
 import DietToolRow from './DietToolRow';
 import { PieChart } from './PieChart';
+import { GetNutritionByName } from '../../Services/DataService';
 
 interface Ingredient {
     name: string;
@@ -255,7 +256,7 @@ export default function DietTool(props: Props) {
             labels: ["Protein", "Carbs", "Fat", "Sodium"],
             datasets: [
                 {
-                    label: "Total Calories",
+                    label: "Total Macro",
                     data:  [totalProtein,totalCarbs,totalFat,totalSodium],
                     backgroundColor: [
                         "rgba(75,192,192,1)",
@@ -269,6 +270,13 @@ export default function DietTool(props: Props) {
                 },
             ],
         });
+
+
+
+
+
+
+        
       }, [calorieArray, ingredients]);
 
     // console.log(totalWeight)
@@ -311,7 +319,7 @@ export default function DietTool(props: Props) {
 
             </div>
 
-            <div className='grid grid-cols-2 file:h-1/2 w-1/2'>
+            <div className='grid grid-cols-2 h-1/4 w-1/4 '>
 
                 <PieChart
                     data={pieChartWeights}
