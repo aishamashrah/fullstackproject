@@ -275,7 +275,6 @@ export default function DietTool(props: Props) {
 
 
 
-
         
       }, [calorieArray, ingredients]);
 

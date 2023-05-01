@@ -59,11 +59,10 @@ async function getLoggedInUserData(username: any) {
 }
 
 
-async function GetNutritionByName() {
-    let response = await fetch('https://cookeaseapi.azurewebsites.net/Nutrition/GetItemsByName/flour');
+async function GetNutritionByName(ingredient: string) {
+    let response = await fetch(`https://cookeaseapi.azurewebsites.net/Nutrition/GetItemsByName/${ingredient}`);
     let data = await response.json();
     userData = data;
-    console.log(userData);
 }
 
 

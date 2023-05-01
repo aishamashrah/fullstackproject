@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 // import { GetIngredientByName } from '../../Services/DataService';
+import { GetNutritionByName } from '../../Services/DataService';
 
 interface DietToolRowProps {
     name: string;
@@ -33,7 +34,7 @@ function DietToolRow(props: DietToolRowProps) {
     const [caloriesValue, setCalories] = useState(5 * weightValue);
     const [ingredientData, setIngredientData] = useState<[]>([]);
  
-    const {  onCalorieChange, onProteinChange, onCarbChange, onFatChange, onSodiumChange } = props;
+    const {  onCalorieChange, onProteinChange, onCarbChange, onFatChange, onSodiumChange, } = props;
 
     
 
@@ -69,12 +70,22 @@ function DietToolRow(props: DietToolRowProps) {
 
         
       }
+
+      
+      const fetchData = async () => {
+
+
+        let searchRes = await GetNutritionByName(name);
+        console.log(searchRes);
+      
+        
+      };
+      fetchData();
     
 
       useEffect(() => {
         async function fetchData() {
-        //   let ingredientData = await GetIngredientByName();
-            // console.log('flour')
+
           
           onCalorieChange(5 * weight);
           onProteinChange(3 * weight);
