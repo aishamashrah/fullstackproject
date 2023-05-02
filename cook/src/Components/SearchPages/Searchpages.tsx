@@ -167,7 +167,7 @@ return (
       <img src={item.image} className="w-full h-40 object-cover mb-4 rounded-lg" />
       <div className="p-5 rounded-lg shadow-md">
         <h1>{item.title}</h1>
-        <p className="text-gray-600">{item.description.substring(0,100)}</p>
+        <p className="text-gray-600">{item.description}</p>
       </div>
     </div>
     {/* </button> */}
@@ -180,7 +180,7 @@ return (
       <img src={item.image} className="w-full h-40 object-cover mb-4 rounded-lg" />
       <div className="p-5 rounded-lg shadow-md">
         <h1>{item.title}</h1>
-        <p className="text-gray-600">{item.description.substring(0,100)}</p>
+        <p className="text-gray-600">{item.description}</p>
       </div>
     </div>
   </button>

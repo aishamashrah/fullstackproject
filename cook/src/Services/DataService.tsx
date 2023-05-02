@@ -116,4 +116,4 @@ async function GetNutritionByName(ingredient: string) {
 
 
 
-export { CreateAccountFetch, login, getLoggedInUserData, GetNutritionByName };
+export { CreateAccountFetch, login, getLoggedInUserData, GetNutritionByName, GetAllSearchpage, GetAllArticel, ArticelData, userData, loginUser };

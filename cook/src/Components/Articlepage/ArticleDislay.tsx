@@ -1,5 +1,5 @@
 
-import ArticleItems from "./Articles"
+import Articles from "./Articel"
 import CookEaseFooter from "../Footer/Footer"
 import CookEaseHeader from "../Header/Header"
 
@@ -10,7 +10,7 @@ import CookEaseHeader from "../Header/Header"
 
 
 
-export default function Articles () {
+export default function ArticleDisplay () {
 
     return (
         <>
@@ -19,7 +19,7 @@ export default function Articles () {
                 <CookEaseHeader />
 
         <div className="mb-20">
-                       <ArticleItems 
+                       {/* <Articles 
            title='Grant Achatz: The Innovative Chef Redefining Fine Dining'
            author='By Chat GPT'
            date='4/12/2021'
@@ -39,7 +39,7 @@ export default function Articles () {
            Despite facing a personal setback in 2007 when he was diagnosed with stage four tongue cancer, Achatz continued to innovate and push the boundaries of fine dining. After undergoing treatment and temporarily losing his sense of taste, he returned to the kitchen with a renewed sense of purpose, using his experience to create dishes that were even more sensory-driven and emotional.
            Achatz's dishes are not just food, but art. His creations are meticulously crafted and designed to evoke a range of emotions in diners, from excitement and wonder to nostalgia and comfort. He believes that dining out should be an experience, not just a meal, and he has used his skills as a chef to create experiences that are truly unforgettable.
            In addition to his work at Alinea, Achatz has also opened several other restaurants, including Next, which changes its menu and theme every few months, and The Aviary, a bar that serves inventive cocktails and snacks.Today, Achatz is widely regarded as one of the most influential chefs in the world, and his impact on the culinary industry continues to be felt. From his groundbreaking dishes to his innovative techniques, he has redefined what it means to create an exceptional fine dining experience. He is a chef who is not content to rest"
-          />  
+          />   */}
         </div>
 
         <CookEaseFooter />

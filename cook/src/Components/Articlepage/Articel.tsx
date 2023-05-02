@@ -6,7 +6,7 @@ import img2 from '../../Assets/Screenshot\ 2023-04-05\ at\ 10.15.15\ PM.png';
 export default function Articles() {
     return (
         <>
-            <br></br>
+            {/* <br></br>
             <br></br>
             <div className=" gap-4 header p-14  mb-30  ">
                 <div className=" flex sm:text-xs items-center relative">
@@ -29,7 +29,7 @@ export default function Articles() {
             <p className='px-6  mx-auto xl:ml-32'>{tags}</p>
 
 
-            <p className="mx-auto xl:mx-96 pt-28 px-6 ">{content}</p>
+            <p className="mx-auto xl:mx-96 pt-28 px-6 ">{content}</p> */}
 
         </>
     )
