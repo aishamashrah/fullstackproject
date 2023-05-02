@@ -95,9 +95,24 @@ async function GetAllSearchpage() {
     // POST so no return needed (not getting anything)
 }
 
+async function GetNutritionByName(ingredient: string) {
+    let response = await fetch(`https://cookeaseapi.azurewebsites.net/Nutrition/GetItemsByName/${ingredient}`);
+    let data = await response.json();
+    userData = data;
+    return data;
+}
 
 
 
 
 
-export { CreateAccountFetch, login, getLoggedInUserData ,GetAllSearchpage,GetAllArticel,ArticelData};
+
+
+
+
+
+
+
+
+
+export { CreateAccountFetch, login, getLoggedInUserData, GetNutritionByName };

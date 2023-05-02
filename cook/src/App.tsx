@@ -9,8 +9,10 @@ import Display from './Components/SearchPages/Searchdisplay';
 import HomePage from './Components/Homepage/HomePage';
 import Dashboard from './Components/Dashboard/Dashboard';
 import CreateAccount from './Components/CreateAccount/CreateAccount';
+import DietToolDisplay from './Components/DietTool/DietToolDisplay';
 import Recipes from './Components/Recipes/Recipes';
 import Articelpage2 from './Components/articalpage2/articalpage2';
+
 function App() {
   return (
     
@@ -29,6 +31,8 @@ function App() {
         <Route path='/signin' element={<Signin/>} />
         <Route path='/signup' element={<CreateAccount/>} />
         
+        <Route path='/signin' element={<Signin/>} />
+        <Route path='/DietTool' element={<DietToolDisplay/>} />
       </Routes>
     </BrowserRouter>
   </>
