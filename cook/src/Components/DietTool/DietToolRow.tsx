@@ -32,9 +32,15 @@ function DietToolRow(props: DietToolRowProps) {
     const [carbsValue, setCarbs] = useState(2 * weightValue);
     const [proteinValue, setProtein] = useState(3 * weightValue);
     const [sodiumValue, setSodium] = useState(4 * weightValue);
-    const [caloriesValue, setCalories] = useState(5 * weightValue);
+    const [caloriesValue, setCalories] = useState(0);
     const [ingredientData, setIngredientData] = useState<[]>([]);
     const [nutritionData, setNutritionData] = useState<[]>([]);
+
+    const [savedCalories, setSavedCalories] = useState(0);
+    const [savedProtein, setSavedProtein] = useState(0);
+    const [savedCarbs, setSavedCarbs] = useState(0);
+    const [savedFat, setSavedFat] = useState(0);
+    const [savedSodium, setSavedSodium] = useState(0);
   
  
     const {  onCalorieChange, onProteinChange, onCarbChange, onFatChange, onSodiumChange, } = props;
@@ -59,13 +65,13 @@ function DietToolRow(props: DietToolRowProps) {
         onWeightChange(name, newWeight);
         setWeight(Number(event.target.value));
 
-        setCalories(5 * newWeight);
+        setCalories(savedCalories * newWeight);
         setProtein(3 * newWeight);
         setFat(1 * newWeight);
         setCarbs(2 * newWeight);
         setSodium(4 * newWeight);
 
-        onCalorieChange(5 * newWeight);
+        onCalorieChange(savedCalories * newWeight);
         onProteinChange(3 * newWeight);
         onCarbChange(2 * newWeight);
         onFatChange(1 * newWeight);
@@ -79,8 +85,27 @@ function DietToolRow(props: DietToolRowProps) {
         const fetchData = async () => {
           let searchRes = await GetNutritionByName(name);
           setNutritionData(searchRes);
-          console.log(nutritionData);
-          // console.log(nutritionData[0]?.calories);
+          console.log(searchRes);
+          console.log(searchRes[0].fat);
+          setCalories(searchRes[0].calories);
+          setProtein(searchRes[0].protein);
+          setCarbs(searchRes[0].carbs);
+          setFat(searchRes[0].fat); 
+          setSodium(searchRes[0].sodium);
+          
+          setSavedCalories(searchRes[0].calories);
+          setSavedProtein(searchRes[0].protein);
+          setSavedCarbs(searchRes[0].carbs);
+          setSavedFat(searchRes[0].fat);
+          setSavedSodium(searchRes[0].sodium);
+
+
+
+          onCalorieChange(searchRes[0].calories * weight);
+          onProteinChange(searchRes[0].protein * weight);
+          onCarbChange(searchRes[0].carbs * weight);
+          onFatChange(searchRes[0].fat * weight);
+          onSodiumChange(searchRes[0].sodium * weight);
         };
         fetchData();
       }, []);
@@ -91,11 +116,11 @@ function DietToolRow(props: DietToolRowProps) {
         async function fetchData() {
 
           
-          onCalorieChange(5 * weight);
-          onProteinChange(3 * weight);
-          onCarbChange(2 * weight);
-          onFatChange(1 * weight);
-          onSodiumChange(4 * weight);
+          // onCalorieChange(5 * weight);
+          // onProteinChange(3 * weight);
+          // onCarbChange(2 * weight);
+          // onFatChange(1 * weight);
+          // onSodiumChange(4 * weight);
         }
       
         fetchData();
