@@ -21,7 +21,7 @@ const FeaturedArticle: React.FC<ArticleProps> = ({ title, tag, content }) => {
                 <p className='ml-8 text-6xl '>
                     {title}
                 </p>
-                <p className='font-Noto mt-5 text-2xl'>
+                <p className='font-Noto mt-5 md:text-2xl '>
                     {content}
                 </p>
                 <div className='ml-auto font-Noto'>

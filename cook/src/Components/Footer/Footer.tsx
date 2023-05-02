@@ -7,13 +7,13 @@ import cookpic from '../../Assets/cooking.png'
 export default function CookEaseFooter() {
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 footerbg w-full md:h-36">
-            <div className="flex  justify-center md:justify-center md:ml-8  mb-10">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 bg-gray-200 w-full md:h-36 border-t-2 border-black">
+            <div className="flex  justify-center md:justify-center md:ml-8 lg:mt-0 mt-8  ">
                 <button>
                     <img className="h-16 mb-2 md:mb-0 md:rotate-10" src={chefHat} alt="Chef Hat" />
                 </button>
-                <div className="text-center md:text-left lg:p-7">
-                    <p className="font-lobster text-2xl md:text-4xl">Cook Ease</p>
+                <div className="text-center md:text-left lg:p-7  md:bt-8">
+                    <p className="font-lobster  sm:text-4xl ">Cook Ease</p>
                     <div className="flex justify-center md:justify-start">
                         <img className="h-6 md:h-8 mx-1" src={facebook} alt="Facebook" />
                         <img className="h-6 md:h-8 mx-1" src={pinterest} alt="Pinterest" />
@@ -23,7 +23,7 @@ export default function CookEaseFooter() {
                 </div>
             </div>
 
-            <div className="lg:p-4">
+            <div className="lg:pl-44 pt-3 md:pl-20 md:p-2 md:justify-center">
                 <div>
                     <p className="text-center md:text-left">Search</p>
                     <p className="text-center md:text-left">News</p>
@@ -32,14 +32,14 @@ export default function CookEaseFooter() {
                 </div>
             </div>
 
-            <div className="lg:p-1 flex  justify-center md:justify-center md:ml-8  ">
+            <div className="lg:p-1 flex p-2  justify-center md:justify-center md:ml-8  ">
                 <button>
-                    <img className="h-16 mb-2 md:mb-0 md:h-24 md:rotate-10" src={cookpic} alt="Cooking Picture" />
+                    <img className="h-16 mb-2 md:mb-0 md:h-24 md:rotate-10  " src={cookpic} alt="Cooking Picture" />
                 </button>
             </div>
 
-            <div className="lg:p-4">
-                <div>
+            <div className="lg:p-4  ">
+                <div >
                     <p className="text-center md:text-left">Contact Us</p>
                     <p className="text-center md:text-left">Community Guidelines</p>
                     <p className="text-center md:text-left">Site Map</p>

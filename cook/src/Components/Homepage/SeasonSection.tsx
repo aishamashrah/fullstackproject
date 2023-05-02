@@ -49,12 +49,12 @@ const SeasonSection: React.FC<SeasonProps> = ({ img1, img2, img3, img4, tag1, ta
                     </button>
                 </div>
             </div>
-
+<br></br>
             <div className='md:grid grid-cols-3 mt-10 mx-10'>
                 <div className='col-span-2'>
                     <img src={img4} className='rounded-md md:w-11/12' />
                 </div>
-                <div className=''><p className='mt-6 md:mt-0 font-Noto lg:text-2xl'>{text4}</p></div>
+                <div className=''><p className='mt-6 md:mt-0 font-Noto lg:text-2xl md:text-xs'>{text4}</p></div>
             </div>
         </>
 

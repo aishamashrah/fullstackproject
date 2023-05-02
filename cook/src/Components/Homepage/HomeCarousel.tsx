@@ -45,7 +45,7 @@ const HomeCarousel: React.FC<CarouselProps> = ({img1, img2, img3, img4, img5, im
             >
                 <SwiperSlide>
                     <div className="mt-4 mb-6">
-                        <h1 className="text-5xl font-semibold font-lobster text-center mb-4">Recipes</h1>
+                        <h1 className="text-5xl font-semibold font-lobster text-center mb-10">Recipes</h1>
                         <div className="flex justify-center gap-8 md:gap-20 xl:gap-40">
                             <div>
                                 <img src={img1} className="carouselHeader object-cover rounded-lg"/>
@@ -65,7 +65,7 @@ const HomeCarousel: React.FC<CarouselProps> = ({img1, img2, img3, img4, img5, im
                 
                 <SwiperSlide>
                 <div className="mt-4 mb-6">
-                        <h1 className="text-5xl font-semibold font-lobster text-center mb-4">News</h1>
+                        <h1 className="text-5xl font-semibold font-lobster text-center mb-10">News</h1>
                         <div className="flex justify-center gap-8 md:gap-20 xl:gap-40">
                             <div>
                                 <img src={img4} className="carouselHeader object-cover rounded-lg"/>
