@@ -20,9 +20,19 @@ code {
   background-color: #A4C3B2;
   /* background-image: url(/src/Assets/Images/Male-chef-with-black-bandana-cutting-ingredients-with-a-knife-in-the-kitchen-768.jpg); */
 }
+
+
+.carouselHeader {
+  width: 260px;
+  height: 300px;
+}
+
+.WhiteColor{
+  background-color: gold
+}
 .col1{
   background-color: #CCE3DE;
-  height: 40rem;
+  height: rem;
 }
 .bg1{
   background-color: #CCE3DE;
@@ -39,9 +49,10 @@ code {
 .Recipesbg{
   background-color: #CCE3DE;
 }
-.Recipesbg2{
-  background-color: #ffffff;
+.bgEAF4F4{
+  background-color: #EAF4F4;
 }
 .inputbg{
   background-color: #D9D9D9;
+ 
 }
