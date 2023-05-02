@@ -63,6 +63,7 @@ async function GetNutritionByName(ingredient: string) {
     let response = await fetch(`https://cookeaseapi.azurewebsites.net/Nutrition/GetItemsByName/${ingredient}`);
     let data = await response.json();
     userData = data;
+    return data;
 }
 
 

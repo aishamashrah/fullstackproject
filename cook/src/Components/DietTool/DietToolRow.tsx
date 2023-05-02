@@ -5,6 +5,7 @@ import { GetNutritionByName } from '../../Services/DataService';
 interface DietToolRowProps {
     name: string;
     weight: number;
+    
     onWeightChange: (name: string, newWeight: number) => void;
     onCalorieChange: (numberToAdd: number) => void;
     onProteinChange: (numberToAdd: number) => void;
@@ -33,6 +34,8 @@ function DietToolRow(props: DietToolRowProps) {
     const [sodiumValue, setSodium] = useState(4 * weightValue);
     const [caloriesValue, setCalories] = useState(5 * weightValue);
     const [ingredientData, setIngredientData] = useState<[]>([]);
+    const [nutritionData, setNutritionData] = useState<[]>([]);
+  
  
     const {  onCalorieChange, onProteinChange, onCarbChange, onFatChange, onSodiumChange, } = props;
 
@@ -72,15 +75,16 @@ function DietToolRow(props: DietToolRowProps) {
       }
 
       
-      const fetchData = async () => {
-
-
-        let searchRes = await GetNutritionByName(name);
-        console.log(searchRes);
+      useEffect(() => {
+        const fetchData = async () => {
+          let searchRes = await GetNutritionByName(name);
+          setNutritionData(searchRes);
+          console.log(nutritionData);
+          // console.log(nutritionData[0]?.calories);
+        };
+        fetchData();
+      }, []);
       
-        
-      };
-      fetchData();
     
 
       useEffect(() => {
@@ -97,14 +101,8 @@ function DietToolRow(props: DietToolRowProps) {
         fetchData();
       }, []);
  
+      
 
-    // const nutrionalInfo: Flour[] = [
-    //     { name: 'Flour', calories: 1.5, protein: 0.5, fat: 0.2, carbs: 0.2, sodium: 0.2 },
-    //     { name: 'Sugar', calories: 1.5, protein: 0.5, fat: 0.2, carbs: 0.2, sodium: 0.2 },
-        
-        
-    // ];
-    // console.log(nutrionalInfo[0]);
 
     return (
             

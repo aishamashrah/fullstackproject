@@ -37,7 +37,7 @@ export default function DietTool(props: Props) {
     const [ingredients, setIngredients] = useState<Ingredient[]>([
         { name: 'Flour', weight: 1 },
         { name: 'Sugar', weight: 1 },
-        { name: 'Eggs', weight: 1 },
+        { name: 'egg', weight: 1 },
         { name: 'butter', weight: 1 },
         // add more ingredients here as needed
     ]);
