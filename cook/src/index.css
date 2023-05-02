@@ -55,5 +55,20 @@ code {
 }
 .inputbg{
   background-color: #D9D9D9;
+ width: 60rem;
+}
+.bg2{
+  background-color: #EAF4F4;
+}
+.savebtn{
+
+    width: 20rem;
+    height: 3rem;
+    border-radius: 1rem;
+    border: white;
+    font-weight: 700;
+    font-size: x-large;
+    text-align: center;
  
+    background-color: #A4C3B2;
 }

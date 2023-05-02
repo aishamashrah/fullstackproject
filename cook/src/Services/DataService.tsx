@@ -3,6 +3,7 @@
 let userData = {};
 
 
+let loginUser = {};
 
 async function CreateAccountFetch(createdUser: object) {
     const response = await fetch('https://cookeaseapi.azurewebsites.net/User/AddUser', {
@@ -74,8 +75,8 @@ async function GetAllSearchpage() {
 
 
 
-  async function ArticelData(loginUser: object) {
-    const response = await fetch('https://cookeaseapi.azurewebsites.net/Article/GetAllArticleItems', {
+  async function ArticelData(loginUser: any) {
+    const response = await fetch('https://cookeaseapi.azurewebsites.net/Article/AddArticleItem', {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
@@ -91,7 +92,7 @@ async function GetAllSearchpage() {
 
     let data = await response.json();
     console.log(data);
-   
+   return data;
     // POST so no return needed (not getting anything)
 }
 

@@ -11,11 +11,12 @@ import Dashboard from './Components/Dashboard/Dashboard';
 import CreateAccount from './Components/CreateAccount/CreateAccount';
 import Recipes from './Components/Recipes/Recipes';
 import Articelpage2 from './Components/articalpage2/articalpage2';
+import RecipePost from './Components/Recipes/RecipePost';
 function App() {
   return (
     
   <>
- 
+ <RecipePost/>
    <BrowserRouter>
       <Routes>
         <Route path='/' element={<Signin/>} />
