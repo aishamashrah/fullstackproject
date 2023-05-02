@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import { GetIngredientByName } from '../../Services/DataService';
 import { GetNutritionByName } from '../../Services/DataService';
 
 interface DietToolRowProps {
@@ -14,27 +13,15 @@ interface DietToolRowProps {
     onSodiumChange: (numberToAdd: number) => void;
 }
 
-// interface Flour {
-//     "id": 1,
-//     "ingredientName": "flour",
-//     "calories": 364,
-//     "protein": 0,
-//     "carbs": 76,
-//     "fat": 1,
-//     "sodium": ,
-//     "isDeleted": 
-// }
 
 function DietToolRow(props: DietToolRowProps) {
     const { name, weight, onWeightChange } = props;
-    const [weightValue, setWeight] = useState(props.weight);
-    const [fatValue, setFat] = useState(1 * weightValue);
-    const [carbsValue, setCarbs] = useState(2 * weightValue);
-    const [proteinValue, setProtein] = useState(3 * weightValue);
-    const [sodiumValue, setSodium] = useState(4 * weightValue);
+    const [weightValue, setWeight] = useState(weight);
+    const [fatValue, setFat] = useState(0);
+    const [carbsValue, setCarbs] = useState(0);
+    const [proteinValue, setProtein] = useState(0);
+    const [sodiumValue, setSodium] = useState(0);
     const [caloriesValue, setCalories] = useState(0);
-    const [ingredientData, setIngredientData] = useState<[]>([]);
-    const [nutritionData, setNutritionData] = useState<[]>([]);
 
     const [savedCalories, setSavedCalories] = useState(0);
     const [savedProtein, setSavedProtein] = useState(0);
@@ -45,37 +32,22 @@ function DietToolRow(props: DietToolRowProps) {
  
     const {  onCalorieChange, onProteinChange, onCarbChange, onFatChange, onSodiumChange, } = props;
 
-    
-
-    function handleWeight(event: React.ChangeEvent<HTMLInputElement>) {
-        
-
-    }
-
-
-    // function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    //     const newWeight = Number(event.target.value);
-    //     updateTotalWeight(newWeight - weight); // calculate the weight difference and call the callback function
-    //     setWeight(Number(event.target.value));
-    //   }
-
-
     function handleWeightChange(event: React.ChangeEvent<HTMLInputElement>) {
         const newWeight = Number(event.target.value);
         onWeightChange(name, newWeight);
         setWeight(Number(event.target.value));
 
         setCalories(savedCalories * newWeight);
-        setProtein(3 * newWeight);
-        setFat(1 * newWeight);
-        setCarbs(2 * newWeight);
-        setSodium(4 * newWeight);
+        setProtein(savedProtein * newWeight);
+        setFat(savedFat * newWeight);
+        setCarbs(savedCarbs * newWeight);
+        setSodium(savedSodium * newWeight);
 
         onCalorieChange(savedCalories * newWeight);
-        onProteinChange(3 * newWeight);
-        onCarbChange(2 * newWeight);
-        onFatChange(1 * newWeight);
-        onSodiumChange(4 * newWeight);
+        onProteinChange(savedProtein * newWeight);
+        onCarbChange(savedCarbs * newWeight);
+        onFatChange(savedFat * newWeight);
+        onSodiumChange(savedSodium * newWeight);
 
         
       }
@@ -84,51 +56,29 @@ function DietToolRow(props: DietToolRowProps) {
       useEffect(() => {
         const fetchData = async () => {
           let searchRes = await GetNutritionByName(name);
-          setNutritionData(searchRes);
-          console.log(searchRes);
-          console.log(searchRes[0].fat);
-          setCalories(searchRes[0].calories);
-          setProtein(searchRes[0].protein);
-          setCarbs(searchRes[0].carbs);
-          setFat(searchRes[0].fat); 
-          setSodium(searchRes[0].sodium);
+
+
+          setCalories(searchRes[0].calories/100);
+          setProtein(searchRes[0].protein/100);
+          setCarbs(searchRes[0].carbs/100);
+          setFat(searchRes[0].fat/100); 
+          setSodium(searchRes[0].sodium/100);
           
-          setSavedCalories(searchRes[0].calories);
-          setSavedProtein(searchRes[0].protein);
-          setSavedCarbs(searchRes[0].carbs);
-          setSavedFat(searchRes[0].fat);
-          setSavedSodium(searchRes[0].sodium);
+          setSavedCalories(searchRes[0].calories/100);
+          setSavedProtein(searchRes[0].protein/100);
+          setSavedCarbs(searchRes[0].carbs/100);
+          setSavedFat(searchRes[0].fat/100);
+          setSavedSodium(searchRes[0].sodium/100);
 
-
-
-          onCalorieChange(searchRes[0].calories * weight);
-          onProteinChange(searchRes[0].protein * weight);
-          onCarbChange(searchRes[0].carbs * weight);
-          onFatChange(searchRes[0].fat * weight);
-          onSodiumChange(searchRes[0].sodium * weight);
+          onCalorieChange(searchRes[0].calories/100 * weight);
+          onProteinChange(searchRes[0].protein/100 * weight);
+          onCarbChange(searchRes[0].carbs/100 * weight);
+          onFatChange(searchRes[0].fat/100 * weight);
+          onSodiumChange(searchRes[0].sodium/100 * weight);
         };
         fetchData();
       }, []);
       
-    
-
-      useEffect(() => {
-        async function fetchData() {
-
-          
-          // onCalorieChange(5 * weight);
-          // onProteinChange(3 * weight);
-          // onCarbChange(2 * weight);
-          // onFatChange(1 * weight);
-          // onSodiumChange(4 * weight);
-        }
-      
-        fetchData();
-      }, []);
- 
-      
-
-
     return (
             
         <>
