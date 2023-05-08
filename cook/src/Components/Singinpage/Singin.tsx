@@ -3,12 +3,6 @@ import React, { useState } from "react";
 import { login, getLoggedInUserData } from "../../Services/DataService";
 
 
-
-
-
-
-
-
 export default function Signin() {
   let navigate = useNavigate();
 
@@ -35,10 +29,6 @@ export default function Signin() {
   
   return (
     <>
-      
-      
-
-
       <br></br>
       <br></br>
       <div className="grid gap-4 grid-cols-2 header p-5 border-black border mb-36">

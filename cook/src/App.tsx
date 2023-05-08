@@ -4,13 +4,13 @@ import './App.css';
 import CookEaseHeader from './Components/Header/Header';
 import CookEaseFooter from './Components/Footer/Footer';
 import Singin from './Components/Singinpage/Singin';
-import Articles from './Components/Articlepage/ArticleDislay';
+
 import Display from './Components/SearchPages/Searchdisplay';
 import HomePage from './Components/Homepage/HomePage';
 import Dashboard from './Components/Dashboard/Dashboard';
 import CreateAccount from './Components/CreateAccount/CreateAccount';
 import Recipes from './Components/Recipes/Recipes';
-import Articelpage2 from './Components/articalpage2/articalpage2';
+import Articelpage2 from './Components/Articelpage2/Articelpage2';
 import RecipePost from './Components/Recipes/RecipePost';
 import DietToolDisplay from './Components/DietTool/DietToolDisplay';
 
@@ -21,7 +21,7 @@ function App() {
 
    <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Signin/>} />
+       
         <Route path='/login' element={<HomePage/>} />
         <Route path='/News' element={<Articelpage2/>} />
         <Route path='/Dash' element={<Dashboard/>} />
