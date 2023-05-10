@@ -17,17 +17,17 @@ interface DietToolRowProps {
 function DietToolRow(props: DietToolRowProps) {
     const { name, weight, onWeightChange } = props;
     const [weightValue, setWeight] = useState(weight);
-    const [fatValue, setFat] = useState(0);
-    const [carbsValue, setCarbs] = useState(0);
-    const [proteinValue, setProtein] = useState(0);
-    const [sodiumValue, setSodium] = useState(0);
-    const [caloriesValue, setCalories] = useState(0);
+    const [fatValue, setFat] = useState(1);
+    const [carbsValue, setCarbs] = useState(1);
+    const [proteinValue, setProtein] = useState(1);
+    const [sodiumValue, setSodium] = useState(1);
+    const [caloriesValue, setCalories] = useState(1);
 
-    const [savedCalories, setSavedCalories] = useState(0);
-    const [savedProtein, setSavedProtein] = useState(0);
-    const [savedCarbs, setSavedCarbs] = useState(0);
-    const [savedFat, setSavedFat] = useState(0);
-    const [savedSodium, setSavedSodium] = useState(0);
+    const [savedCalories, setSavedCalories] = useState(1);
+    const [savedProtein, setSavedProtein] = useState(1);
+    const [savedCarbs, setSavedCarbs] = useState(1);
+    const [savedFat, setSavedFat] = useState(1);
+    const [savedSodium, setSavedSodium] = useState(1);
   
  
     const {  onCalorieChange, onProteinChange, onCarbChange, onFatChange, onSodiumChange, } = props;
@@ -78,6 +78,8 @@ function DietToolRow(props: DietToolRowProps) {
         };
         fetchData();
       }, []);
+
+
       
     return (
             

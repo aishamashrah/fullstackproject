@@ -50,8 +50,8 @@ export default function RecipePost() {
                   onChange={({ target: { value } }) => settitle(value)} />
                     </div>
                             <p>Cuisine Type </p>
-                            <label htmlFor="input1" className="font-bold flex items-center mb-4 ">
-                                <input placeholder="Italian,  Vegeterian"  type="text" className="border inputbg md:w-96 rounded-md" />
+                            <label htmlFor="input1" className="font-bold flex items-center mb-4  ">
+                                <input placeholder="Italian,  Vegeterian"  type="text" className="border inputbg  md:w-96 rounded-md" />
                             </label>
 
                             <p>Equipment </p>

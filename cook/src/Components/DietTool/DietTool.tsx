@@ -268,6 +268,8 @@ export default function DietTool(props: Props) {
         });
     }, [calorieArray, ingredients]);
 
+    
+{console.log(calorieArray)}
 
     return (
         <>

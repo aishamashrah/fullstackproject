@@ -5,32 +5,32 @@ export default function Recipespart1() {
     
     <div>
         <div className="">
-        <div className="mx-auto Recipesbg p-10 mt-20 lg:ml-20 ">
+        <div className="mx-5 Recipesbg p-10 mt-20  ">
           <div className="bgEAF4F4 p-3">
             <div className="grid grid-cols-3 gap-4">
                         <form className="flex flex-wrap  ">
                             <p>Dish Name </p>
                             <label htmlFor="input1" className="font-bold flex items-center mb-4 ">
-                                <input placeholder="Dish"  type="text" className="border inputbg md:w-96  rounded-md" />
+                                <input placeholder="Dish"  type="text" className="border inputbg rounded-md w-40 sm:w-96 md:w-56 " />
                             </label>
                             <p>Cuisine Type </p>
                             <label htmlFor="input1" className="font-bold flex items-center mb-4 ">
-                                <input placeholder="Italian,  Vegeterian"  type="text" className="border inputbg md:w-96 rounded-md" />
+                                <input placeholder="Italian,  Vegeterian"  type="text" className="border inputbg w-40 sm:w-96 rounded-md" />
                             </label>
 
                             <p>Equipment </p>
                             <label htmlFor="input1" className="font-bold flex items-center mb-4 ">
-                                <input placeholder="Wooden Spoon, Large Pot"  type="text" className="border inputbg md:w-96 rounded-md" />
+                                <input placeholder="Wooden Spoon, Large Pot"  type="text" className="border inputbg w-40 sm:w-96 rounded-md" />
                             </label>
 
                             <p>Difficulty </p>
                             <label htmlFor="input1" className="font-bold flex items-center mb-4">
-                                <input placeholder="Medium"  type="text" className="border inputbg md:w-96 rounded-md" />
+                                <input placeholder="Medium"  type="text" className="border inputbg w-40 sm:w-96 rounded-md" />
                             </label>
 
                             <p>Procedures</p>
                             <label htmlFor="input1" className="font-bold flex items-center mb-4">
-                                <input placeholder=""  type="text" className="border inputbg md:w-96 h-96 rounded-md" />
+                                <input placeholder=""  type="text" className="border inputbg w-fit sm:w-96 h-96 rounded-md" />
                             </label>
                             
                         </form>
