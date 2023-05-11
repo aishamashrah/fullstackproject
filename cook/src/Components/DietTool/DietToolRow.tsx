@@ -15,6 +15,7 @@ interface DietToolRowProps {
 
 
 function DietToolRow(props: DietToolRowProps) {
+  
     const { name, weight, onWeightChange } = props;
     const [weightValue, setWeight] = useState(weight);
     const [fatValue, setFat] = useState(1);
@@ -28,7 +29,9 @@ function DietToolRow(props: DietToolRowProps) {
     const [savedCarbs, setSavedCarbs] = useState(1);
     const [savedFat, setSavedFat] = useState(1);
     const [savedSodium, setSavedSodium] = useState(1);
-  
+    console.log(`weight: ${weight}`)
+    console.log(`weightValue: ${weightValue}`)
+
  
     const {  onCalorieChange, onProteinChange, onCarbChange, onFatChange, onSodiumChange, } = props;
 
@@ -56,9 +59,9 @@ function DietToolRow(props: DietToolRowProps) {
       useEffect(() => {
         const fetchData = async () => {
           let searchRes = await GetNutritionByName(name);
-
-
-          setCalories(searchRes[0].calories/100);
+          setWeight(weight)
+          // console.log(searchRes)
+          setCalories(searchRes[0].calories/100); 
           setProtein(searchRes[0].protein/100);
           setCarbs(searchRes[0].carbs/100);
           setFat(searchRes[0].fat/100); 
@@ -75,6 +78,7 @@ function DietToolRow(props: DietToolRowProps) {
           onCarbChange(searchRes[0].carbs/100 * weight);
           onFatChange(searchRes[0].fat/100 * weight);
           onSodiumChange(searchRes[0].sodium/100 * weight);
+  
         };
         fetchData();
       }, []);

@@ -3,9 +3,10 @@ import { useState, useEffect } from 'react';
 import DietToolRow from './DietToolRow';
 import { PieChart } from './PieChart';
 import { GetNutritionByName } from '../../Services/DataService';
+import { GetIngredientsByRecipeId } from '../../Services/DataService';
 
 interface Ingredient {
-    name: string;
+    ingredient: string;
     weight: number;
 }
 
@@ -27,18 +28,18 @@ interface TotalCalories {
 
 
 export default function DietTool(props: Props) {
-    const [weight, setWeight] = useState(0);
-    const [testArray, setTestArray] = useState<number[]>([]);
+    // const [weight, setWeight] = useState(0);
+    // const [testArray, setTestArray] = useState<number[]>([]);
     const [calorieArray, setCalorieArray] = useState<number[]>([]);
     const [proteinArray, setProteinArray] = useState<number[]>([]);
     const [carbArray, setCarbArray] = useState<number[]>([]);
     const [fatArray, setFatArray] = useState<number[]>([]);
     const [sodiumArray, setSodiumArray] = useState<number[]>([]);
     const [ingredients, setIngredients] = useState<Ingredient[]>([
-        { name: 'Flour', weight: 1 },
-        { name: 'Sugar', weight: 1 },
-        { name: 'egg', weight: 1 },
-        { name: 'butter', weight: 1 },
+        // { ingredient: 'flour', weight: 1 },
+        // { ingredient: 'sugar', weight: 2 },
+        // { ingredient: 'eggs', weight: 1 },
+        // { ingredient: 'tomato', weight: 1 },
         // add more ingredients here as needed
     ]);
     const [totalWeight, setTotalWeight] = useState(() => {
@@ -64,7 +65,7 @@ export default function DietTool(props: Props) {
 
 
     const [pieChartCalories, setPieChartCalories] = useState({
-        labels: ingredients.map((data) => data.name),
+        labels: ingredients.map((data) => data.ingredient),
         datasets: [
             {
                 label: "Total Calories",
@@ -84,7 +85,7 @@ export default function DietTool(props: Props) {
 
 
     const [pieChartWeights, setPieChartWeights] = useState({
-        labels: ingredients.map((data) => data.name),
+        labels: ingredients.map((data) => data.ingredient),
         datasets: [
             {
                 label: "Total Weight",
@@ -125,7 +126,7 @@ export default function DietTool(props: Props) {
 
     function handleWeightChange(ingredientName: string, newWeight: number) {
         const updatedIngredients = ingredients.map(ingredient => {
-            if (ingredient.name === ingredientName) {
+            if (ingredient.ingredient === ingredientName) {
                 return { ...ingredient, weight: newWeight };
             }
             return ingredient;
@@ -138,7 +139,7 @@ export default function DietTool(props: Props) {
         const updatedWeights = updatedIngredients.map((ingredient) => ingredient.weight);
 
         setPieChartWeights({
-            labels: ingredients.map((data) => data.name),
+            labels: ingredients.map((data) => data.ingredient),
             datasets: [
                 {
                     label: "Total Weight",
@@ -156,7 +157,7 @@ export default function DietTool(props: Props) {
             ],
         });
         setPieChartCalories({
-            labels: ingredients.map((data) => data.name),
+            labels: ingredients.map((data) => data.ingredient),
             datasets: [
                 {
                     label: "Total Calories",
@@ -231,7 +232,7 @@ export default function DietTool(props: Props) {
 
     useEffect(() => {
         setPieChartCalories({
-            labels: ingredients.map((data) => data.name),
+            labels: ingredients.map((data) => data.ingredient),
             datasets: [
                 {
                     label: "Total Calories",
@@ -266,23 +267,34 @@ export default function DietTool(props: Props) {
                 },
             ],
         });
-    }, [calorieArray, ingredients]);
 
-    
-{console.log(calorieArray)}
+        const fetchData = async () => {
+            let searchRes = await GetIngredientsByRecipeId();
+            // console.log(searchRes);
 
+            setIngredients(searchRes);
+
+
+        };
+        fetchData();
+
+    }, [calorieArray]);
+
+
+
+        // {console.log(ingredients)}
     return (
         <>
             <div className="container mx-auto">
                 <h1 className="text-2xl font-bold">Ingredients</h1>
                 {/* <DietToolRow ingredients={ingredients} /> */}
 
-                <ul className=''>
+                <ul >
                     {ingredients.map((ingredient, index) => (
                         <li key={index}>
-                            <div className=''>
+                            <div >
                                 <DietToolRow
-                                    name={ingredient.name}
+                                    name={ingredient.ingredient}
                                     weight={ingredient.weight}
                                     // updateTotalWeight={updateTotalWeight}
 
@@ -305,7 +317,6 @@ export default function DietTool(props: Props) {
                 <p className='text-4xl'>Total Carbs {totalCarbs}</p>
                 <p className='text-4xl'>Total Fat {totalFat}</p>
                 <p className='text-4xl'>Total Sodium {totalSodium}</p>
-
             </div>
 
             <div className='grid grid-cols-2 h-1/2 w-1/2 '>
