@@ -1,7 +1,7 @@
 import React from 'react'
 import img1 from '../../Assets/chef.png'
-
-
+import { GetAllbyId } from '../../Services/DataService';
+import { useState,useEffect } from 'react';
 
 
 interface NewsProps {
@@ -21,15 +21,20 @@ interface NewsProps {
 
 
   const FeaturedNews: React.FC<NewsProps> = ({ img, text, img2, text2, img3, text3, img4, text4, img5, text5, }) => {
+    
+   
+
+
     return (
       <>
+
               <div className=' justify-center lg:w-2/3 xl:text-2xl'>
             <div ><p className='text-center mb-14 text-5xl font-Noto font-semibold'>News & Articles</p></div>
             <button className='flex  gap-10 '>
                 <img src={img} className='w-16 h-16 xl:w-20 xl:h-20'/> 
                 <p className='lg:px-2'>{text}</p>
             </button>
-            <button className='flex  gap-10 mt-12'>
+            <button  className='flex  gap-10 mt-12'>
                 <img src={img2} className='w-16 h-16 xl:w-20 xl:h-20'/> 
                 <p className='lg:px-2'>{text2}</p>
             </button>
@@ -41,13 +46,14 @@ interface NewsProps {
                 <img src={img4} className='w-16 h-16 xl:w-20 xl:h-20'/> 
                 <p className='lg:px-2'>{text4}</p>
             </button>
-            <button className='flex  gap-10 mt-12'>
+            <button  className='flex  gap-10 mt-12'>
                 <img src={img5} className=' w-16 h-16 xl:w-20 xl:h-20'/> 
                 <p className='lg:px-2'>{text5}</p>
             </button>
         </div>
 
       </>
+      
     );
   };
 

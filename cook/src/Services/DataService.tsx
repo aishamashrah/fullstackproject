@@ -104,13 +104,18 @@ async function GetNutritionByName(ingredient: string) {
 }
 
 
+  
+async function GetAllbyId(Id: number) {
+    let response = await fetch(`https://cookeaseapi.azurewebsites.net/Article/GetAllArticleItems${Id}`);
+    let data = await response.json();
+    return data;
+  }
 
 
 
 
 
-
-export { CreateAccountFetch, login, getLoggedInUserData, GetNutritionByName,GetAllSearchpage,GetAllArticel,ArticelData };
+export { CreateAccountFetch, login, getLoggedInUserData, GetNutritionByName,GetAllSearchpage,GetAllArticel,ArticelData,GetAllbyId };
 
 
 

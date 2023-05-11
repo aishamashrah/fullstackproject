@@ -13,7 +13,7 @@ import Recipes from './Components/Recipes/Recipes';
 import Articelpage2 from './Components/Articelpage2/Articelpage2';
 import RecipePost from './Components/Recipes/RecipePost';
 import DietToolDisplay from './Components/DietTool/DietToolDisplay';
-
+import FeaturedNews from './Components/Articlepage/Articel'
 function App() {
   return (
     
@@ -22,6 +22,7 @@ function App() {
    <BrowserRouter>
       <Routes>
        
+        <Route path='/' element={ <FeaturedNews />} />
         <Route path='/login' element={<HomePage/>} />
         <Route path='/News' element={<Articelpage2/>} />
         <Route path='/Dash' element={<Dashboard/>} />
