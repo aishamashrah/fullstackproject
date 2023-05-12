@@ -71,8 +71,8 @@ async function GetAllSearchpage() {
     return data;
   }
 
-  async function GetIngredientsByRecipeId() {
-    let response = await fetch(`https://cookeaseapi.azurewebsites.net/Ingredients/GetItemsByRecipeId/1`);
+  async function GetIngredientsByRecipeId(Id: number) {
+    let response = await fetch(`https://cookeaseapi.azurewebsites.net/Ingredients/GetItemsByRecipeId/${Id}`);
     let data = await response.json();
     return data;
   }
@@ -109,81 +109,58 @@ async function GetNutritionByName(ingredient: string) {
     return data;
 }
 
-// async function PostRecipeData (recipeData: object) {
-//     const response = await fetch('https://cookeaseapi.azurewebsites.net/Recipe/AddRecipeItem', {
-//         method: "POST",
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify(recipeData)
-//     });
-
-//     // Check if no error for duplicate account
-//     if(!response.ok) {
-//         const message = `An error has occured ${response.status}`;
-//         throw new Error(message);
-//     }
-
-//     let data = await response.json();
-//     console.log(data);
-//     return data;
-//     // POST so no return needed (not getting anything)
-// }
-// async function PostRecipeData(recipeData: object): Promise<number> {
-//     const response = await fetch('https://cookeaseapi.azurewebsites.net/Recipe/AddRecipeItem', {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json'
-//       },
-//       body: JSON.stringify(recipeData)
-//     });
-  
-//     if (!response.ok) {
-//       const message = `An error has occurred: ${response.status}`;
-//       throw new Error(message);
-//     }
-  
-//     const responseData = await response.json();
-//     const newRecipeId = responseData.Id; // Assuming the server returns an 'id' field
-  
-//     console.log(`New recipe created with ID ${newRecipeId}`);
-  
-//     return newRecipeId;
-//   }
-
-
-
-
-
-  async function PostRecipeData(recipeData: object): Promise<object> {
+async function PostRecipeData (recipeData: object) {
     const response = await fetch('https://cookeaseapi.azurewebsites.net/Recipe/AddRecipeItem', {
-      method: 'POST',
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(recipeData)
+    });
+
+    // Check if no error for duplicate account
+    if(!response.ok) {
+        const message = `An error has occured ${response.status}`;
+        throw new Error(message);
+    }
+
+    let data = await response.json();
+    console.log(data);
+    return data;
+    // POST so no return needed (not getting anything)
+}
+
+async function PostIngredientData (recipeData: object) {
+  const response = await fetch('https://cookeaseapi.azurewebsites.net/Ingredients/AddIngredients', {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+          'Content-Type': 'application/json'
       },
       body: JSON.stringify(recipeData)
-    });
-  
-    if (!response.ok) {
-      const message = `An error has occurred: ${response.status}`;
+  });
+
+  // Check if no error for duplicate account
+  if(!response.ok) {
+      const message = `An error has occured ${response.status}`;
       throw new Error(message);
-    }
-  
-    const responseData = await response.json();
-    if (responseData && responseData.id) {
-      const newRecipeId = responseData;
-    //   console.log(`New recipe created with ID ${newRecipeId}`);
-    console.log(newRecipeId)
-      return newRecipeId;
-    } else {
-      throw new Error('Invalid response data');
-    }
   }
 
+  let data = await response.json();
+  console.log(data);
+  return data;
+  // POST so no return needed (not getting anything)
+}
 
 
 
 
 
 
-export { CreateAccountFetch, login, getLoggedInUserData, GetNutritionByName, GetAllSearchpage, GetAllArticel, ArticelData, userData, loginUser, GetIngredientsByRecipeId, PostRecipeData };
+
+
+
+
+
+
+
+export { CreateAccountFetch, login, getLoggedInUserData, GetNutritionByName, GetAllSearchpage, GetAllArticel, ArticelData, userData, loginUser, GetIngredientsByRecipeId, PostRecipeData, PostIngredientData };

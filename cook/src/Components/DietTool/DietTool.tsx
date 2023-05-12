@@ -269,7 +269,7 @@ export default function DietTool(props: Props) {
         });
 
         const fetchData = async () => {
-            let searchRes = await GetIngredientsByRecipeId();
+            let searchRes = await GetIngredientsByRecipeId(30);
             // console.log(searchRes);
 
             setIngredients(searchRes);
@@ -280,7 +280,8 @@ export default function DietTool(props: Props) {
 
     }, [calorieArray]);
 
-
+    // console.log(ingredients); 
+    console.log(calorieArray)
 
         // {console.log(ingredients)}
     return (

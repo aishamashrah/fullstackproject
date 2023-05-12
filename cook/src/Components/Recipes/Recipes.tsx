@@ -22,20 +22,19 @@ export default function Recipes() {
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2">
-                <div className="w-full sm:w-11/12 ">
-                    <Recipespart1
+            <div className="">
+
+                    {/* <Recipespart1
                     uniqueId={uniqueId}
-                    />
-                </div>
-                <div className="w-full md:w-10/12">
+                    /> */}
+
                     {/* <Recipespart2 
                     uniqueId={uniqueId}
                     /> */}
                     <RecipiePostTwo
                     uniqueId={uniqueId}
                     />
-                </div>
+
             </div>
 
             <div className='mt-10'>
