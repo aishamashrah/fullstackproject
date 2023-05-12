@@ -4,6 +4,7 @@ import DietToolRow from './DietToolRow';
 import { PieChart } from './PieChart';
 import { GetNutritionByName } from '../../Services/DataService';
 import { GetIngredientsByRecipeId } from '../../Services/DataService';
+import classNames from 'classnames';
 
 interface Ingredient {
     ingredient: string;
@@ -286,56 +287,91 @@ export default function DietTool(props: Props) {
         // {console.log(ingredients)}
     return (
         <>
-            <div className="container mx-auto">
-                <h1 className="text-2xl font-bold">Ingredients</h1>
-                {/* <DietToolRow ingredients={ingredients} /> */}
-
-                <ul >
-                    {ingredients.map((ingredient, index) => (
-                        <li key={index}>
-                            <div >
-                                <DietToolRow
-                                    name={ingredient.ingredient}
-                                    weight={ingredient.weight}
-                                    // updateTotalWeight={updateTotalWeight}
-
-                                    onWeightChange={handleWeightChange}
-                                    onCalorieChange={(numberToAdd) => handleCalorie(index, numberToAdd)}
-                                    onProteinChange={(numberToAdd) => handleProtein(index, numberToAdd)}
-                                    onCarbChange={(numberToAdd) => handleCarb(index, numberToAdd)}
-                                    onFatChange={(numberToAdd) => handleFat(index, numberToAdd)}
-                                    onSodiumChange={(numberToAdd) => handleSodium(index, numberToAdd)}
-                                />
-                            </div>
-                        </li>
-                    ))}
+      <div className='bgcolor'>
+        <div className="container mx-auto">
+          <div className="absolutetop-1460 pt-20 rounded-10">
+            <div className="mx-auto Recipesbg p-10 lg:ml-10 ">
+              <div className="bgEAF4F4 p-3 ">
+                <div className="grid grid-cols-7 gap-4 header1 bg" style={{ marginLeft: '1px' }}>
+                  <div className='flex justify-center'>Ingredient</div>
+                  <div className='flex justify-center'>Weight</div>
+                  <div className='flex justify-center'>Calories</div>
+                  <div className='flex justify-center'>Protein</div>
+                  <div className='flex justify-center'>Carb</div>
+                  <div className='flex justify-center'>Fat</div>
+                  <div className='flex justify-center'>Sodium</div>
+                </div>
+                <ul className=''>
+                  {ingredients.map((ingredient, index) => (
+                    <li key={index}>
+                      <div className='svg'>
+                        <svg width="100%" height="1">
+                          <line x1="0" y1="0" x2="100%" y2="0" stroke="black" strokeWidth="1" />
+                        </svg>
+                      </div>
+                      <div className='gap-14'>
+                        <DietToolRow
+                          name={ingredient.name}
+                          weight={ingredient.weight}
+                          onWeightChange={handleWeightChange}
+                          onCalorieChange={(numberToAdd) => handleCalorie(index, numberToAdd)}
+                          onProteinChange={(numberToAdd) => handleProtein(index, numberToAdd)}
+                          onCarbChange={(numberToAdd) => handleCarb(index, numberToAdd)}
+                          onFatChange={(numberToAdd) => handleFat(index, numberToAdd)}
+                          onSodiumChange={(numberToAdd) => handleSodium(index, numberToAdd)}
+                        />
+                      </div>
+                    </li>
+                  ))}
                 </ul>
-            </div>
-            <div>
-                <p className='text-4xl'>Total Weight {totalWeight}</p>
-                <p className='text-4xl'>Total Calories {totalCalories}</p>
-                <p className='text-4xl'>Total Protein {totalProtein}</p>
-                <p className='text-4xl'>Total Carbs {totalCarbs}</p>
-                <p className='text-4xl'>Total Fat {totalFat}</p>
-                <p className='text-4xl'>Total Sodium {totalSodium}</p>
-            </div>
-
-            <div className='grid grid-cols-2 h-1/2 w-1/2 '>
-
+              </div>
+              <div>
+              </div>
+              <div className="grid grid-cols-7 gap-44 header1 bg" style={{ marginLeft: '1px' }}>
+                <p className=''>Total </p>
                 <div>
-                    <PieChart
-                        data={pieChartWeights}
-                    />
+                  <p className='text-1xl'>Weight {totalWeight}</p>
                 </div>
                 <div>
-                    <PieChart
-                        data={pieChartMacros}
-                    />
+                  <p className='text-1xl'>{totalCalories}</p>
                 </div>
+                <div>
+                  <p className='text-1xl'>Protein {totalProtein}</p>
+                </div>
+                <div>
+                  <p className='text-1xl'>Carbs {totalCarbs}</p>
+                </div>
+                <div>
+                  <p className='text-1xl'>Fat {totalFat}</p>
+                </div>
+                <div>
+                         
+               <p className='text-1xl'>Sodium {totalSodium}</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div className='flex justify-center text-4xl mt-10 font'>
+    <div className='font-Noto'>Macro Breakdown </div>
+</div>
+<div className='pt-20 '>
+    <div className='flex justify-center'>
+        <div className='grid grid-cols-1 justify-center p-10 bg-white border border-stone-950 w-11/12'>
+            <div className="grid grid-cols-2">
+                <div>
+                    <PieChart data={pieChartWeights} />
+                </div>
+                <div>
+                    <PieChart data={pieChartMacros} />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
-
-
+                    </div>
+                </div>
             </div>
         </>
     )

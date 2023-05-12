@@ -49,10 +49,12 @@ code {
   background-color: #CCE3DE;
 }
 .bgEAF4F4{
-  background-color: #EAF4F4;
+  background-color: #ffffff;
+  padding-top: 2rem;
 }
 .inputbg{
   background-color: #D9D9D9;
+
 }
 .bg2{
   background-color: #EAF4F4;
@@ -68,4 +70,39 @@ code {
     text-align: center;
  
     background-color: #A4C3B2;
+}
+.bgcolor{
+  background: #F0FAF6;
+
+
+}
+.header1{
+  width: 1100px;
+height: 25px;
+
+
+font-family: 'Noto Serif';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+
+
+
+}
+.savebtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.weight{
+  
+
+  background: #c7939336;
+ 
+}
+.weight1{
+  
+ 
+  background: #ffffff65;
+ 
 }

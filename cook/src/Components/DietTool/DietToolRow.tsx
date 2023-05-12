@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { GetNutritionByName } from '../../Services/DataService';
-
+import img from '../../Assets/chef.png';
 interface DietToolRowProps {
-    name: string;
-    weight: number;
-    
-    onWeightChange: (name: string, newWeight: number) => void;
-    onCalorieChange: (numberToAdd: number) => void;
-    onProteinChange: (numberToAdd: number) => void;
-    onCarbChange: (numberToAdd: number) => void;
-    onFatChange: (numberToAdd: number) => void; 
-    onSodiumChange: (numberToAdd: number) => void;
+  name: string;
+  weight: number;
+
+  onWeightChange: (name: string, newWeight: number) => void;
+  onCalorieChange: (numberToAdd: number) => void;
+  onProteinChange: (numberToAdd: number) => void;
+  onCarbChange: (numberToAdd: number) => void;
+  onFatChange: (numberToAdd: number) => void;
+  onSodiumChange: (numberToAdd: number) => void;
 }
 
 
@@ -35,25 +35,25 @@ function DietToolRow(props: DietToolRowProps) {
  
     const {  onCalorieChange, onProteinChange, onCarbChange, onFatChange, onSodiumChange, } = props;
 
-    function handleWeightChange(event: React.ChangeEvent<HTMLInputElement>) {
-        const newWeight = Number(event.target.value);
-        onWeightChange(name, newWeight);
-        setWeight(Number(event.target.value));
+  function handleWeightChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const newWeight = Number(event.target.value);
+    onWeightChange(name, newWeight);
+    setWeight(Number(event.target.value));
 
-        setCalories(savedCalories * newWeight);
-        setProtein(savedProtein * newWeight);
-        setFat(savedFat * newWeight);
-        setCarbs(savedCarbs * newWeight);
-        setSodium(savedSodium * newWeight);
+    setCalories(savedCalories * newWeight);
+    setProtein(savedProtein * newWeight);
+    setFat(savedFat * newWeight);
+    setCarbs(savedCarbs * newWeight);
+    setSodium(savedSodium * newWeight);
 
-        onCalorieChange(savedCalories * newWeight);
-        onProteinChange(savedProtein * newWeight);
-        onCarbChange(savedCarbs * newWeight);
-        onFatChange(savedFat * newWeight);
-        onSodiumChange(savedSodium * newWeight);
+    onCalorieChange(savedCalories * newWeight);
+    onProteinChange(savedProtein * newWeight);
+    onCarbChange(savedCarbs * newWeight);
+    onFatChange(savedFat * newWeight);
+    onSodiumChange(savedSodium * newWeight);
 
-        
-      }
+
+  }
 
       
       useEffect(() => {
@@ -91,20 +91,28 @@ function DietToolRow(props: DietToolRowProps) {
        
             <div className='grid grid-cols-7 justify-evenly gap-10'>
 
-                <div>{props.name}</div>
-                <div><input type="" value={weightValue} onChange={handleWeightChange} className='w-10' /></div>
-                <div>{caloriesValue}</div>
-                <div>{proteinValue}</div>
-                <div>{carbsValue}</div>
-                <div>{fatValue}</div>
-                <div>{sodiumValue}</div>
-                <div></div>
-            </div>
-
-        </>
+            <div className='w-20 rounded-md mt-1 weight'>{props.name}</div>
+        
+            <div><input type="" value={weightValue} onChange={handleWeightChange} className='w-20 rounded-md mt-1 weight1 border border-black' /></div>
+            <div className='w-20 rounded-md mt-1 weight'>{caloriesValue}</div>
+            <div className='w-20 rounded-md mt-1 weight'>{proteinValue}</div>
+            <div className='w-20 rounded-md mt-1 weight'>{carbsValue}</div>
+            <div className='w-20 rounded-md mt-1 weight'>{fatValue}</div>
+            <div className='w-20 rounded-md mt-1 weight'>{sodiumValue}</div>
 
 
-    );
+</div>
+         
+
+            
+  
+     
+     
+
+    </>
+
+
+  );
 }
 
 export default DietToolRow;
