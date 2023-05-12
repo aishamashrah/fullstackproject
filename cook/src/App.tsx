@@ -27,7 +27,7 @@ function App() {
       <Routes>
        
         
-        <Route path='/login' element={<HomePage/>} />
+       
         <Route path='/News' element={<Articelpage2/>} />
         <Route path='/Dash' element={<Dashboard/>} />
         <Route path='/RecipeBook' element={<Recipes/>} />
@@ -35,15 +35,8 @@ function App() {
         <Route path='/homepage' element={<HomePage/>} />
         <Route path='/Create' element={<CreateAccount/>} />
         <Route path='/signin' element={<Signin/>} />
-        <Route path='/signup' element={<CreateAccount/>} />
-        
-        <Route path='/signin' element={<Signin/>} />
         <Route path='/DietTool' element={<DietToolDisplay/>} />
-        <Route path='/RecipePost' element={<RecipePost/>} />
-      
-        <Route path='/signup' element={<CreateAccount/>} />
-        
-        
+        <Route path='/RecipePost' element={<RecipePost/>} />   
         <Route path='/DietTool' element={<DietToolDisplay/>} />
       </Routes>
     </BrowserRouter>

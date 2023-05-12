@@ -152,10 +152,16 @@ async function PostIngredientData (recipeData: object) {
   // POST so no return needed (not getting anything)
 }
 
+async function GetIngredientsByRecipeId(Id: number) {
+    let response = await fetch(`https://cookeaseapi.azurewebsites.net/Ingredients/GetItemsByRecipeId/${Id}`);
+    let data = await response.json();
+    return data;
+  }
 
 
 
-export { CreateAccountFetch, login, getLoggedInUserData, GetAllSearchpage,GetAllArticel,ArticelData,GetAllbyId, PostRecipeData, PostIngredientData, GetNutritionByName };
+
+export { CreateAccountFetch, login, getLoggedInUserData, GetAllSearchpage,GetAllArticel,ArticelData,GetAllbyId, PostRecipeData, PostIngredientData, GetNutritionByName, GetIngredientsByRecipeId };
 
 
 

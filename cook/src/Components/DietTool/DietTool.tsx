@@ -311,7 +311,7 @@ export default function DietTool(props: Props) {
                       </div>
                       <div className='gap-14'>
                         <DietToolRow
-                          name={ingredient.name}
+                          name={ingredient.ingredient}
                           weight={ingredient.weight}
                           onWeightChange={handleWeightChange}
                           onCalorieChange={(numberToAdd) => handleCalorie(index, numberToAdd)}
