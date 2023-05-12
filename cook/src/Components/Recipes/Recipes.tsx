@@ -3,7 +3,12 @@ import Recipespart1 from './Recipespart1'
 import Recipespart2 from './Recipespart2'
 import CookEaseFooter from '../Footer/Footer'
 import CookEaseHeader from '../Header/Header'
+import RecipiePostTwo from './RecipePostTwo'
+
+
 export default function Recipes() {
+    const uniqueId = Date.now().toString(36) + Math.random().toString(36);
+
     return (
         <>
             <CookEaseHeader />
@@ -19,10 +24,17 @@ export default function Recipes() {
 
             <div className="grid grid-cols-1 md:grid-cols-2">
                 <div className="w-full sm:w-11/12 ">
-                    <Recipespart1 />
+                    <Recipespart1
+                    uniqueId={uniqueId}
+                    />
                 </div>
                 <div className="w-full md:w-10/12">
-                    <Recipespart2 />
+                    {/* <Recipespart2 
+                    uniqueId={uniqueId}
+                    /> */}
+                    <RecipiePostTwo
+                    uniqueId={uniqueId}
+                    />
                 </div>
             </div>
 

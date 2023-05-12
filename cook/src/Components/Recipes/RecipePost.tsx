@@ -37,6 +37,7 @@ export default function RecipePost() {
       ArticelData(Data);
     };
   return (
+    // Title, Image, Description, Tags, Categories, diet, tags,
     
 
     <div>

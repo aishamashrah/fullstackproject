@@ -13,6 +13,7 @@ import DietToolDisplay from './Components/DietTool/DietToolDisplay';
 import Recipes from './Components/Recipes/Recipes';
 import Articelpage2 from './Components/articalpage2/articalpage2';
 import RecipePost from './Components/Recipes/RecipePost';
+import RecipePostTwo from './Components/Recipes/RecipePostTwo';
 function App() {
   return (
     
@@ -33,6 +34,7 @@ function App() {
         
         <Route path='/signin' element={<Signin/>} />
         <Route path='/DietTool' element={<DietToolDisplay/>} />
+        <Route path='/RecipePost' element={<RecipePost/>} />
       </Routes>
     </BrowserRouter>
   </>

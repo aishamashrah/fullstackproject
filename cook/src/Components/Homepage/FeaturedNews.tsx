@@ -28,6 +28,7 @@ interface NewsProps {
             <button className='flex  gap-10 '>
                 <img src={img} className='w-16 h-16 xl:w-20 xl:h-20'/> 
                 <p className='lg:px-2'>{text}</p>
+                
             </button>
             <button className='flex  gap-10 mt-12'>
                 <img src={img2} className='w-16 h-16 xl:w-20 xl:h-20'/> 
