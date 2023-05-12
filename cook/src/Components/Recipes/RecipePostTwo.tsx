@@ -71,7 +71,7 @@ const RecipiePostTwo = (props: Props) => {
         ...row,
       };
       console.log(rowData);
-      // PostIngredientData(rowData);
+      PostIngredientData(rowData);
     });
     PostRecipeData(Data)
     
