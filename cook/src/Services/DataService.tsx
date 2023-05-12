@@ -25,6 +25,12 @@ async function CreateAccountFetch(createdUser: object) {
     // POST so no return needed (not getting anything)
 }
 
+async function GetNutritionByName(ingredient: string) {
+    let response = await fetch(`https://cookeaseapi.azurewebsites.net/Nutrition/GetItemsByName/${ingredient}`);
+    let data = await response.json();
+    userData = data;
+    return data;
+}
 
 
 
@@ -149,7 +155,7 @@ async function PostIngredientData (recipeData: object) {
 
 
 
-export { CreateAccountFetch, login, getLoggedInUserData, GetNutritionByName,GetAllSearchpage,GetAllArticel,ArticelData,GetAllbyId };
+export { CreateAccountFetch, login, getLoggedInUserData, GetAllSearchpage,GetAllArticel,ArticelData,GetAllbyId, PostRecipeData, PostIngredientData, GetNutritionByName };
 
 
 
@@ -171,5 +177,3 @@ export { CreateAccountFetch, login, getLoggedInUserData, GetNutritionByName,GetA
 
 
 
-
-export { CreateAccountFetch, login, getLoggedInUserData, GetNutritionByName, GetAllSearchpage, GetAllArticel, ArticelData, userData, loginUser, GetIngredientsByRecipeId, PostRecipeData, PostIngredientData };
