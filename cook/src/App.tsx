@@ -7,6 +7,7 @@ import Signin from './Components/Singinpage/Singin';
 import Articles from './Components/Articlepage/Articel';
 import Singin from './Components/Singinpage/Singin';
 import ArticlePage from './Components/Articlepage/ArticlePage';
+import RecipeDisplay from './Components/RecipeDisplay/RecipeDisplay';
 
 import Display from './Components/SearchPages/Searchdisplay';
 import HomePage from './Components/Homepage/HomePage';
@@ -37,9 +38,10 @@ function App() {
         <Route path='/Create' element={<CreateAccount/>} />
         <Route path='/signin' element={<Signin/>} />
         <Route path='/DietTool' element={<DietToolDisplay/>} />
-        <Route path='/RecipePost' element={<RecipePost/>} />   
+        <Route path='/RecipePost' element={<Recipes/>} />   
         <Route path='/DietTool' element={<DietToolDisplay/>} />
         <Route path='/Article' element={<ArticlePage />} />
+        <Route path='/RecipeDisplay' element={<RecipeDisplay />} />
       </Routes>
     </BrowserRouter>
   </>

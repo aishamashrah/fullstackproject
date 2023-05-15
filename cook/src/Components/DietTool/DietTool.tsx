@@ -11,7 +11,9 @@ interface Ingredient {
     weight: number;
 }
 
-interface Props { }
+interface Props {
+    recipeId: number;
+ }
 
 interface Flour {
     name: string;
@@ -270,8 +272,8 @@ export default function DietTool(props: Props) {
         });
 
         const fetchData = async () => {
-            let searchRes = await GetIngredientsByRecipeId(30);
-            // console.log(searchRes);
+            let searchRes = await GetIngredientsByRecipeId(22);
+          
 
             setIngredients(searchRes);
 
@@ -281,10 +283,7 @@ export default function DietTool(props: Props) {
 
     }, [calorieArray]);
 
-    // console.log(ingredients); 
-    console.log(calorieArray)
 
-        // {console.log(ingredients)}
     return (
         <>
       <div className='bgcolor'>

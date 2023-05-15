@@ -29,8 +29,7 @@ function DietToolRow(props: DietToolRowProps) {
     const [savedCarbs, setSavedCarbs] = useState(1);
     const [savedFat, setSavedFat] = useState(1);
     const [savedSodium, setSavedSodium] = useState(1);
-    console.log(`weight: ${weight}`)
-    console.log(`weightValue: ${weightValue}`)
+
 
  
     const {  onCalorieChange, onProteinChange, onCarbChange, onFatChange, onSodiumChange, } = props;

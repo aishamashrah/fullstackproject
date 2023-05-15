@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { PostRecipeData } from "../../Services/DataService";
 import { PostIngredientData } from "../../Services/DataService";
-// MergBranch Only
+
 
 interface Row {
   ingredient: string;
@@ -36,18 +36,7 @@ const RecipiePostTwo = (props: Props) => {
     setRows(newRows);
   };
 
-  const handleSave = () => {
-    const data = rows.map(row => ({
-      uniqueId: props.uniqueId,
-      ...row
-    }));
-    saveDataToBackend(data);
-  };
 
-  const saveDataToBackend = (data: any[]) => {
-    // replace this with your actual function that posts data to the backend
-    console.log("Saving data to backend:", data);
-  };
 
 
   const handleSubmit = () => {
@@ -68,7 +57,7 @@ const RecipiePostTwo = (props: Props) => {
     rows.forEach((row) => {
       const rowData = {
         Id: 0,
-        RecipeId: 40,
+        RecipeId: 22,
         ...row,
       };
       console.log(rowData);
@@ -156,12 +145,7 @@ const RecipiePostTwo = (props: Props) => {
       >
         Add Row
       </button>
-      <button
-        className="px-4 py-2 mt-4 ml-4 text-white bg-green-500 rounded-md"
-        onClick={handleSave}
-      >
-        Save Rows
-      </button>
+
       </div>
     </div>
   );
