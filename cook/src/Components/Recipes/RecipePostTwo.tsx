@@ -80,7 +80,7 @@ const RecipiePostTwo = (props: Props) => {
 
   return (
     <div className=" grid grid-cols-2">
-      <div className="">
+     
         <div className="mx-5 Recipesbg p-10 mt-20  ">
           <div className="bgEAF4F4 p-3">
             <div className="grid grid-cols-3 gap-4">
@@ -125,24 +125,27 @@ const RecipiePostTwo = (props: Props) => {
             </div>
           </div>
           {/* Button for submit click */}
-          <button onClick={handleSubmit} className='border-2 border-black'>
-            Save 
-          </button>
-        </div>
-      </div>
+          <div className="flex justify-center items-center">
+  <button onClick={handleSubmit} className="savebtn mt-10 h-10 w-24 sm:w-32 md:w-40 flex items-center justify-center">
+    Save
+  </button>
+</div>
 
-    <div>
+        </div>
+  
+        <div className="mx-5 Recipesbg p-10 mt-20  ">
+        <div className="bgEAF4F4 p-3">
       {rows.map((row, index) => (
         <div key={index} className="flex mb-4">
           <input
-            className="mr-4 px-4 py-2 w-1/2 border rounded-md"
+            className="mr-4 px-4 py-2 border inputbg w-40 sm:w-96 rounded-md"
             type="text"
             placeholder="Field 1"
             value={row.ingredient}
             onChange={(event) => handleFieldChange(index, "ingredient", event.target.value)}
           />
           <input
-            className="mr-4 px-4 py-2 w-1/2 border rounded-md"
+            className="mr-4 px-4 py-2 border inputbg w-40 sm:w-96 rounded-md"
             type="number"
             placeholder="Field 2"
             value={row.Weight}
@@ -162,6 +165,7 @@ const RecipiePostTwo = (props: Props) => {
       >
         Save Rows
       </button>
+      </div>
       </div>
     </div>
   );
