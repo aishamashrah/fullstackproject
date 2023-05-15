@@ -172,8 +172,8 @@ async function GetIngredientsByRecipeId(Id: number) {
   }
 
   
-  async function GetRecipeById() {
-    let response = await fetch(`https://cookeaseapi.azurewebsites.net/Recipe/GetItemsByRecipeId/5`);
+  async function GetRecipeById(id: number) {
+    let response = await fetch(`https://cookeaseapi.azurewebsites.net/Recipe/GetItemsByRecipeId/${id}`);
     let data = await response.json();
     return data;
   }

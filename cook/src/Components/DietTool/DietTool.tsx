@@ -4,7 +4,7 @@ import DietToolRow from './DietToolRow';
 import { PieChart } from './PieChart';
 import { GetNutritionByName } from '../../Services/DataService';
 import { GetIngredientsByRecipeId } from '../../Services/DataService';
-import classNames from 'classnames';
+
 
 interface Ingredient {
     ingredient: string;
@@ -274,7 +274,7 @@ const DietTool: React.FC<Props> = ({ recipeId }) => {
             ],
         });
         console.log(recipeId)
-        
+
 
         const fetchData = async () => {
             

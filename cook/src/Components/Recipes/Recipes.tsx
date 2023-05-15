@@ -14,8 +14,7 @@ export default function Recipes() {
     const year = currentDate.getFullYear();
 
     const formattedDate = `${month} ${day}${getDaySuffix(day)}, ${year}`;
-    console.log(formattedDate);
-    console.log(uniqueId)
+
 
     function getDaySuffix(day: number) {
         if (day >= 11 && day <= 13) {

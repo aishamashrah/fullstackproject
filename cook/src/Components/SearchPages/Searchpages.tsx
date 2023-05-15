@@ -38,9 +38,10 @@ return (
   <>
   
   {blogItems.map((item: { id: number, image: string, title: string, description: string }) => (
-  <button key={item.id}>
-    {/* <button className='w-82'> */}
-    <div className="gap-4 max-w-5xl mt-8 Image">
+  <div key={item.id}  className="gap-4 max-w-5xl mt-8 Image">
+  <Link to={`/RecipeDisplay`} state={{num: item.id}}>
+  <button >
+    <div>
       <img src={item.image} className="w-full h-40 object-cover mb-4 rounded-lg" />
       <div className="p-5 rounded-lg shadow-md">
         <h1>{item.title}</h1>
@@ -49,6 +50,8 @@ return (
     </div>
     {/* </button> */}
   </button>
+  </Link>
+  </div>
   
 ))}
       {articelItems.map((item: { id: number, image: string, title: string, description: string }) => (

@@ -5,6 +5,7 @@ import DisplayRecipeMethood from './DisplayRecipeMethood';
 import DietTool from '../DietTool/DietTool';
 import { GetRecipeById } from '../../Services/DataService';
 
+
 export default function RecipeDisplay(props: any) {
     const location = useLocation();
     const articleId = location.state?.num;
@@ -22,7 +23,7 @@ export default function RecipeDisplay(props: any) {
 
     useEffect(() => {
         const fetchData = async () => {
-            let searchRes = await GetRecipeById();
+            let searchRes = await GetRecipeById(articleId);
             setArticle(searchRes[0]);
             
             setRecipeId(searchRes[0].recipeId)
