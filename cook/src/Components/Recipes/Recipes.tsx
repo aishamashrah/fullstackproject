@@ -11,7 +11,10 @@ export default function Recipes() {
 
     return (
         <>
+       
             <CookEaseHeader />
+            <br></br>
+            <br></br>
             <br className="sm:hidden"></br>
             <br className="sm:hidden"></br>
             <div className="gap-4 header p-14 mb-30">
@@ -36,7 +39,8 @@ export default function Recipes() {
                     />
 
             </div>
-
+            <br></br>
+            <br></br>
             <div className='mt-10'>
                 <CookEaseFooter />
             </div>
