@@ -9,7 +9,8 @@ interface Row {
 }
 
 interface Props {
-  uniqueId: string;
+  uniqueId: number;
+  formattedDate: string;
 }
 
 const RecipiePostTwo = (props: Props) => {
@@ -43,10 +44,11 @@ const RecipiePostTwo = (props: Props) => {
     let Data = {
       Id: 0,
       userID: userID,
-      date: date,
+      recipeId : props.uniqueId,
+      date: props.formattedDate,
       publisherName: publisherName,
       title: title,
-      image: image,
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQPzQarc61tpYiKWyrGlDrUWBkY6alRy9vjw&usqp=CAU",
       description: description,
       Tags: tags,
       diet: diet,
@@ -57,13 +59,14 @@ const RecipiePostTwo = (props: Props) => {
     rows.forEach((row) => {
       const rowData = {
         Id: 0,
-        RecipeId: 22,
+        RecipeId: props.uniqueId,
         ...row,
       };
-      console.log(rowData);
+      // console.log(rowData);
       PostIngredientData(rowData);
     });
     PostRecipeData(Data)
+    // console.log(Data)
     
   };
 

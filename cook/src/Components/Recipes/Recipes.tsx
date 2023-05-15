@@ -7,7 +7,34 @@ import RecipiePostTwo from './RecipePostTwo'
 
 
 export default function Recipes() {
-    const uniqueId = Date.now().toString(36) + Math.random().toString(36);
+    const uniqueId = parseInt(Math.ceil(Date.now() / Math.random() * Math.random()).toString().substring(5, 12));
+    const currentDate = new Date();
+    const month = currentDate.toLocaleDateString('en-US', { month: 'long' });
+    const day = currentDate.getDate();
+    const year = currentDate.getFullYear();
+
+    const formattedDate = `${month} ${day}${getDaySuffix(day)}, ${year}`;
+    console.log(formattedDate);
+    console.log(uniqueId)
+
+    function getDaySuffix(day: number) {
+        if (day >= 11 && day <= 13) {
+            return 'th';
+        }
+
+        const lastDigit = day % 10;
+        switch (lastDigit) {
+            case 1:
+                return 'st';
+            case 2:
+                return 'nd';
+            case 3:
+                return 'rd';
+            default:
+                return 'th';
+        }
+    }
+
 
     return (
         <>
@@ -24,16 +51,10 @@ export default function Recipes() {
 
             <div className="">
 
-                    {/* <Recipespart1
+                <RecipiePostTwo
                     uniqueId={uniqueId}
-                    /> */}
-
-                    {/* <Recipespart2 
-                    uniqueId={uniqueId}
-                    /> */}
-                    <RecipiePostTwo
-                    uniqueId={uniqueId}
-                    />
+                    formattedDate={formattedDate}
+                />
 
             </div>
 

@@ -13,7 +13,7 @@ interface Ingredient {
 
 interface Props {
     recipeId: number;
- }
+  }
 
 interface Flour {
     name: string;
@@ -30,9 +30,9 @@ interface TotalCalories {
 
 
 
-export default function DietTool(props: Props) {
-    // const [weight, setWeight] = useState(0);
-    // const [testArray, setTestArray] = useState<number[]>([]);
+    
+const DietTool: React.FC<Props> = ({ recipeId }) => {
+    const [stateRecipeId, setStateRecipeId] = useState(recipeId);
     const [calorieArray, setCalorieArray] = useState<number[]>([]);
     const [proteinArray, setProteinArray] = useState<number[]>([]);
     const [carbArray, setCarbArray] = useState<number[]>([]);
@@ -234,6 +234,9 @@ export default function DietTool(props: Props) {
     }
 
     useEffect(() => {
+        setStateRecipeId(recipeId);
+
+
         setPieChartCalories({
             labels: ingredients.map((data) => data.ingredient),
             datasets: [
@@ -270,12 +273,16 @@ export default function DietTool(props: Props) {
                 },
             ],
         });
+        console.log(recipeId)
+        
 
         const fetchData = async () => {
-            let searchRes = await GetIngredientsByRecipeId(22);
+            
+            let searchRes = await GetIngredientsByRecipeId(recipeId);
           
 
             setIngredients(searchRes);
+           
 
 
         };
@@ -283,7 +290,7 @@ export default function DietTool(props: Props) {
 
     }, [calorieArray]);
 
-
+    
     return (
         <>
       <div className='bgcolor'>
@@ -378,3 +385,7 @@ export default function DietTool(props: Props) {
 
 
 }
+
+
+
+export default DietTool;

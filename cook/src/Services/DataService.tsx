@@ -171,8 +171,14 @@ async function GetIngredientsByRecipeId(Id: number) {
     return data;
   }
 
+  
+  async function GetRecipeById() {
+    let response = await fetch(`https://cookeaseapi.azurewebsites.net/Recipe/GetItemsByRecipeId/5`);
+    let data = await response.json();
+    return data;
+  }
 
-export { CreateAccountFetch, login, getLoggedInUserData, GetAllSearchpage,GetAllArticel,ArticelData,GetAllbyId, PostRecipeData, PostIngredientData, GetNutritionByName, GetIngredientsByRecipeId, GetArticleById, GetRecipeByName };
+export { CreateAccountFetch, login, getLoggedInUserData, GetAllSearchpage,GetAllArticel,ArticelData,GetAllbyId, PostRecipeData, PostIngredientData, GetNutritionByName, GetIngredientsByRecipeId, GetArticleById, GetRecipeByName, GetRecipeById };
 
 
 
