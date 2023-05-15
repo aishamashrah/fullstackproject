@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/bc5f967e-dfc9-4d4d-a8cb-6fe590a70cbb/resourceGroups/CookEase/providers/Microsoft.Web/sites/CookEase",
+    "appService.deploySubpath": "cook\\build"
+}

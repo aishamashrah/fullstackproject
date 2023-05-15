@@ -34,7 +34,7 @@ function App() {
         <Route path='/Dash' element={<Dashboard/>} />
         <Route path='/RecipeBook' element={<Recipes/>} />
         <Route path='/Search' element={<Display/>} />
-        <Route path='/homepage' element={<HomePage/>} />
+        <Route path='/' element={<HomePage/>} />
         <Route path='/Create' element={<CreateAccount/>} />
         <Route path='/signin' element={<Signin/>} />
         <Route path='/DietTool' element={<DietToolDisplay/>} />
