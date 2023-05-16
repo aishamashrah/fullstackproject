@@ -365,6 +365,9 @@ const DietTool: React.FC<Props> = ({ recipeId }) => {
         <div className='grid grid-cols-1 justify-center p-10 bg-white border border-stone-950 w-11/12'>
             <div className="grid grid-cols-2">
                 <div>
+                    <PieChart data={pieChartCalories} />
+                </div>
+                <div>
                     <PieChart data={pieChartWeights} />
                 </div>
                 <div>
