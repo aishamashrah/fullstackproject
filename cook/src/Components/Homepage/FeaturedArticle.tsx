@@ -1,4 +1,4 @@
-
+import { Link } from 'react-router-dom';
 import img from '../../Assets/Male-chef-with-black-bandana-cutting-ingredients-with-a-knife-in-the-kitchen-768.jpg'
 
 
@@ -25,7 +25,9 @@ const FeaturedArticle: React.FC<ArticleProps> = ({ title, tag, content }) => {
                     {content}
                 </p>
                 <div className='ml-auto font-Noto'>
-                    <a className='justify- text-blue-500' href="">click for more</a>
+                    <Link to="/Article" state={{ num: 2 }} className="justify- text-blue-500">
+                        click for more
+                    </Link>
                 </div>
             </div>
         </div>

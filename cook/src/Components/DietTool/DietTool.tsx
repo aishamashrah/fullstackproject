@@ -13,7 +13,7 @@ interface Ingredient {
 
 interface Props {
     recipeId: number;
-  }
+}
 
 interface Flour {
     name: string;
@@ -30,7 +30,7 @@ interface TotalCalories {
 
 
 
-    
+
 const DietTool: React.FC<Props> = ({ recipeId }) => {
     const [stateRecipeId, setStateRecipeId] = useState(recipeId);
     const [calorieArray, setCalorieArray] = useState<number[]>([]);
@@ -111,7 +111,7 @@ const DietTool: React.FC<Props> = ({ recipeId }) => {
         datasets: [
             {
                 label: "Total Calories",
-                data: [totalProtein, totalCarbs, totalFat, totalSodium],
+                data: [totalProtein, totalCarbs, totalFat],
                 backgroundColor: [
                     "rgba(75,192,192,1)",
                     "#ecf0f1",
@@ -273,16 +273,16 @@ const DietTool: React.FC<Props> = ({ recipeId }) => {
                 },
             ],
         });
-        console.log(recipeId)
+       
 
 
         const fetchData = async () => {
-            
+
             let searchRes = await GetIngredientsByRecipeId(recipeId);
-          
+
 
             setIngredients(searchRes);
-           
+
 
 
         };
@@ -290,93 +290,93 @@ const DietTool: React.FC<Props> = ({ recipeId }) => {
 
     }, [calorieArray]);
 
-    
+
     return (
         <>
-      <div className='bgcolor'>
-        <div className="container mx-auto">
-          <div className="absolutetop-1460 pt-20 rounded-10">
-            <div className="mx-auto Recipesbg p-10 lg:ml-10 ">
-              <div className="bgEAF4F4 p-3 ">
-                <div className="grid grid-cols-7 gap-4 header1 bg" style={{ marginLeft: '1px' }}>
-                  <div className='flex justify-center'>Ingredient</div>
-                  <div className='flex justify-center'>Weight</div>
-                  <div className='flex justify-center'>Calories</div>
-                  <div className='flex justify-center'>Protein</div>
-                  <div className='flex justify-center'>Carb</div>
-                  <div className='flex justify-center'>Fat</div>
-                  <div className='flex justify-center'>Sodium</div>
-                </div>
-                <ul className=''>
-                  {ingredients.map((ingredient, index) => (
-                    <li key={index}>
-                      <div className='svg'>
-                        <svg width="100%" height="1">
-                          <line x1="0" y1="0" x2="100%" y2="0" stroke="black" strokeWidth="1" />
-                        </svg>
-                      </div>
-                      <div className='gap-14'>
-                        <DietToolRow
-                          name={ingredient.ingredient}
-                          weight={ingredient.weight}
-                          onWeightChange={handleWeightChange}
-                          onCalorieChange={(numberToAdd) => handleCalorie(index, numberToAdd)}
-                          onProteinChange={(numberToAdd) => handleProtein(index, numberToAdd)}
-                          onCarbChange={(numberToAdd) => handleCarb(index, numberToAdd)}
-                          onFatChange={(numberToAdd) => handleFat(index, numberToAdd)}
-                          onSodiumChange={(numberToAdd) => handleSodium(index, numberToAdd)}
-                        />
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-              </div>
-              <div className="grid grid-cols-7 gap-44 header1 bg" style={{ marginLeft: '1px' }}>
-                <p className=''>Total </p>
-                <div>
-                  <p className='text-1xl'>Weight {totalWeight.toFixed(1)}</p>
-                </div>
-                <div>
-                  <p className='text-1xl'>{totalCalories.toFixed(1)}</p>
-                </div>
-                <div>
-                  <p className='text-1xl'>Protein {totalProtein.toFixed(1)}</p>
-                </div>
-                <div>
-                  <p className='text-1xl'>Carbs {totalCarbs.toFixed(1)}</p>
-                </div>
-                <div>
-                  <p className='text-1xl'>Fat {totalFat.toFixed(1)}</p>
-                </div>
-                <div>
-                         
-               <p className='text-1xl'>Sodium {totalSodium.toFixed(1)}</p>
+            <div className='bgcolor'>
+                <div className="container mx-auto">
+                    <div className="absolutetop-1460 pt-20 rounded-10">
+                        <div className="mx-auto Recipesbg p-10 lg:ml-10 ">
+                            <div className="bgEAF4F4 p-3 ">
+                                <div className="grid grid-cols-7 gap-4 header1 bg" style={{ marginLeft: '1px' }}>
+                                    <div className='flex justify-center'>Ingredient</div>
+                                    <div className='flex justify-center'>Weight</div>
+                                    <div className='flex justify-center'>Calories</div>
+                                    <div className='flex justify-center'>Protein</div>
+                                    <div className='flex justify-center'>Carb</div>
+                                    <div className='flex justify-center'>Fat</div>
+                                    <div className='flex justify-center'>Sodium</div>
+                                </div>
+                                <ul className=''>
+                                    {ingredients.map((ingredient, index) => (
+                                        <li key={index}>
+                                            <div className='svg'>
+                                                <svg width="100%" height="1">
+                                                    <line x1="0" y1="0" x2="100%" y2="0" stroke="black" strokeWidth="1" />
+                                                </svg>
+                                            </div>
+                                            <div className='gap-14'>
+                                                <DietToolRow
+                                                    name={ingredient.ingredient}
+                                                    weight={ingredient.weight}
+                                                    onWeightChange={handleWeightChange}
+                                                    onCalorieChange={(numberToAdd) => handleCalorie(index, numberToAdd)}
+                                                    onProteinChange={(numberToAdd) => handleProtein(index, numberToAdd)}
+                                                    onCarbChange={(numberToAdd) => handleCarb(index, numberToAdd)}
+                                                    onFatChange={(numberToAdd) => handleFat(index, numberToAdd)}
+                                                    onSodiumChange={(numberToAdd) => handleSodium(index, numberToAdd)}
+                                                />
+                                            </div>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <div>
+                            </div>
+                            <div className="grid grid-cols-7 gap-44 header1 bg" style={{ marginLeft: '1px' }}>
+                                <p className=''>Total </p>
+                                <div>
+                                    <p className='text-1xl'>Weight {totalWeight.toFixed(1)}</p>
+                                </div>
+                                <div>
+                                    <p className='text-1xl'>{totalCalories.toFixed(1)}</p>
+                                </div>
+                                <div>
+                                    <p className='text-1xl'>Protein {totalProtein.toFixed(1)}</p>
+                                </div>
+                                <div>
+                                    <p className='text-1xl'>Carbs {totalCarbs.toFixed(1)}</p>
+                                </div>
+                                <div>
+                                    <p className='text-1xl'>Fat {totalFat.toFixed(1)}</p>
+                                </div>
+                                <div>
+
+                                    <p className='text-1xl'>Sodium {totalSodium.toFixed(1)}</p>
                                 </div>
                             </div>
 
                         </div>
                         <div className='flex justify-center text-4xl mt-10 font'>
-    <div className='font-Noto'>Macro Breakdown </div>
-</div>
-<div className='pt-20 '>
-    <div className='flex justify-center'>
-        <div className='grid grid-cols-1 justify-center p-10 bg-white border border-stone-950 w-11/12'>
-            <div className="grid grid-cols-2">
-                <div>
-                    <PieChart data={pieChartCalories} />
-                </div>
-                <div>
-                    <PieChart data={pieChartWeights} />
-                </div>
-                <div>
-                    <PieChart data={pieChartMacros} />
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                            <div className='font-Noto'>Macro Breakdown </div>
+                        </div>
+                        <div className='pt-20 '>
+                            <div className='flex justify-center'>
+                                <div className='grid grid-cols-1 justify-center p-10 bg-white border border-stone-950 w-11/12'>
+                                    <div className="grid grid-cols-2">
+                                        <div>
+                                            <PieChart data={pieChartCalories} />
+                                        </div>
+                                        {/* <div>
+                                            <PieChart data={pieChartWeights} />
+                                        </div> */}
+                                        <div>
+                                            <PieChart data={pieChartMacros} />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
 
                     </div>

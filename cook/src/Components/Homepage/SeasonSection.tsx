@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import img from '../../Assets/Unknown.jpeg'
 import farm from '../../Assets/Farm.jpg'
 
@@ -32,21 +33,27 @@ const SeasonSection: React.FC<SeasonProps> = ({ img1, img2, img3, img4, tag1, ta
             <div className='flex justify-center gap-4 md:gap-10 mt-20 mx-10'>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <Link to="/RecipeDisplay" state={{ num: 5 }}>
                     <button className="text-left">                    
                         <img src={img1} className='rounded-xl w-96' />
                         <p className='font-Noto font-semibold text-lg'>{tag1}</p>
                         <p className='mt-2 font-Noto text-xl'>{text1}</p>
                     </button>
+                    </Link> 
+                    <Link to="/RecipeDisplay" state={{ num: 5 }}>
                     <button className="text-left">                   
                         <img src={img2} className='rounded-xl w-96' />
                         <p className='font-Noto font-semibold text-lg'>{tag2}</p>
                         <p className='mt-2 font-Noto text-xl'>{text2}</p>
                     </button>
+                    </Link>
+                    <Link to="/RecipeDisplay" state={{ num: 5 }}>
                     <button className="text-left">                    
                         <img src={img3} className='rounded-xl w-96' />
                         <p className='font-Noto font-semibold text-lg'>{tag3}</p>
                         <p className='mt-2 font-Noto text-xl'>{text3}</p>
                     </button>
+                    </Link>
                 </div>
             </div>
 <br></br>
