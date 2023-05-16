@@ -336,23 +336,23 @@ const DietTool: React.FC<Props> = ({ recipeId }) => {
               <div className="grid grid-cols-7 gap-44 header1 bg" style={{ marginLeft: '1px' }}>
                 <p className=''>Total </p>
                 <div>
-                  <p className='text-1xl'>Weight {totalWeight}</p>
+                  <p className='text-1xl'>Weight {totalWeight.toFixed(1)}</p>
                 </div>
                 <div>
-                  <p className='text-1xl'>{totalCalories}</p>
+                  <p className='text-1xl'>{totalCalories.toFixed(1)}</p>
                 </div>
                 <div>
-                  <p className='text-1xl'>Protein {totalProtein}</p>
+                  <p className='text-1xl'>Protein {totalProtein.toFixed(1)}</p>
                 </div>
                 <div>
-                  <p className='text-1xl'>Carbs {totalCarbs}</p>
+                  <p className='text-1xl'>Carbs {totalCarbs.toFixed(1)}</p>
                 </div>
                 <div>
-                  <p className='text-1xl'>Fat {totalFat}</p>
+                  <p className='text-1xl'>Fat {totalFat.toFixed(1)}</p>
                 </div>
                 <div>
                          
-               <p className='text-1xl'>Sodium {totalSodium}</p>
+               <p className='text-1xl'>Sodium {totalSodium.toFixed(1)}</p>
                                 </div>
                             </div>
 

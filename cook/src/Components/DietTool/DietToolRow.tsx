@@ -93,11 +93,11 @@ function DietToolRow(props: DietToolRowProps) {
             <div className='w-20 rounded-md mt-1 weight'>{props.name}</div>
         
             <div><input type="" value={weightValue} onChange={handleWeightChange} className='w-20 rounded-md mt-1 weight1 border border-black' /></div>
-            <div className='w-20 rounded-md mt-1 weight'>{caloriesValue}</div>
-            <div className='w-20 rounded-md mt-1 weight'>{proteinValue}</div>
-            <div className='w-20 rounded-md mt-1 weight'>{carbsValue}</div>
-            <div className='w-20 rounded-md mt-1 weight'>{fatValue}</div>
-            <div className='w-20 rounded-md mt-1 weight'>{sodiumValue}</div>
+            <div className='w-20 rounded-md mt-1 weight'>{caloriesValue.toFixed(1)}</div>
+            <div className='w-20 rounded-md mt-1 weight'>{proteinValue.toFixed(1)}</div>
+            <div className='w-20 rounded-md mt-1 weight'>{carbsValue.toFixed(1)}</div>
+            <div className='w-20 rounded-md mt-1 weight'>{fatValue.toFixed(1)}</div>
+            <div className='w-20 rounded-md mt-1 weight'>{sodiumValue.toFixed(1)}</div>
 
 
 </div>
