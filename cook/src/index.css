@@ -49,7 +49,7 @@ code {
   background-color: #CCE3DE;
 }
 .bgEAF4F4{
-  background-color: #ffffff;
+  background-color: #EAF4F4;
   padding-top: 2rem;
 }
 .inputbg{
@@ -61,7 +61,7 @@ code {
 }
 .savebtn{
 
-    width: 20rem;
+
     height: 3rem;
     border-radius: 1rem;
     border: white;
@@ -71,6 +71,20 @@ code {
  
     background-color: #A4C3B2;
 }
+
+.savebtn1{
+
+  width: 8rem;
+  height: 2rem;
+  border-radius: 0.6rem;
+  border: white;
+  font-weight: 200;
+  font-size: small;
+  text-align: center;
+color: black;
+
+  background-color: #A4C3B2;
+}  
 .bgcolor{
   background: #F0FAF6;
 
@@ -105,4 +119,29 @@ font-size: 16px;
  
   background: #ffffff65;
  
+}
+.inputw {
+  width: 100%; /* Default width for small screens */
+
+  @media (min-width: 424px) {
+    /* Screens wider than 424px */
+    width: 15rem;
+  }
+
+  @media (min-width: 640px) {
+    /* Screens wider than 640px */
+    width: 37rem;
+  }
+
+  @media (min-width: 768px) {
+    /* Screens wider than 768px */
+    width: 30rem;
+    @media (min-width: 936px) {
+      /* Screens wider than 768px */
+      width: rem;
+    }
+  }
+}
+.cons{
+  width: 80rem;
 }
