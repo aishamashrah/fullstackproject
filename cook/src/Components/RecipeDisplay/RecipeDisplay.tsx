@@ -31,13 +31,15 @@ export default function RecipeDisplay(props: any) {
         fetchData();
 
     }, []);
+
+    
        
 
 
     return (
         <div>
             <DisplayRecipeMethood recipeData={article} />
-            {recipeId !== null && <DietTool recipeId={recipeId} />} {/* Render DietTool only when recipeId has a valid value */}
+            {recipeId !== null && <DietTool recipeId={recipeId} />}
    
         </div>
     )

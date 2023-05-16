@@ -14,7 +14,7 @@ export default function DietToolDisplay() {
                     </div>
                 </div>
             </div>
-  
+   
     <DietTool 
      recipeId={30}
      />

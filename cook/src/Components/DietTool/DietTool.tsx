@@ -4,7 +4,7 @@ import DietToolRow from './DietToolRow';
 import { PieChart } from './PieChart';
 import { GetNutritionByName } from '../../Services/DataService';
 import { GetIngredientsByRecipeId } from '../../Services/DataService';
-
+import { PostWeightChanges } from '../../Services/DataService';
 
 interface Ingredient {
     ingredient: string;
@@ -38,14 +38,9 @@ const DietTool: React.FC<Props> = ({ recipeId }) => {
     const [carbArray, setCarbArray] = useState<number[]>([]);
     const [fatArray, setFatArray] = useState<number[]>([]);
     const [sodiumArray, setSodiumArray] = useState<number[]>([]);
-    const [ingredients, setIngredients] = useState<Ingredient[]>([
-        // { ingredient: 'flour', weight: 1 },
-        // { ingredient: 'sugar', weight: 2 },
-        // { ingredient: 'eggs', weight: 1 },
-        // { ingredient: 'tomato', weight: 1 },
-        // add more ingredients here as needed
-    ]);
-    const [totalWeight, setTotalWeight] = useState(() => {
+    let [ingredients, setIngredients] = useState<Ingredient[]>([]);
+    let [ingredienUpdate, setIngredientUpdate] = useState<Ingredient[]>([]);
+    let [totalWeight, setTotalWeight] = useState(() => {
         {
             return ingredients.reduce((sum, ingredient) => sum + ingredient.weight, 0);
         }
@@ -134,10 +129,12 @@ const DietTool: React.FC<Props> = ({ recipeId }) => {
             }
             return ingredient;
         });
+        console.log(updatedIngredients)
         const newTotalWeight = updatedIngredients.reduce(
             (sum, ingredient) => sum + ingredient.weight,
             0
         );
+        console.log(newTotalWeight)
 
         const updatedWeights = updatedIngredients.map((ingredient) => ingredient.weight);
 
@@ -177,9 +174,11 @@ const DietTool: React.FC<Props> = ({ recipeId }) => {
                 },
             ],
         });
+        // console.log(updatedIngredients)
         setIngredients(updatedIngredients);
         setTotalWeight(newTotalWeight);
-
+        setIngredientUpdate(updatedIngredients);
+        console.log(updatedWeights)
 
     }
 
@@ -233,6 +232,20 @@ const DietTool: React.FC<Props> = ({ recipeId }) => {
         });
     }
 
+    function handleUpdate() {
+        ingredienUpdate.forEach((row) => {
+            const rowData = {
+                ...row,
+            };
+            console.log(rowData);
+            PostWeightChanges(rowData);
+        });
+
+
+    }
+
+
+
     useEffect(() => {
         setStateRecipeId(recipeId);
 
@@ -273,29 +286,56 @@ const DietTool: React.FC<Props> = ({ recipeId }) => {
                 },
             ],
         });
-       
 
 
+
+
+
+    }, [calorieArray]);
+
+
+
+
+
+
+
+
+
+    useEffect(() => {
         const fetchData = async () => {
-
             let searchRes = await GetIngredientsByRecipeId(recipeId);
-
-
             setIngredients(searchRes);
-
-
-
         };
         fetchData();
 
-    }, [calorieArray]);
+
+
+
+
+
+
+    }, []);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     return (
         <>
             <div className='bgcolor'>
-                <div className="container mx-auto">
-                    <div className="absolutetop-1460 pt-20 rounded-10">
+                <div className="w-[97%]">
+                    <div className="  rounded-10">
                         <div className="mx-auto Recipesbg p-10 lg:ml-10 ">
                             <div className="bgEAF4F4 p-3 ">
                                 <div className="grid grid-cols-7 gap-4 header1 bg" style={{ marginLeft: '1px' }}>
@@ -357,9 +397,17 @@ const DietTool: React.FC<Props> = ({ recipeId }) => {
                             </div>
 
                         </div>
+
                         <div className='flex justify-center text-4xl mt-10 font'>
                             <div className='font-Noto'>Macro Breakdown </div>
                         </div>
+
+                        <button onClick={handleUpdate}>
+                            Update Button
+                        </button>
+
+
+
                         <div className='pt-20 '>
                             <div className='flex justify-center'>
                                 <div className='grid grid-cols-1 justify-center p-10 bg-white border border-stone-950 w-11/12'>
@@ -377,8 +425,6 @@ const DietTool: React.FC<Props> = ({ recipeId }) => {
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>
