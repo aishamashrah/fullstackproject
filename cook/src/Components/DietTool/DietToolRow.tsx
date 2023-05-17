@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { GetNutritionByName } from '../../Services/DataService';
-import img from '../../Assets/chef.png';
+
+
 interface DietToolRowProps {
   name: string;
   weight: number;
