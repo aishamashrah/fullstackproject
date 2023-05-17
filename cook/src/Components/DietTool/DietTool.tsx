@@ -4,7 +4,7 @@ import DietToolRow from './DietToolRow';
 import { PieChart } from './PieChart';
 import { GetNutritionByName } from '../../Services/DataService';
 import { GetIngredientsByRecipeId } from '../../Services/DataService';
-import classNames from 'classnames';
+
 
 interface Ingredient {
     ingredient: string;
@@ -13,7 +13,7 @@ interface Ingredient {
 
 interface Props {
     recipeId: number;
- }
+  }
 
 interface Flour {
     name: string;
@@ -30,9 +30,9 @@ interface TotalCalories {
 
 
 
-export default function DietTool(props: Props) {
-    // const [weight, setWeight] = useState(0);
-    // const [testArray, setTestArray] = useState<number[]>([]);
+    
+const DietTool: React.FC<Props> = ({ recipeId }) => {
+    const [stateRecipeId, setStateRecipeId] = useState(recipeId);
     const [calorieArray, setCalorieArray] = useState<number[]>([]);
     const [proteinArray, setProteinArray] = useState<number[]>([]);
     const [carbArray, setCarbArray] = useState<number[]>([]);
@@ -234,6 +234,9 @@ export default function DietTool(props: Props) {
     }
 
     useEffect(() => {
+        setStateRecipeId(recipeId);
+
+
         setPieChartCalories({
             labels: ingredients.map((data) => data.ingredient),
             datasets: [
@@ -270,12 +273,16 @@ export default function DietTool(props: Props) {
                 },
             ],
         });
+        console.log(recipeId)
+
 
         const fetchData = async () => {
-            let searchRes = await GetIngredientsByRecipeId(22);
+            
+            let searchRes = await GetIngredientsByRecipeId(recipeId);
           
 
             setIngredients(searchRes);
+           
 
 
         };
@@ -283,7 +290,7 @@ export default function DietTool(props: Props) {
 
     }, [calorieArray]);
 
-
+    
     return (
         <>
       <div className='bgcolor'>
@@ -358,6 +365,9 @@ export default function DietTool(props: Props) {
         <div className='grid grid-cols-1 justify-center p-10 bg-white border border-stone-950 w-11/12'>
             <div className="grid grid-cols-2">
                 <div>
+                    <PieChart data={pieChartCalories} />
+                </div>
+                <div>
                     <PieChart data={pieChartWeights} />
                 </div>
                 <div>
@@ -378,3 +388,7 @@ export default function DietTool(props: Props) {
 
 
 }
+
+
+
+export default DietTool;

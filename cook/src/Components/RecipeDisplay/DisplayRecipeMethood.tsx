@@ -13,7 +13,7 @@ type Props = {
 }
 
 export default function DisplayRecipeMethood({recipeData}: Props) {
-    console.log(recipeData)
+    // console.log(recipeData)
     return (
         <div>
             <p>{recipeData.title}</p>

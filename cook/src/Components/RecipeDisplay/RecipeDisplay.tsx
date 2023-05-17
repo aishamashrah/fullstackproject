@@ -3,11 +3,14 @@ import { useLocation } from 'react-router-dom';
 import { GetRecipeByName } from '../../Services/DataService';
 import DisplayRecipeMethood from './DisplayRecipeMethood';
 import DietTool from '../DietTool/DietTool';
+import { GetRecipeById } from '../../Services/DataService';
+
 
 export default function RecipeDisplay(props: any) {
     const location = useLocation();
     const articleId = location.state?.num;
-    const [recipeId, setRecipeId] = useState(0); // [1
+    const [recipeId, setRecipeId] = useState<number | null>(null); // Use null as the initial value
+
     const [article, setArticle] = useState({
         title: '',
         publisherName: '',
@@ -20,20 +23,22 @@ export default function RecipeDisplay(props: any) {
 
     useEffect(() => {
         const fetchData = async () => {
-            let searchRes = await GetRecipeByName("RecipeTitle");
+            let searchRes = await GetRecipeById(articleId);
             setArticle(searchRes[0]);
-            setRecipeId(searchRes[0].id);
+            
+            setRecipeId(searchRes[0].recipeId)
         };
         fetchData();
 
     }, []);
+       
 
-    console.log(recipeId)
 
     return (
         <div>
             <DisplayRecipeMethood recipeData={article} />
-            <DietTool recipeId={22}/>   
+            {recipeId !== null && <DietTool recipeId={recipeId} />} {/* Render DietTool only when recipeId has a valid value */}
+   
         </div>
     )
 }

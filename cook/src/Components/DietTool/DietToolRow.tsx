@@ -60,11 +60,11 @@ function DietToolRow(props: DietToolRowProps) {
           let searchRes = await GetNutritionByName(name);
           setWeight(weight)
           // console.log(searchRes)
-          setCalories(searchRes[0].calories/100); 
-          setProtein(searchRes[0].protein/100);
-          setCarbs(searchRes[0].carbs/100);
-          setFat(searchRes[0].fat/100); 
-          setSodium(searchRes[0].sodium/100);
+          setCalories(searchRes[0].calories/100 * weight); 
+          setProtein(searchRes[0].protein/100 * weight);
+          setCarbs(searchRes[0].carbs/100 * weight);
+          setFat(searchRes[0].fat/100 * weight); 
+          setSodium(searchRes[0].sodium/100 * weight);
           
           setSavedCalories(searchRes[0].calories/100);
           setSavedProtein(searchRes[0].protein/100);
