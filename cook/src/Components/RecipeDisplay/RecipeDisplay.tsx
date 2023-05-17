@@ -4,6 +4,8 @@ import { GetRecipeByName } from '../../Services/DataService';
 import DisplayRecipeMethood from './DisplayRecipeMethood';
 import DietTool from '../DietTool/DietTool';
 import { GetRecipeById } from '../../Services/DataService';
+import CookEaseFooter from '../Footer/Footer';
+import CookEaseHeader from '../Header/Header';
 
 
 export default function RecipeDisplay(props: any) {
@@ -12,12 +14,20 @@ export default function RecipeDisplay(props: any) {
     const [recipeId, setRecipeId] = useState<number | null>(null); // Use null as the initial value
 
     const [article, setArticle] = useState({
+        id: 0,
+        userID: 0,
+        recipeId: 0,
+        date: '',
         title: '',
         publisherName: '',
         diet: '',
         description: '',
         tags: '',
         image: '',
+        isPublished: false,
+        isDeleted: false,
+        region: '',
+
         // Initialize other properties here as needed
     })
 
@@ -38,9 +48,19 @@ export default function RecipeDisplay(props: any) {
 
     return (
         <div>
+
+            <div className='mb-10'>
+                <CookEaseHeader />
+            </div>
+
+            
+            
             <DisplayRecipeMethood recipeData={article} />
             {recipeId !== null && <DietTool recipeId={recipeId} />}
-   
+
+            <div className='mt-10'>
+            <CookEaseFooter />
+            </div>
         </div>
     )
 }

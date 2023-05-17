@@ -201,9 +201,30 @@ async function GetIngredientsByRecipeId(Id: number) {
   }
 
 
+  async function PostRecipeUpdate (recipeData: object) {
+    const response = await fetch('https://cookeaseapi.azurewebsites.net/Recipe/UpdateRecipeItem', {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(recipeData)
+    });
+  
+    // Check if no error for duplicate account
+    if(!response.ok) {
+        const message = `An error has occured ${response.status}`;
+        throw new Error(message);
+    }
+  
+    let data = await response.json();
+    console.log(data);
+    return data;
+    // POST so no return needed (not getting anything)
+  }
 
 
-export { CreateAccountFetch, login, getLoggedInUserData, GetAllSearchpage,GetAllArticel,ArticelData,GetAllbyId, PostRecipeData, PostIngredientData, GetNutritionByName, GetIngredientsByRecipeId, GetArticleById, GetRecipeByName, GetRecipeById, PostWeightChanges };
+
+export { CreateAccountFetch, login, getLoggedInUserData, GetAllSearchpage,GetAllArticel,ArticelData,GetAllbyId, PostRecipeData, PostIngredientData, GetNutritionByName, GetIngredientsByRecipeId, GetArticleById, GetRecipeByName, GetRecipeById, PostWeightChanges, PostRecipeUpdate };
 
 
 

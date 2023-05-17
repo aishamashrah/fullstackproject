@@ -59,7 +59,8 @@ function DietToolRow(props: DietToolRowProps) {
     const fetchData = async () => {
       let searchRes = await GetNutritionByName(name);
       setWeight(weight)
-      // console.log(searchRes)
+      console.log(searchRes);
+      
       setCalories(searchRes[0].calories / 100 * weight);
       setProtein(searchRes[0].protein / 100 * weight);
       setCarbs(searchRes[0].carbs / 100 * weight);
@@ -85,33 +86,25 @@ function DietToolRow(props: DietToolRowProps) {
 
 
   return (
-
     <>
-
-      <div className='grid grid-cols-7 justify-evenly gap-10'>
-
-        <div className='w-20 rounded-md mt-1 weight'>{props.name}</div>
-
-        <div><input type="" value={weightValue} onChange={handleWeightChange} className='w-20 rounded-md mt-1 weight1 border border-black' /></div>
-        <div className='w-20 rounded-md mt-1 weight'>{caloriesValue.toFixed(1)}</div>
-        <div className='w-20 rounded-md mt-1 weight'>{proteinValue.toFixed(1)}</div>
-        <div className='w-20 rounded-md mt-1 weight'>{carbsValue.toFixed(1)}</div>
-        <div className='w-20 rounded-md mt-1 weight'>{fatValue.toFixed(1)}</div>
-        <div className='w-20 rounded-md mt-1 weight'>{sodiumValue.toFixed(1)}</div>
-
-
+      <div className="grid grid-cols-7 justify-evenly gap-10 text-xs sm:text-lg">
+        <div className="w-full sm:w-20 rounded-md mt-1 weight">{props.name}</div>
+        <div>
+          <input
+            type=""
+            value={weightValue}
+            onChange={handleWeightChange}
+            className="w-full sm:w-20 rounded-md mt-1 weight1 border border-black"
+          />
+        </div>
+        <div className="w-full sm:w-20 rounded-md mt-1 weight">{caloriesValue.toFixed(1)}</div>
+        <div className="w-full sm:w-20 rounded-md mt-1 weight">{proteinValue.toFixed(1)}</div>
+        <div className="w-full sm:w-20 rounded-md mt-1 weight">{carbsValue.toFixed(1)}</div>
+        <div className="w-full sm:w-20 rounded-md mt-1 weight">{fatValue.toFixed(1)}</div>
+        <div className="w-full sm:w-20 rounded-md mt-1 weight">{sodiumValue.toFixed(1)}</div>
       </div>
-
-
-
-
-
-
-
     </>
-
-
   );
 }
- 
+
 export default DietToolRow;
