@@ -38,37 +38,38 @@ return (
   <>
   
   {blogItems.map((item: { id: number, image: string, title: string, description: string }) => (
-  <div key={item.id}  className="gap-4 max-w-5xl mt-8 Image">
-  <Link to={`/RecipeDisplay`} state={{num: item.id}}>
-  <button >
-    <div>
-      <img src={item.image} className="w-full h-40 object-cover mb-4 rounded-lg" />
-      <div className="p-5 rounded-lg shadow-md">
-        <h1>{item.title}</h1>
-        <p className="text-gray-600">{item.description}</p>
-      </div>
-    </div>
-    {/* </button> */}
-  </button>
-  </Link>
-  </div>
-  
-))}
-      {articelItems.map((item: { id: number, image: string, title: string, description: string }) => (
-        <div key={item.id} className="gap-4 max-w-5xl mt-8 Image">
-   <Link to={`/Article`} state={{num: item.id}}>
-            <button>
-              <div>
-                <img src={item.image} className="w-full h-40 object-cover mb-4 rounded-lg" />
-                <div className="p-5 rounded-lg shadow-md">
-                  <h1>{item.title}</h1>
-                  <p className="text-gray-600">{item.description.substring(0, 35)}</p>
-                </div>
-              </div>
-            </button>
-          </Link>
+  <div key={item.id} className="w-72 h-80 mt-8 shadow-xl">
+    <Link to={`/RecipeDisplay`} state={{num: item.id}}>
+      <button className="border border-gray-300 rounded-lg overflow-hidden hover:shadow-md">
+        <div>
+          <img src={item.image} className="w-full h-40 object-cover mb-4 rounded-t-lg" alt="Recipe Image" />
+          <div className="p-5 bg-white rounded-b-lg">
+            <h1 className="text-xl font-bold mb-2">{item.title}</h1>
+            <p className="text-gray-600">{item.description.substring(0, 100)}</p>
+          </div>
         </div>
-      ))}
+      </button>
+    </Link>
+  </div>
+))}
+
+{articelItems.map((item: { id: number, image: string, title: string, description: string }) => (
+  <div key={item.id} className="w-72 h-80 mt-8 shadow-xl">
+    <Link to={`/Article`} state={{num: item.id}}>
+      <button className="border border-gray-300 rounded-lg overflow-hidden hover:shadow-md">
+        <div>
+          <img src={item.image} className="w-full h-40 object-cover mb-4 rounded-t-lg" alt="Article Image" />
+          <div className="p-5 bg-white rounded-b-lg">
+            <h1 className="text-xl font-bold mb-2">{item.title}</h1>
+            <p className="text-gray-600">{item.description.substring(0, 100)}</p>
+          </div>
+        </div>
+      </button>
+    </Link>
+  </div>
+))}
+
+
 
 
   </>
