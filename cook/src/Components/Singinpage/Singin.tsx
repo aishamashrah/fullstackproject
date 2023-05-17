@@ -8,6 +8,7 @@ export default function Signin() {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [userId, setUserId] = useState("");
   
   const handleSubmit = async () => {
     let userData = {
@@ -18,8 +19,9 @@ export default function Signin() {
     let token = await login(userData);
     if (token.token != null) {
         localStorage.setItem("Token", token.token);
-        await getLoggedInUserData(username);
-        navigate('/Dash');
+      let userInfo =   await getLoggedInUserData(username);
+        console.log(userInfo)
+        // navigate('/Dash');
     }
     console.log(userData);
   }

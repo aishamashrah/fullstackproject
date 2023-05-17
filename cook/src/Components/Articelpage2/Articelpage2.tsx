@@ -20,6 +20,20 @@ export default function Articelpage2() {
   const [isPublished, setisPublished] = useState(true);
   const [isDeleted, setisDeleted] = useState(false);
 
+  const handleImage = (event: React.ChangeEvent<HTMLInputElement>) => {
+    let file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        console.log(reader.result);
+        setimage(reader.result as string);
+      }
+      reader.readAsDataURL(file);
+    }
+  }
+  
+  
+
 
   const handleSubmit = () => {
     let Data = {
@@ -97,17 +111,20 @@ export default function Articelpage2() {
     value={description}
     onChange={(e) => setdescription(e.target.value)}
   ></textarea>
-  <label htmlFor="tags" className="text-lg font-bold mt-4 ">
-    Tags
+    <label htmlFor="image" className="text-lg font-bold mt-4 ">
+    Image
   </label>
   <input
-    id="tags"
-    type="text"
+    id="image"
+    type="file" 
+    accept="image/png, image/jpg"
     className="border rounded-md px-2 py-1 mt-1 w-full bg-gray-300"
     value={Tags}
     onChange={(e) => setTags(e.target.value)}
   />
+  
 </div>
+
 
 
 

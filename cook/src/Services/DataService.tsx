@@ -2,28 +2,28 @@
 
 let userData = {};
 
-
-let loginUser = {};
-
 async function CreateAccountFetch(createdUser: object) {
-    const response = await fetch('https://cookeaseapi.azurewebsites.net/User/AddUser', {
+    try {
+      const response = await fetch('https://cookeaseapi.azurewebsites.net/User/AddUser', {
         method: "POST",
         headers: {
-            'Content-Type': 'application/json'
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify(createdUser)
-    });
-
-    // Check if no error for duplicate account
-    if(!response.ok) {
-        const message = `An error has occured ${response.status}`;
+      });
+  
+      if (!response.ok) {
+        const message = `An error has occurred ${response.status}`;
         throw new Error(message);
+      }
+  
+      const data = await response.json();
+      return { response, data }; // Return both the response and data
+    } catch (error: any) {
+      throw new Error(error.message);
     }
-
-    let data = await response.json();
-    console.log(data);
-    // POST so no return needed (not getting anything)
-}
+  }
+  
 
 async function GetNutritionByName(ingredient: string) {
     let response = await fetch(`https://cookeaseapi.azurewebsites.net/Nutrition/GetItemsByName/${ingredient}`);
