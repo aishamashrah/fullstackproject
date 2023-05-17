@@ -32,6 +32,17 @@ export default function Articelpage2() {
     }
   }
   
+
+  useEffect(() => {
+    const userInfoString = localStorage.getItem('UserInfo');
+    if (userInfoString) {
+      const userInfo = JSON.parse(userInfoString);
+      // You can use the userInfo object here
+      // Example: set the publisherName state
+      setpublisherName(userInfo.username);
+      console.log(userInfo);
+    }
+  }, []);
   
 
 
@@ -79,7 +90,6 @@ export default function Articelpage2() {
     id="title"
     type="text"
     className="border rounded-md px-2 py-1 mt-1 w-full  bg-gray-300"
-    value={title}
     onChange={(e) => settitle(e.target.value)}
   />
   <label htmlFor="publisher" className="text-lg font-bold mt-4">
@@ -90,7 +100,7 @@ export default function Articelpage2() {
     type="text"
     className="border rounded-md px-2 py-1 mt-1 w-full  bg-gray-300"
     value={publisherName}
-    onChange={(e) => setpublisherName(e.target.value)}
+    
   />
   <label htmlFor="diet" className="text-lg font-bold mt-4">
     Diet
@@ -120,7 +130,7 @@ export default function Articelpage2() {
     accept="image/png, image/jpg"
     className="border rounded-md px-2 py-1 mt-1 w-full bg-gray-300"
     value={Tags}
-    onChange={(e) => setTags(e.target.value)}
+    onChange={handleImage}
   />
   
 </div>

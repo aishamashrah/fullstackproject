@@ -2,29 +2,29 @@ import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import { login, getLoggedInUserData } from "../../Services/DataService";
 
-
 export default function Signin() {
   let navigate = useNavigate();
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [userId, setUserId] = useState("");
-  
+
   const handleSubmit = async () => {
     let userData = {
-        username,
-        password
-    }
+      username,
+      password
+    };
     console.log(userData);
     let token = await login(userData);
     if (token.token != null) {
-        localStorage.setItem("Token", token.token);
-      let userInfo =   await getLoggedInUserData(username);
-        console.log(userInfo)
-        // navigate('/Dash');
+      localStorage.setItem("Token", token.token);
+      let userInfo = await getLoggedInUserData(username);
+      console.log(userInfo);
+      localStorage.setItem("UserInfo", JSON.stringify(userInfo)); // Save the userInfo object to local storage
+      navigate('/');
     }
-    console.log(userData);
-  }
+  };
+
   
   
   

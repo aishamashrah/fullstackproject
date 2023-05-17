@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { PostRecipeData } from "../../Services/DataService";
 import { PostIngredientData } from "../../Services/DataService";
 
@@ -37,7 +37,29 @@ const RecipiePostTwo = (props: Props) => {
     setRows(newRows);
   };
 
+  useEffect(() => {
+    const userInfoString = localStorage.getItem('UserInfo');
+    if (userInfoString) {
+      const userInfo = JSON.parse(userInfoString);
+      // You can use the userInfo object here
+      // Example: set the publisherName state
+      setpublisherName(userInfo.username);
+      setuserID(userInfo.id);
+      console.log(userInfo);
+    }
+  }, []);
 
+  const handleImage = (event: React.ChangeEvent<HTMLInputElement>) => {
+    let file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setimage(reader.result as string);
+      }
+      reader.readAsDataURL(file);
+    }
+  }
+  
 
 
   const handleSubmit = () => {
@@ -48,7 +70,7 @@ const RecipiePostTwo = (props: Props) => {
       date: props.formattedDate,
       publisherName: publisherName,
       title: title,
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQPzQarc61tpYiKWyrGlDrUWBkY6alRy9vjw&usqp=CAU",
+      image: image,
       description: description,
       Tags: tags,
       diet: diet,
@@ -64,11 +86,11 @@ const RecipiePostTwo = (props: Props) => {
           ...row,
         };
         console.log(rowData);
-        // PostIngredientData(rowData);
+        PostIngredientData(rowData);
       }
     });
-    // PostRecipeData(Data)
-    // console.log(Data)
+    PostRecipeData(Data)
+    console.log(Data)
   };
 
   const handleRemoveLastRow = () => {
@@ -139,11 +161,7 @@ const RecipiePostTwo = (props: Props) => {
                     type="file"
                     id="picture"
                     accept="image/*"
-                    onChange={(event) => {
-                      if (event.target.files && event.target.files.length > 0) {
-                        console.log(event.target.files[0]);
-                      }
-                    }}
+                    onChange={handleImage}
                   />
                 </form>
               </div>
@@ -205,7 +223,7 @@ const RecipiePostTwo = (props: Props) => {
       </div>
           <div className="flex justify-end items-center mr-24 mt-2">
             <button
-              onClick={handleRemoveLastRow}
+              onClick={handleSubmit}
               className="px-4 py-2 mt-4 font-Noto text-white savebtn1 rounded-md "
             >
               Save

@@ -62,7 +62,7 @@ async function getLoggedInUserData(username: any) {
     let response = await fetch(`https://cookeaseapi.azurewebsites.net/User/GetUserByUsername/${username}`);
     let data = await response.json();
     userData = data;
-    console.log(userData);
+    return data;
 }
 
 async function GetAllSearchpage() {
