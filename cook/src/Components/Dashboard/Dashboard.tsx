@@ -4,8 +4,50 @@ import CookEaseFooter from '../Footer/Footer';
 import img from '../../Assets/cook-book-removebg-preview.png';
 import img2 from '../../Assets/211209-delish-quarterly-pasta-chicken-parm-pasta-vertical-utensils-071-eb-1640015465.jpg';
 import chefHat2 from '../../Assets/profile.png';
+import { useState ,ChangeEvent } from 'react';
 
 export default function Dashboard() {
+  const [aboutMe, setAboutMe] = useState('');
+  const [isEditing, setIsEditing] = useState(false);
+  const [currentState, setCurrentState] = useState('');
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setAboutMe(e.target.value);
+  };
+
+  const handleStateChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setCurrentState(e.target.value);
+  };
+
+  const handleEditClick = () => {
+    setIsEditing(true);
+  };
+
+  const handleSaveClick = () => {
+    setIsEditing(false);
+    // Perform save action or API call to persist the 'aboutMe' and 'currentState' values
+  };
+  const handleEditClick1 = () => {
+    setIsEditing(true);
+  };
+
+  const handleSaveClick1 = () => {
+    setIsEditing(false);
+    // Perform save action or API call to persist the 'aboutMe' and 'currentState' values
+  };
+  React.useEffect(() => {
+    // Retrieve the 'aboutMe' text from local storage when the component mounts
+    const savedAboutMe = localStorage.getItem("aboutMe");
+    if (savedAboutMe) {
+      setAboutMe(savedAboutMe);
+    }
+  }, []);
+
+  React.useEffect(() => {
+    // Save the 'aboutMe' text to local storage
+    localStorage.setItem("aboutMe", aboutMe);
+  }, [aboutMe]);
+
   interface SearchpagesProps {
     img: string;
     type: string;
@@ -84,29 +126,67 @@ export default function Dashboard() {
                     <line x1="0" y1="0" x2="0" y2="100%" stroke="currentColor" stroke-width="2" />
                   </svg>
                 </div>
-                <div className="w-full md:w-1/3  xl:text-sm lg:text-xs ">
-                  <h3 className="font-serif font-bold xl:text-2xl lg:mb-6">Stats</h3>
-                  <p className="font-serif">Member Since March 29 2023Dietery Prefrences: Glutten Free, Lactose intolerance, Nut Allergy, Nutritional Goals: Watch Carbs, Eat more protein.</p>
-                </div>
+                <div className="w-full md:w-1/3 xl:text-sm lg:text-xs">
+        <h3 className="font-serif font-bold lg:text-2xl lg:mb-6"> State</h3>
+        {isEditing ? (
+          <div>
+            <input
+              type="text"
+              value={currentState}
+              onChange={handleStateChange}
+              className="border border-gray-300 p-2 rounded-md mb-4"
+            />
+            <button onClick={handleSaveClick} className="bg-blue-500 text-white px-4 py-2 rounded-md">
+              Save
+            </button>
+          </div>
+        ) : (
+          <p className="font-serif">{currentState}</p>
+        )}
+        {!isEditing && (
+          <button onClick={handleEditClick} className="text-blue-500 hover:underline">
+            Edit
+          </button>
+        )}
+      </div>
                 <div className="flex justify-center">
                   <svg className="w-2 h-full hidden md:block">
                     <line x1="0" y1="0" x2="0" y2="100%" stroke="currentColor" stroke-width="2" />
                   </svg>
                 </div>
                 <div className="w-full md:w-1/3 xl:text-sm lg:text-xs">
-                  <h3 className="font-serif font-bold lg:text-2xl lg:mb-6">About Me</h3>
-                  <p className="font-serif">irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-                </div>
-              </div>
+        <h3 className="font-serif font-bold lg:text-2xl lg:mb-6">About Me</h3>
+        {isEditing ? (
+          <div>
+            <input
+              type="text"
+              value={aboutMe}
+              onChange={handleInputChange}
+              className="border border-gray-300 p-2 rounded-md mb-4"
+            />
+            <button onClick={handleSaveClick1} className="bg-blue-500 text-white px-4 py-2 rounded-md">
+              Save
+            </button>
+          </div>
+        ) : (
+          <p className="font-serif">{aboutMe}</p>
+        )}
+        {!isEditing && (
+          <button onClick={handleEditClick1} className="text-blue-500 hover:underline">
+            Edit
+          </button>
+        )}
+      </div>
             </div>
           </div>
         </div>
       </div>
+      </div>
       <div className="mt-20">
         <CookEaseFooter />
       </div>
+      </div>
 
-   </div>
    
   )
 }
