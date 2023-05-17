@@ -53,10 +53,15 @@ export default function RecipeDisplay(props: any) {
                 <CookEaseHeader />
             </div>
 
+            <div className="text-4xl font-lobster pl-4 pt-3  left-5 sm:block  bg-[#CCE3DE] w-[100%] h-20 border-y-2 shadow-md border-black ">
+                    Recipe
+                </div>
             
-            
-            <DisplayRecipeMethood recipeData={article} />
+            <div className=''>
+                   <DisplayRecipeMethood recipeData={article} />
             {recipeId !== null && <DietTool recipeId={recipeId} />}
+            </div>
+         
 
             <div className='mt-10'>
             <CookEaseFooter />

@@ -333,64 +333,88 @@ const DietTool: React.FC<Props> = ({ recipeId }) => {
 
     return (
         <>
-          <div className="bgColor">
-    <div className="w-[97%]">
-      <div className="rounded-10">
-        <div className="mx-auto Recipesbg p-10 lg:ml-10">
-          <div className="bgEAF4F4 p-3">
-            <ul className="">
-              {ingredients.map((ingredient, index) => (
-                <li key={index}>
-                  <div className="svg">
-                    <svg width="100%" height="1">
-                      <line x1="0" y1="0" x2="100%" y2="0" stroke="black" strokeWidth="1" />
-                    </svg>
-                  </div>
-                  <div className="gap-14">
-                    <DietToolRow
-                      name={ingredient.ingredient}
-                      weight={ingredient.weight}
-                      onWeightChange={handleWeightChange}
-                      onCalorieChange={(numberToAdd) => handleCalorie(index, numberToAdd)}
-                      onProteinChange={(numberToAdd) => handleProtein(index, numberToAdd)}
-                      onCarbChange={(numberToAdd) => handleCarb(index, numberToAdd)}
-                      onFatChange={(numberToAdd) => handleFat(index, numberToAdd)}
-                      onSodiumChange={(numberToAdd) => handleSodium(index, numberToAdd)}
-                    />
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+            <div className="bgColor">
+                <div className="w-[97%]">
+                    <div className="rounded-10">
+                        <div className="mx-auto Recipesbg p-10 lg:ml-10">
+                            <div className="bgEAF4F4 p-3">
+                                <div className="flex justify-between bg-gray-200 pb-1 gap-4 text-2xl font-bold mb-1">
+                                    <div className="w-1/5">Ingredient</div>
+                                    <div className="w-1/5">Weight</div>
+                                    <div className="w-1/5">Calories</div>
+                                    <div className="w-1/5 ">Protein</div>
+                                    <div className="w-1/5">Carb</div>
+                                    <div className="w-1/5 ">Fat</div>
+                                    <div className="w-1/5">Sodium</div>
+                                </div>
+
+                                <ul className="">
+                                    {ingredients.map((ingredient, index) => (
+                                        <li key={index}>
+                                            <div className="svg">
+                                                <svg width="100%" height="1">
+                                                    <line x1="0" y1="0" x2="100%" y2="0" stroke="black" strokeWidth="1" />
+                                                </svg>
+                                            </div>
+                                            <div className="gap-14">
+                                                <DietToolRow
+                                                    name={ingredient.ingredient}
+                                                    weight={ingredient.weight}
+                                                    onWeightChange={handleWeightChange}
+                                                    onCalorieChange={(numberToAdd) => handleCalorie(index, numberToAdd)}
+                                                    onProteinChange={(numberToAdd) => handleProtein(index, numberToAdd)}
+                                                    onCarbChange={(numberToAdd) => handleCarb(index, numberToAdd)}
+                                                    onFatChange={(numberToAdd) => handleFat(index, numberToAdd)}
+                                                    onSodiumChange={(numberToAdd) => handleSodium(index, numberToAdd)}
+                                                />
+                                            </div>
+                                        </li>
+                                    ))}
+                                </ul>
+                                <div className="border-t-2 border-black mt-2 mb-2"></div>
+
+                                <div className="flex justify-between bg-gray-200  gap-7 text-xl font-semibold">
+                                    <div className="w-1/5">Totals</div>
+                                    <div className="w-1/5">{totalWeight.toFixed(1)}</div>
+                                    <div className="w-1/5">{totalCalories.toFixed(1)}</div>
+                                    <div className="w-1/5 ">{totalProtein.toFixed(1)}</div>
+                                    <div className="w-1/5">{totalCarbs.toFixed(1)}</div>
+                                    <div className="w-1/5 ">{totalFat.toFixed(1)}</div>
+                                    <div className="w-1/5">{totalSodium.toFixed(1)}</div>
+                                </div>
+                            </div>
+                            <div className="flex justify-end">
+                            <button onClick={handleUpdate}   className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-4 rounded"
+>
+                                Update Button
+                            </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
 
-  <div className="flex justify-center text-4xl mt-10 font">
-    <div className="font-Noto">Macro Breakdown </div>
-  </div>
-  <button onClick={handleUpdate}>
-    Update Button
-  </button>
+            <div className="flex justify-center text-4xl mt-10 font">
+                <div className="font-Noto">Macro Breakdown </div>
+            </div>
 
-  <div className="pt-20">
-          <div className="flex justify-center">
-            <div className="grid grid-cols-2 justify-center p-10 bg-white border border-stone-950 w-11/12">
-              <div>
-                <PieChart data={pieChartCalories} />
-              </div>
-              {/* <div>
+            <div className="pt-20">
+                <div className="flex justify-center">
+                    <div className="grid grid-cols-2 justify-center p-10 bg-white border border-stone-950 w-11/12">
+                        <div>
+                            <PieChart data={pieChartCalories} />
+                        </div>
+                        {/* <div>
                 <PieChart data={pieChartWeights} />
               </div> */}
-              <div>
-                <PieChart data={pieChartMacros} />
-              </div>
+                        <div>
+                            <PieChart data={pieChartMacros} />
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
 
 
         </>

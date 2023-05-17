@@ -91,9 +91,9 @@ export default function DisplayRecipeMethood({ recipeData }: Props) {
 
 
     return (
-        <div className="m-10">
-            <div className="bg-gray-200 p-4 m-20 md:mx-0">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="m-10 ">
+            <div className="bg-[#CCE3DE] p-4 m-20 md:mx-0 border border-black">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pl-2">
                     <div>
                         <label htmlFor="title" className="text-lg font-bold">
                             Title

@@ -87,7 +87,7 @@ function DietToolRow(props: DietToolRowProps) {
 
   return (
     <>
-      <div className="grid grid-cols-7 justify-evenly gap-10 text-xs sm:text-lg">
+      <div className="grid grid-cols-7 justify-evenly gap-6  text-xs sm:text-lg">
         <div className="w-full sm:w-20 rounded-md mt-1 weight">{props.name}</div>
         <div>
           <input

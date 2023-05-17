@@ -42,69 +42,93 @@ export default function Articelpage2() {
   return (
 
     <>
-    <CookEaseHeader />
-    <br/>
-    <br/>
-  
-    <div className="">
-      <div className="gap-4 header py-6 sm:px-4 md:p-14">
-        <div className="text-2xl sm:text-3xl md:text-4xl font-lobster">
-          <div>{publisherName}</div>
+      <CookEaseHeader />
+      <br />
+      <br />
+
+      <div className="">
+        <div className="gap-4 header py-6 sm:px-4 md:p-14">
+          <div className="text-2xl sm:text-3xl md:text-4xl font-lobster">
+            <div>{publisherName}</div>
+          </div>
         </div>
-      </div>
-  
-      <div className="mx-auto max-w-xl sm:max-w-2xl md:max-w-4xl">
-        <div className="p-4 sm:p-8 md:p-15">
-          <div className="Recipesbg py-8 sm:p-10">
-            <div className="bg2 p-6 sm:p-10 flex flex-col gap-4 items-center">
-              <div className="flex flex-col">
-                <p className="font-bold mb-2 text-sm sm:text-base">Title</p>
-                <input type="text" className="inputbg border h-10 sm:w-72 md:w-96 rounded-md" onChange={({ target: { value } }) => settitle(value)} />
+
+        <div className="mx-auto max-w-xl sm:max-w-2xl md:max-w-3xl">
+          <div className="p-4 sm:p-8 md:p-15">
+            <div className="Recipesbg py-8 sm:p-10">
+              <div className="bg2 p-6 sm:p-10  flex-col gap-4 ">
+              <div>
+  <label htmlFor="title" className="text-lg font-bold">
+    Title
+  </label>
+  <input
+    id="title"
+    type="text"
+    className="border rounded-md px-2 py-1 mt-1 w-full  bg-gray-300"
+    value={title}
+    onChange={(e) => settitle(e.target.value)}
+  />
+  <label htmlFor="publisher" className="text-lg font-bold mt-4">
+    Publisher
+  </label>
+  <input
+    id="publisher"
+    type="text"
+    className="border rounded-md px-2 py-1 mt-1 w-full  bg-gray-300"
+    value={publisherName}
+    onChange={(e) => setpublisherName(e.target.value)}
+  />
+  <label htmlFor="diet" className="text-lg font-bold mt-4">
+    Diet
+  </label>
+  <input
+    id="diet"
+    type="text"
+    className="border rounded-md px-2 py-1 mt-1 w-full  bg-gray-300"
+    value={categories}
+    onChange={(e) => setTcategories(e.target.value)}
+  />
+  <label htmlFor="description" className="text-lg font-bold mt-4">
+    Description
+  </label>
+  <textarea
+    id="description"
+    className="border rounded-md px-2 py-1 mt-1 min-h-[300px] w-full  bg-gray-300"
+    value={description}
+    onChange={(e) => setdescription(e.target.value)}
+  ></textarea>
+  <label htmlFor="tags" className="text-lg font-bold mt-4 ">
+    Tags
+  </label>
+  <input
+    id="tags"
+    type="text"
+    className="border rounded-md px-2 py-1 mt-1 w-full bg-gray-300"
+    value={Tags}
+    onChange={(e) => setTags(e.target.value)}
+  />
+</div>
+
+
+
+
+ 
+
+
+                <button className="savebtn h-10 w-24 sm:w-32 md:w-40 flex items-center justify-center" onClick={handleSubmit}>
+                  Save
+                </button>
+
               </div>
-  
-              <div className="flex flex-col">
-                <p className="font-bold mb-2 text-sm sm:text-base">Tags</p>
-                <input type="text" className="inputbg border h-10 sm:w-72 md:w-96 rounded-md" onChange={({ target: { value } }) => setTags(value)} />
-              </div>
-  
-              <div className="flex flex-col">
-                <p className="font-bold mb-2 text-sm sm:text-base">Date</p>
-                <input type="text" className="inputbg border h-10 sm:w-72 md:w-96 rounded-md" onChange={({ target: { value } }) => setdate(value)} />
-              </div>
-  
-              <div className="flex flex-col">
-                <p className="font-bold mb-2 text-sm sm:text-base">Article Name</p>
-                <input type="text" className="inputbg border h-10 sm:w-72 md:w-96 rounded-md" onChange={({ target: { value } }) => setTcategories(value)} />
-              </div>
-  
-              <div className="flex flex-col">
-                <p className="font-bold mb-2 text-sm sm:text-base">Article Type</p>
-                <input type="text" className="inputbg border h-10 sm:w-72 md:w-96 rounded-md" onChange={({ target: { value } }) => setdescription(value)} />
-              </div>
-  
-              <div className="flex flex-col">
-                <p className="font-bold mb-2 text-sm sm:text-base">Article</p>
-                <input placeholder="" type="text" className="inputbg border h-32 sm:h-64 md:h-96 sm:w-72 md:w-96 rounded-md" onChange={({ target: { value } }) => setimage(value)} />
-              </div>
-  
-              <button className="savebtn h-10 w-24 sm:w-32 md:w-40 flex items-center justify-center" onClick={handleSubmit}>
-                Save
-              </button>
-            <Link to="/Search">
-              <button className="savebtn inputbg2 flex items-center justify-center" onClick={handleSubmit}>
-               back to Articel
-              </button>
-              </Link>
             </div>
           </div>
         </div>
+
       </div>
-  
-    </div>
-  
-    <CookEaseFooter />
-  </>
-  
+
+      <CookEaseFooter />
+    </>
+
 
   )
 }
