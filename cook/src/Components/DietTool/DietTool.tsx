@@ -5,6 +5,7 @@ import { PieChart } from './PieChart';
 import { GetNutritionByName } from '../../Services/DataService';
 import { GetIngredientsByRecipeId } from '../../Services/DataService';
 import { PostWeightChanges } from '../../Services/DataService';
+import { GetRecipeById } from '../../Services/DataService';
 
 interface Ingredient {
     ingredient: string;
@@ -13,6 +14,7 @@ interface Ingredient {
 
 interface Props {
     recipeId: number;
+    userId: number;
 }
 
 interface Flour {
@@ -31,13 +33,16 @@ interface TotalCalories {
 
 
 
-const DietTool: React.FC<Props> = ({ recipeId }) => {
-    const [stateRecipeId, setStateRecipeId] = useState(recipeId);
+const DietTool: React.FC<Props> = ({ recipeId, userId }) => {
+    const [stateRecipeId, setStateRecipeId] = useState(0);
+    const [isPublisher, setisPublisher] = useState(false);
+    const [localId, setLocalId] = useState(0);
     const [calorieArray, setCalorieArray] = useState<number[]>([]);
     const [proteinArray, setProteinArray] = useState<number[]>([]);
     const [carbArray, setCarbArray] = useState<number[]>([]);
     const [fatArray, setFatArray] = useState<number[]>([]);
     const [sodiumArray, setSodiumArray] = useState<number[]>([]);
+    const [publisherName, setPublisherName] = useState('');
     let [ingredients, setIngredients] = useState<Ingredient[]>([]);
     let [ingredienUpdate, setIngredientUpdate] = useState<Ingredient[]>([]);
     let [totalWeight, setTotalWeight] = useState(() => {
@@ -244,6 +249,24 @@ const DietTool: React.FC<Props> = ({ recipeId }) => {
 
     }
 
+    useEffect(() => {
+        const userInfoString = localStorage.getItem('UserInfo');
+        if (userInfoString) {
+            const userInfo = JSON.parse(userInfoString);
+            // You can use the userInfo object here
+            // Example: set the publisherName state
+            setPublisherName(userInfo.name);
+            setLocalId(userInfo.id);
+            
+
+            if (userInfo.id == userId) {
+                setisPublisher(true);
+            }
+        }
+
+    }, []);
+
+
 
 
     useEffect(() => {
@@ -298,14 +321,11 @@ const DietTool: React.FC<Props> = ({ recipeId }) => {
 
 
 
-
-
-
-
     useEffect(() => {
         const fetchData = async () => {
             let searchRes = await GetIngredientsByRecipeId(recipeId);
             setIngredients(searchRes);
+
         };
         fetchData();
 
@@ -381,13 +401,13 @@ const DietTool: React.FC<Props> = ({ recipeId }) => {
                                 <p>{totalSodium.toFixed(1)}</p>
                             </div>
                         </div>
-                        <div className="flex justify-end mt-6">
+                        {isPublisher ? (<div className="flex justify-end mt-6">
                             <button
                                 onClick={handleUpdate}
                                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 shadow-xl">
-                                Update Button
+                                Save Changes
                             </button>
-                        </div>
+                        </div>) : <div></div>}
                     </div>
                 </div>
             </div>

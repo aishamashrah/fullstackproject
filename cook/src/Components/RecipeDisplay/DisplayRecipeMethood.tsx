@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react'
 import { PostRecipeUpdate } from '../../Services/DataService';
+import { userInfo } from 'os';
 
 
 interface RecipeData {
@@ -23,9 +24,10 @@ interface RecipeData {
 
 type Props = {
     recipeData: RecipeData;
+    UserId: number;
 }
 
-export default function DisplayRecipeMethood({ recipeData }: Props) {
+export default function DisplayRecipeMethood({ recipeData, UserId }: Props) {
 
     const [id, setId] = useState(0);
     const [recipeId, setRecipeId] = useState(0);
@@ -40,8 +42,7 @@ export default function DisplayRecipeMethood({ recipeData }: Props) {
     const [region, setRegion] = useState('');
     const [userID, setUserID] = useState(0);
     const [date, setDate] = useState('');
-    const [isSignedIn, setIsSignedIn] = useState(true);
-
+    const [isPublisher, setisPublisher] = useState(false);
 
 
 
@@ -67,20 +68,7 @@ export default function DisplayRecipeMethood({ recipeData }: Props) {
 
 
 
-    useEffect(() => {
-        const userInfoString = localStorage.getItem('UserInfo');
-        if (userInfoString) {
-          const userInfo = JSON.parse(userInfoString);
-          // You can use the userInfo object here
-          // Example: set the publisherName state
-          setPublisherName(userInfo.name);
-          setUserID(userInfo.id);
-          console.log(userInfo);
-        } else {
-          // User is not logged in
-          setIsSignedIn(false);
-        }
-      }, []);
+ 
 
     const handleImage = (event: React.ChangeEvent<HTMLInputElement>) => {
         let file = event.target.files?.[0];
@@ -112,12 +100,30 @@ export default function DisplayRecipeMethood({ recipeData }: Props) {
         setDate(recipeData.date);
 
 
-    }, [recipeData.id]);
+        const userInfoString = localStorage.getItem('UserInfo'); 
+        if (userInfoString) {
+          const userInfo = JSON.parse(userInfoString);
+          // You can use the userInfo object here
+          // Example: set the publisherName state
+          setPublisherName(userInfo.name);
+        console.log(recipeData.userID)
+          console.log(`userID: ${userInfo.id} recipeData.userID: ${UserId} isPublisher: ${isPublisher}`)
+
+                  if (userInfo.id == UserId) {
+            setisPublisher(true);
+        }
+        }
 
 
+    }, [recipeData.id, recipeData.userID]);
 
 
+    useEffect(() => {
+   
+ 
+      }, []);
 
+ 
     return (
         <div className="m-10">
             <div className="bg-[#B8D3C8]  p-6 md:p-8 rounded-2xl shadow-2xl border-2 border-[#88AA99]">
@@ -204,12 +210,14 @@ export default function DisplayRecipeMethood({ recipeData }: Props) {
                         />
                     </div>
                 </div>
-                <div className='flex justify-end'>
+
+           {isPublisher ? 
+           (<div className='flex justify-end'>
                     <button className=" bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 mt-6 w-full md:w-auto rounded-md shadow-2xl"
                         onClick={handleClick}>
                         Save Changes
                     </button>
-                </div>
+                </div>) : <div></div>}
 
             </div>
         </div>

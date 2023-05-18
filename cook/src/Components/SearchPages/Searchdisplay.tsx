@@ -17,10 +17,8 @@ export default function Display() {
         const fetchData = async () => {
             let searchRes = await GetAllSearchpage();
             setBlogItems(searchRes);
-            console.log(searchRes);
             let articelRes = await GetAllArticel();
             setArticelItems(articelRes);
-            console.log(articelRes);
         };
         fetchData();
 

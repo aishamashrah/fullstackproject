@@ -28,7 +28,7 @@ export default function Searchpages() {
       // Example: set the publisherName state
       setpublisherName(userInfo.name);
       setuserID(userInfo.id);
-      console.log(userInfo);
+      
     } else {
       // User is not logged in
       setisPublisher(false);
@@ -40,10 +40,8 @@ export default function Searchpages() {
     const fetchData = async () => {
       let searchRes = await GetAllSearchpage();
       setBlogItems(searchRes);
-      console.log(searchRes);
       let articelRes = await GetAllArticel();
-      setArticelItems(articelRes);
-      console.log(articelRes);      
+      setArticelItems(articelRes);      
     };
     fetchData();
     
