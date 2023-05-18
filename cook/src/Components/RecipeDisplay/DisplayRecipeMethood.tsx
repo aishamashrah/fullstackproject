@@ -183,13 +183,13 @@ export default function DisplayRecipeMethood({ recipeData }: Props) {
                     <div className="flex flex-col justify-center items-center mb-6">
                         <div className="w-full h-full p-10 rounded-2xl overflow-hidden">
                             <img
-                                className="object-fit w-full h-full"
+                                className="object-fit w-full h-full max-h-[720px] rounded-2xl shadow-lg"
                                 src={image}
                                 alt="Recipe Image"
                             />
                         </div>
                         <label htmlFor="image" className="text-lg font-bold mt-4">
-                            Upload Image
+                            Upload new Image
                         </label>
                         <input
                             id="image"

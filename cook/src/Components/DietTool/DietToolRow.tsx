@@ -88,22 +88,26 @@ function DietToolRow(props: DietToolRowProps) {
 
   return (
     <>
-      <div className="grid grid-cols-7 justify-evenly gap-6  text-xs sm:text-lg">
-        <div className="w-full sm:w-20 rounded-md mt-1 weight">{props.name}</div>
-        <div>
-          <input
-            type=""
-            value={weightValue}
-            onChange={handleWeightChange}
-            className="w-full sm:w-20 rounded-md mt-1 weight1 border border-black"
-          />
-        </div>
-        <div className="w-full sm:w-20 rounded-md mt-1 weight">{caloriesValue.toFixed(1)}</div>
-        <div className="w-full sm:w-20 rounded-md mt-1 weight">{proteinValue.toFixed(1)}</div>
-        <div className="w-full sm:w-20 rounded-md mt-1 weight">{carbsValue.toFixed(1)}</div>
-        <div className="w-full sm:w-20 rounded-md mt-1 weight">{fatValue.toFixed(1)}</div>
-        <div className="w-full sm:w-20 rounded-md mt-1 weight">{sodiumValue.toFixed(1)}</div>
-      </div>
+<div className="grid grid-cols-7 gap-2 justify-items-center items-center text-sm sm:text-lg bg-gray-100 rounded-lg p-4">
+  <div className="col-span-2 sm:col-span-1">
+    <label className="font-bold text-center">{props.name}</label>
+  </div>
+  <div className="col-span-2 sm:col-span-1">
+    <input
+      type="number"
+      value={weightValue}
+      onChange={handleWeightChange}
+      className="w-full p-2 border border-gray-300 rounded-md"
+      placeholder="Weight in Grams"
+    />
+  </div>
+  <div className="col-span-1 sm:col-span-1">{caloriesValue.toFixed(1)}</div>
+  <div className="col-span-1 sm:col-span-1">{proteinValue.toFixed(1)}</div>
+  <div className="col-span-1 sm:col-span-1">{carbsValue.toFixed(1)}</div>
+  <div className="col-span-1 sm:col-span-1">{fatValue.toFixed(1)}</div>
+  <div className="col-span-1 sm:col-span-1">{sodiumValue.toFixed(1)}</div>
+</div>
+
     </>
   );
 }

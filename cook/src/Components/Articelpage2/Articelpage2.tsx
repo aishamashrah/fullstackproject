@@ -6,8 +6,6 @@ import { Link } from 'react-router-dom';
 import DateComponent from '../Recipes/GetDate';
 
 export default function Articelpage2() {
-  const [blogItems, setBlogItems] = useState([]);
-  const [articelItems, setArticelItems] = useState([]);
   const [userID, setuserID] = useState(0);
   const [date, setdate] = useState('');
   const [publisherName, setpublisherName] = useState('');
