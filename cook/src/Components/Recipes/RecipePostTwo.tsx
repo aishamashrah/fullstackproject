@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { PostRecipeData } from "../../Services/DataService";
 import { PostIngredientData } from "../../Services/DataService";
+import DateComponent from "./GetDate";
 
 
 interface Row {
@@ -14,6 +15,7 @@ interface Props {
 }
 
 const RecipiePostTwo = (props: Props) => {
+  
   const [rows, setRows] = useState<Row[]>([{ ingredient: "", Weight: 0 }]);
   const [userID, setuserID] = useState(0);
   const [date, setdate] = useState('');
@@ -46,6 +48,7 @@ const RecipiePostTwo = (props: Props) => {
       setpublisherName(userInfo.username);
       setuserID(userInfo.id);
       console.log(userInfo);
+      
     }
   }, []);
 

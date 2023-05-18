@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import CookEaseFooter from '../Footer/Footer'
-import CookEaseHeader from '../Header/Header'
+import CookEaseFooter from '../Footer/Footer';
+import CookEaseHeader from '../Header/Header';
 import { ArticelData } from '../../Services/DataService';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import DateComponent from '../Recipes/GetDate';
 
 export default function Articelpage2() {
-
-
   const [blogItems, setBlogItems] = useState([]);
   const [articelItems, setArticelItems] = useState([]);
   const [userID, setuserID] = useState(0);
@@ -27,24 +26,21 @@ export default function Articelpage2() {
       reader.onloadend = () => {
         console.log(reader.result);
         setimage(reader.result as string);
-      }
+      };
       reader.readAsDataURL(file);
     }
-  }
-  
+  };
 
   useEffect(() => {
     const userInfoString = localStorage.getItem('UserInfo');
     if (userInfoString) {
       const userInfo = JSON.parse(userInfoString);
-      // You can use the userInfo object here
-      // Example: set the publisherName state
       setpublisherName(userInfo.username);
-      console.log(userInfo);
+    
     }
+    let Date = DateComponent();
+    setdate(Date);
   }, []);
-  
-
 
   const handleSubmit = () => {
     let Data = {
@@ -64,98 +60,99 @@ export default function Articelpage2() {
     console.log(Data);
     ArticelData(Data);
   };
-  return (
 
+  return (
     <>
       <CookEaseHeader />
-      <br />
-      <br />
 
-      <div className="">
-        <div className="gap-4 header py-6 sm:px-4 md:p-14">
-          <div className="text-2xl sm:text-3xl md:text-4xl font-lobster">
-            <div>{publisherName}</div>
+      <div className="mt-24 mb-16">
+        <h1 className="text-5xl p-10 font-semibold pl-10 font-lobster bg-[#B8D3C8] m">Blog Entry</h1>
+      </div>
+
+      <div className="bg-[#B8D3C8] p-5 lg:p-10 rounded-lg mx-4 sm:mx-8 lg:mx-64 shadow-2xl border-2 border-[#88AA99]">
+        <div className="grid grid-cols-1 gap-4">
+          <div>
+            <label htmlFor="title" className="font-bold md:text-2xl">
+              Title
+            </label>
+            <input
+              id="title"
+              type="text"
+              className="w-full p-2 border border-gray-300 rounded-md mt-2 lg:h-12"
+              onChange={(e) => settitle(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="publisher" className="font-bold mt-4 md:text-2xl">
+              Publisher
+            </label>
+            <input
+              id="publisher"
+              type="text"
+              className="w-full p-2 border border-gray-300 rounded-md mt-2 lg:h-12"
+              value={publisherName}
+            />
+          </div>
+          <div>
+            <label htmlFor="categories" className="font-bold mt-4 md:text-2xl">
+              Categories
+            </label>
+            <input
+              id="categories"
+              type="text"
+              className="w-full p-2 border border-gray-300 rounded-md mt-2 lg:h-12"
+              value={categories}
+              onChange={(e) => setTcategories(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="tags" className="font-bold mt-4 md:text-2xl">
+              Tags
+            </label>
+            <input
+              id="tags"
+              type="text"
+              className="w-full p-2 border border-gray-300 rounded-md mt-2 lg:h-12"
+              value={Tags}
+              onChange={(e) => setTags(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="description" className="font-bold mt-4 md:text-2xl">
+              Description
+            </label>
+            <textarea
+              id="description"
+              className="w-full p-2 border border-gray-300 rounded-md resize-none h-96 mt-2"
+              value={description}
+              onChange={(e) => setdescription(e.target.value)}
+            ></textarea>
+          </div>
+          <div className="w-3/4 inline-block">
+            <label htmlFor="image" className="font-bold mr-2 mt-4 md:text-2xl">
+              Image:
+            </label>
+            <input
+              id="image"
+              type="file"
+              accept="image/png, image/jpg"
+              className="max-w-full p-2 border border-gray-300 rounded-md"
+              onChange={handleImage}
+            />
           </div>
         </div>
+      </div>
 
-        <div className="mx-auto max-w-xl sm:max-w-2xl md:max-w-3xl">
-          <div className="p-4 sm:p-8 md:p-15">
-            <div className="Recipesbg py-8 sm:p-10">
-              <div className="bg2 p-6 sm:p-10  flex-col gap-4 ">
-              <div>
-  <label htmlFor="title" className="text-lg font-bold">
-    Title
-  </label>
-  <input
-    id="title"
-    type="text"
-    className="border rounded-md px-2 py-1 mt-1 w-full  bg-gray-300"
-    onChange={(e) => settitle(e.target.value)}
-  />
-  <label htmlFor="publisher" className="text-lg font-bold mt-4">
-    Publisher
-  </label>
-  <input
-    id="publisher"
-    type="text"
-    className="border rounded-md px-2 py-1 mt-1 w-full  bg-gray-300"
-    value={publisherName}
-    
-  />
-  <label htmlFor="diet" className="text-lg font-bold mt-4">
-    Diet
-  </label>
-  <input
-    id="diet"
-    type="text"
-    className="border rounded-md px-2 py-1 mt-1 w-full  bg-gray-300"
-    value={categories}
-    onChange={(e) => setTcategories(e.target.value)}
-  />
-  <label htmlFor="description" className="text-lg font-bold mt-4">
-    Description
-  </label>
-  <textarea
-    id="description"
-    className="border rounded-md px-2 py-1 mt-1 min-h-[300px] w-full  bg-gray-300"
-    value={description}
-    onChange={(e) => setdescription(e.target.value)}
-  ></textarea>
-    <label htmlFor="image" className="text-lg font-bold mt-4 ">
-    Image
-  </label>
-  <input
-    id="image"
-    type="file" 
-    accept="image/png, image/jpg"
-    className="border rounded-md px-2 py-1 mt-1 w-full bg-gray-300"
-    value={Tags}
-    onChange={handleImage}
-  />
-  
-</div>
-
-
-
-
-
- 
-
-
-                <button className="savebtn h-10 w-24 sm:w-32 md:w-40 flex items-center justify-center" onClick={handleSubmit}>
-                  Save
-                </button>
-
-              </div>
-            </div>
-          </div>
-        </div>
-
+      <div className="flex justify-center mt-12 mb-16">
+        <button
+          className="px-4 py-2 text-white bg-green-500 rounded-md w-24 sm:w-32 md:w-40 text-lg"
+          onClick={handleSubmit}
+        >
+          Save
+        </button>
       </div>
 
       <CookEaseFooter />
     </>
-
-
-  )
+  );
 }
