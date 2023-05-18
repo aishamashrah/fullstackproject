@@ -89,8 +89,9 @@ export default function Articelpage2() {
             <input
               id="publisher"
               type="text"
+              defaultValue={publisherName}
               className="w-full p-2 border border-gray-300 rounded-md mt-2 lg:h-12"
-              value={publisherName}
+              
             />
           </div>
           <div>
