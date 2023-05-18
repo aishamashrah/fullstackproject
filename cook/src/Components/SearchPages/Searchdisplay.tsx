@@ -5,12 +5,12 @@ import CookEaseHeader from '../Header/Header'
 import CookEaseFooter from '../Footer/Footer'
 
 export default function Display() {
- 
+
     return (
         <>
-     
-        
- 
+
+
+
 
             <div>
                 <CookEaseHeader />
@@ -20,21 +20,17 @@ export default function Display() {
 
             <Searchbar />
 
-            <div className="mx-auto max-w-6xl  mt-10">
+            <div className="">
 
-                <div className="grid gap-8  mx-10
-                        md:grid-cols-3 
-                        lg:grid-cols-3  lg:mx-10
-                      
-                        ">
-          <Searchpages/>
-               
+                <div className="grid grid-cols-3">
+                    <Searchpages />
+
                 </div>
-             
-               
-             
 
- 
+
+
+
+
 
             </div>
 

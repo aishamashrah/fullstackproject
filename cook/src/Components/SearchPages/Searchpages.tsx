@@ -3,6 +3,7 @@ import { GetAllSearchpage } from '../../Services/DataService';
 import { GetAllArticel } from '../../Services/DataService';
 import ArticelData from '../Articlepage/Articel';
 import { Link  } from 'react-router-dom';
+import SearchCard from './SearchCards';
 
 
 
@@ -20,14 +21,9 @@ export default function Searchpages() {
       let searchRes = await GetAllSearchpage();
       setBlogItems(searchRes);
       console.log(searchRes);
-    
       let articelRes = await GetAllArticel();
       setArticelItems(articelRes);
-      console.log(articelRes);
-
-      
-
-      
+      console.log(articelRes);      
     };
     fetchData();
     
@@ -38,59 +34,27 @@ return (
   <>
   
   {blogItems.map((item: { id: number, image: string, title: string, description: string }) => (
-  <div key={item.id} className="w-72 h-80 mt-8 shadow-xl">
-    <Link to={`/RecipeDisplay`} state={{num: item.id}}>
-      <button className="border border-gray-300 rounded-lg overflow-hidden hover:shadow-md">
-        <div>
-          <img src={item.image} className="w-full h-40 object-cover mb-4 rounded-t-lg" alt="Recipe Image" />
-          <div className="p-5 bg-white rounded-b-lg">
-            <h1 className="text-xl font-bold mb-2">{item.title}</h1>
-            <p className="text-gray-600">{item.description.substring(0, 100)}</p>
-          </div>
-        </div>
-      </button>
-    </Link>
-  </div>
+  <SearchCard
+    key={item.id}
+    id={item.id}
+    image={item.image}
+    title={item.title}
+    description={item.description}
+    linkTo='/RecipeDisplay'
+  />
 ))}
+
 
 {articelItems.map((item: { id: number, image: string, title: string, description: string }) => (
-  <div key={item.id} className="w-72 h-80 mt-8 shadow-xl">
-    <Link to={`/Article`} state={{num: item.id}}>
-      <button className="border border-gray-300 rounded-lg overflow-hidden hover:shadow-md">
-        <div>
-          <img src={item.image} className="w-full h-40 object-cover mb-4 rounded-t-lg" alt="Article Image" />
-          <div className="p-5 bg-white rounded-b-lg">
-            <h1 className="text-xl font-bold mb-2">{item.title}</h1>
-            <p className="text-gray-600">{item.description.substring(0, 100)}</p>
-          </div>
-        </div>
-      </button>
-    </Link>
-  </div>
+  <SearchCard
+  key={item.id}
+  id={item.id}
+  image={item.image}
+  title={item.title}
+  description={item.description}
+  linkTo='/Article'
+/>
 ))}
-
-
-
-
   </>
 );
-
- 
-    }
-
-
-// export default function Searchpages(props) {
-//   return (
-//     <>
-     
-//     <div className=" gap-4 max-w-5xl mt-8  Image">
-//     <img src={props.img} className="w-full h-40 object-cover mb-4 rounded-lg"/>
-//   <div className=" p-5 rounded-lg shadow-md">
-//     <h1>{props.type}</h1>
-//     <p className="text-gray-600"> {props.text}</p>
-//   </div>
-  
-// </div>
-// </>
-//   )
-// }
+}
