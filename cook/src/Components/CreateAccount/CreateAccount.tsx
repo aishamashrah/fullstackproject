@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { CreateAccountFetch } from "../../Services/DataService";
+import { CreateAccountFetch, getLoggedInUserData } from "../../Services/DataService";
 import { Link } from 'react-router-dom';
 
 interface MyError {
@@ -16,36 +16,49 @@ export default function CreateAccount() {
     const navigate = useNavigate();
     const handleSubmit = async () => {
         let userData = {
-          Id: 0,
-          Username,
-          Password
+            Id: 0,
+            Username,
+            Password
         };
-      
+
 
         try {
-          const { response, data } = await CreateAccountFetch(userData);
-          const responseStatus = response.status;
-          console.log(responseStatus);
+            const { response, data } = await CreateAccountFetch(userData);
+            const responseStatus = response.status;
+            console.log(responseStatus);
             console.log(data);
-          if (responseStatus === 200) {
-            
-            if (data === false) {
-              setErrorMessage('Username taken');
-            } else {
-              navigate('/');
-           
+            if (responseStatus === 200) {
+
+                if (data === false) {
+                    setErrorMessage('Username taken');
+                } else {
+                    console.log('Account created')
+                    localStorage.removeItem("UserInfo");
+
+                    let response = await getLoggedInUserData(Username);
+                    console.log(response)
+                    let userInfo = {
+                        id: response.id,
+                        name: response.username,
+                    };
+                    console.log(userInfo);
+
+                    localStorage.setItem("UserInfo", JSON.stringify(userInfo)); // Save the userInfo object to local storage
+                    navigate('/');
+                    
+
+                }
             }
-          } 
         } catch (error) {
-          if ((error as MyError).message) {
-            setErrorMessage((error as MyError).message);
-            return;
-          } else {
-            setErrorMessage('An unknown error occurred');
-          }
+            if ((error as MyError).message) {
+                setErrorMessage((error as MyError).message);
+                return;
+            } else {
+                setErrorMessage('An unknown error occurred');
+            }
         }
-      };
-      
+    };
+
 
 
 
@@ -78,11 +91,6 @@ export default function CreateAccount() {
                     />
                 </label>
             </div>
-            {/* <div className="flex items-center justify-center">
-                <label className="block pt-3">
-                    <input type="email" name="email" className="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-72 rounded-md sm:text-sm focus:ring-1" placeholder="confirm password" />
-                </label>
-            </div> */}
             <p className="text-center text-xs ml-28 " >Already have an account?
                 <Link to="/Signin">
                     <button className="text-blue-600">login</button>

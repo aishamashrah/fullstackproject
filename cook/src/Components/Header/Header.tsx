@@ -23,7 +23,7 @@ export default function CookEaseHeader() {
         <>
             <div className='flex justify-between border-b-2 bg-gray-200 shadow-xl border-black border-solid  w-full h-24'>
                 <div className="flex ml-8 ">
-                <Link to="/homepage">
+                <Link to="/">
                     <button>
                      <img className='h-16 rotate-10' src={chefHat} />   
                     </button>
