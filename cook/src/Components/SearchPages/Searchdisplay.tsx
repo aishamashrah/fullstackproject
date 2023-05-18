@@ -33,7 +33,7 @@ export default function Display() {
                 <CookEaseHeader />
             </div>
             <div className="mt-24 mb-16">
-                <h1 className="text-5xl p-10 font-semibold pl-10 font-lobster bg-[#B8D3C8] m">Search</h1>
+                <h1 className="text-5xl p-10 font-semibold pl-10 font-lobster bg-[#B8D3C8]">Search</h1>
             </div>
             <div className='grid grid-cols-1 gap-8 mx-10
                              sm:gap-8 sm:mx-28

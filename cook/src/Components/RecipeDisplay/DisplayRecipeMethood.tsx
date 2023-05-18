@@ -34,7 +34,7 @@ export default function DisplayRecipeMethood({ recipeData }: Props) {
     const [diet, setDiet] = useState(recipeData.diet);
     const [description, setDescription] = useState(recipeData.description);
     const [tags, setTags] = useState(recipeData.tags);
-    const [image, setImage] = useState(recipeData.image);   
+    const [image, setImage] = useState(recipeData.image);
     const [isPublished, setIsPublished] = useState(true);
     const [isDeleted, setIsDeleted] = useState(false);
     const [region, setRegion] = useState('');
@@ -61,10 +61,35 @@ export default function DisplayRecipeMethood({ recipeData }: Props) {
             date: date,
         }
         console.log(Data);
-        PostRecipeUpdate(Data);
+        // PostRecipeUpdate(Data);
     };
 
+    
 
+    useEffect(() => {
+        const userInfoString = localStorage.getItem('UserInfo');
+        if (userInfoString) {
+          const userInfo = JSON.parse(userInfoString);
+          // You can use the userInfo object here
+          // Example: set the publisherName state
+          setPublisherName(userInfo.username);
+          setUserID(userInfo.id);
+          console.log(userInfo);
+    
+        }
+      }, []);
+
+      const handleImage = (event: React.ChangeEvent<HTMLInputElement>) => {
+        let file = event.target.files?.[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onloadend = () => {
+            console.log(reader.result);
+            setImage(reader.result as string);
+          };
+          reader.readAsDataURL(file);
+        }
+      };
 
 
 
@@ -84,80 +109,109 @@ export default function DisplayRecipeMethood({ recipeData }: Props) {
         setDate(recipeData.date);
 
 
-      }, [recipeData.id]);
-      
+    }, [recipeData.id]);
+
 
 
 
 
     return (
-        <div className="m-10 ">
-            <div className="bg-[#CCE3DE] p-4 m-20 md:mx-0 border border-black">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pl-2">
+        <div className="m-10">
+            <div className="bg-[#B8D3C8]  p-6 md:p-8 rounded-lg shadow-2xl border-2 border-[#88AA99]">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                        <label htmlFor="title" className="text-lg font-bold">
-                            Title
+                        <div className="flex flex-col mb-6">
+                            <label htmlFor="title" className="text-lg font-bold mb-2">
+                                Title
+                            </label>
+                            <input
+                                id="title"
+                                type="text"
+                                className="border rounded-md px-4 py-2"
+                                value={title}
+                                onChange={(e) => setTitle(e.target.value)}
+                            />
+                        </div>
+                        <div className="flex flex-col mb-6">
+                            <label htmlFor="publisher" className="text-lg font-bold mb-2">
+                                Publisher
+                            </label>
+                            <input
+                                id="publisher"
+                                type="text"
+                                className="border rounded-md px-4 py-2"
+                                defaultValue={recipeData.publisherName}
+                                onChange={(e) => setPublisherName(e.target.value)}
+                            />
+                        </div>
+                        <div className="flex flex-col mb-6">
+                            <label htmlFor="diet" className="text-lg font-bold mb-2">
+                                Diet
+                            </label>
+                            <input
+                                id="diet"
+                                type="text"
+                                className="border rounded-md px-4 py-2"
+                                defaultValue={recipeData.diet}
+                                onChange={(e) => setDiet(e.target.value)}
+                            />
+                        </div>
+                        <div className="flex flex-col mb-6">
+                            <label htmlFor="description" className="text-lg font-bold mb-2">
+                                Description
+                            </label>
+                            <textarea
+                                id="description"
+                                className="border rounded-md px-4 py-2 min-h-[300px]"
+                                defaultValue={recipeData.description}
+                                onChange={(e) => setDescription(e.target.value)}
+                            ></textarea>
+                        </div>
+                        <div className="flex flex-col mb-6">
+                            <label htmlFor="tags" className="text-lg font-bold mb-2">
+                                Tags
+                            </label>
+                            <input
+                                id="tags"
+                                type="text"
+                                className="border rounded-md px-4 py-2"
+                                defaultValue={recipeData.tags}
+                                onChange={(e) => setTags(e.target.value)}
+                            />
+                        </div>
+                    </div>
+                    <div className="flex flex-col justify-center items-center mb-6">
+                        <div className="w-full h-full p-10 rounded-2xl overflow-hidden">
+                            <img
+                                className="object-fit w-full h-full"
+                                src={image}
+                                alt="Recipe Image"
+                            />
+                        </div>
+                        <label htmlFor="image" className="text-lg font-bold mt-4">
+                            Upload Image
                         </label>
                         <input
-                            id="title"
-                            type="text"
-                            className="border rounded-md px-2 py-1 mt-1 w-full"
-                            value={title} // Use value prop instead of defaultValue
-                            onChange={(e) => setTitle(e.target.value)}
-                        />
-                        <label htmlFor="publisher" className="text-lg font-bold mt-4">
-                            Publisher
-                        </label>
-                        <input
-                            id="publisher"
-                            type="text"
-                            className="border rounded-md px-2 py-1 mt-1 w-full"
-                            defaultValue={recipeData.publisherName}
-                            onChange={(e) => setPublisherName(e.target.value)}
-                        />
-                        <label htmlFor="diet" className="text-lg font-bold mt-4">
-                            Diet
-                        </label>
-                        <input
-                            id="diet"
-                            type="text"
-                            className="border rounded-md px-2 py-1 mt-1 w-full"
-                            defaultValue={recipeData.diet}
-                            onChange={(e) => setDiet(e.target.value)}
-                        />
-                        <label htmlFor="description" className="text-lg font-bold mt-4">
-                            Description
-                        </label>
-                        <textarea
-                            id="description"
-                            className="border rounded-md px-2 py-1 mt-1 min-h-[300px] w-full"
-                            defaultValue={recipeData.description}
-                            onChange={(e) => setDescription(e.target.value)}
-                        ></textarea>
-                        <label htmlFor="tags" className="text-lg font-bold mt-4">
-                            Tags
-                        </label>
-                        <input
-                            id="tags"
-                            type="text"
-                            className="border rounded-md px-2 py-1 mt-1 w-full"
-                            defaultValue={recipeData.tags}
-                            onChange={(e) => setTags(e.target.value)}
+                            id="image"
+                            type="file"
+                            accept="image/*"
+                            
+                            className="rounded-md px-4 py-2 mt-2"
+                          onChange={handleImage}
                         />
                     </div>
-                    <div className="flex justify-center">
-                        <img
-                            className="mt-8 object-cover max-w-full h-[90%]"
-                            src={recipeData.image}
-                            alt="Recipe Image"
-                        />
-                    </div>
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-4 w-1/2" onClick={handleClick}>
-                        Save Changes
-                    </button>
                 </div>
+                <div className='flex justify-end'>
+  <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 mt-6 w-full md:w-auto rounded-md shadow-xl"
+  onClick={handleClick}>
+    Save Changes
+  </button>
+</div>
+
             </div>
         </div>
+
+
 
     )
 }
