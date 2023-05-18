@@ -41,12 +41,13 @@ export default function Searchpages() {
       let searchRes = await GetAllSearchpage();
       setBlogItems(searchRes);
       let articelRes = await GetAllArticel();
-      setArticelItems(articelRes);      
+      setArticelItems(articelRes);  
+      console.log('searchRes');     
     };
     fetchData();
     
   }, []);
-  
+  console.log('test') 
       
 return (
   <>

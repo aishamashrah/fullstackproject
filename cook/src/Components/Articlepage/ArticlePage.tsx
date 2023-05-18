@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import ArticleInfo from './ArticleInfo'
 import { GetArticleById } from '../../Services/DataService'
 import { useLocation } from 'react-router-dom';
+import DateComponent from '../Recipes/GetDate';
 
 // import { useHistory } from 'react-router-dom'
 import { useParams } from 'react-router-dom';
@@ -32,6 +33,8 @@ const articleId = location.state?.num;
             let searchRes = await GetArticleById(articleId);
             
             setArticle(searchRes[0]);
+            const todaysDate = DateComponent();
+            setArticle({...article, date: todaysDate});
             
         };
         fetchData();

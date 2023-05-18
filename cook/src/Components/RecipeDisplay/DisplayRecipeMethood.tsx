@@ -32,11 +32,11 @@ export default function DisplayRecipeMethood({ recipeData, UserId }: Props) {
     const [id, setId] = useState(0);
     const [recipeId, setRecipeId] = useState(0);
     const [title, setTitle] = useState('');
-    const [publisherName, setPublisherName] = useState(recipeData.publisherName);
-    const [diet, setDiet] = useState(recipeData.diet);
-    const [description, setDescription] = useState(recipeData.description);
-    const [tags, setTags] = useState(recipeData.tags);
-    const [image, setImage] = useState(recipeData.image);
+    const [publisherName, setPublisherName] = useState('');
+    const [diet, setDiet] = useState('');
+    const [description, setDescription] = useState('');
+    const [tags, setTags] = useState('');
+    const [image, setImage] = useState('');
     const [isPublished, setIsPublished] = useState(true);
     const [isDeleted, setIsDeleted] = useState(false);
     const [region, setRegion] = useState('');
@@ -52,7 +52,7 @@ export default function DisplayRecipeMethood({ recipeData, UserId }: Props) {
             recipeId: recipeId,
             title: title,
             publisherName: publisherName,
-            diet: diet,
+            // diet: diet,
             description: description,
             tags: tags,
             image: image,
@@ -63,7 +63,7 @@ export default function DisplayRecipeMethood({ recipeData, UserId }: Props) {
             date: date,
         }
         console.log(Data);
-        // PostRecipeUpdate(Data);
+        PostRecipeUpdate(Data);
     };
 
 
@@ -85,43 +85,35 @@ export default function DisplayRecipeMethood({ recipeData, UserId }: Props) {
 
 
     useEffect(() => {
-        setId(recipeData.id);
-        setRecipeId(recipeData.recipeId);
-        setTitle(recipeData.title);
-        setPublisherName(recipeData.publisherName);
-        setDiet(recipeData.diet);
-        setDescription(recipeData.description);
-        setTags(recipeData.tags);
-        setImage(recipeData.image);
-        setIsPublished(recipeData.isPublished);
-        setIsDeleted(recipeData.isDeleted);
-        setRegion(recipeData.region);
-        setUserID(recipeData.userID);
-        setDate(recipeData.date);
-
-
-        const userInfoString = localStorage.getItem('UserInfo'); 
+        console.log(recipeData);
+        if (recipeData) {
+          setId(recipeData.id);
+          setRecipeId(recipeData.recipeId);
+          setTitle(recipeData.title);
+          setDiet(recipeData.diet);
+          setDescription(recipeData.description);
+          setTags(recipeData.tags);
+          setImage(recipeData.image);
+          setIsPublished(recipeData.isPublished);
+          setIsDeleted(recipeData.isDeleted);
+          setRegion(recipeData.region);
+          setUserID(recipeData.userID);
+          setDate(recipeData.date);
+          setPublisherName("Daniel");
+        }
+      
+        const userInfoString = localStorage.getItem('UserInfo');
         if (userInfoString) {
           const userInfo = JSON.parse(userInfoString);
-          // You can use the userInfo object here
-          // Example: set the publisherName state
-          setPublisherName(userInfo.name);
-        console.log(recipeData.userID)
-          console.log(`userID: ${userInfo.id} recipeData.userID: ${UserId} isPublisher: ${isPublisher}`)
-
-                  if (userInfo.id == UserId) {
+          
+          if (userInfo.id === UserId) {
             setisPublisher(true);
+          }
         }
-        }
+      }, [recipeData]);
 
 
-    }, [recipeData.id, recipeData.userID]);
-
-
-    useEffect(() => {
    
- 
-      }, []);
 
  
     return (
@@ -149,8 +141,8 @@ export default function DisplayRecipeMethood({ recipeData, UserId }: Props) {
                                 id="publisher"
                                 type="text"
                                 className="border rounded-md px-4 py-2"
-                                defaultValue={recipeData.publisherName}
-                                onChange={(e) => setPublisherName(e.target.value)}
+                                value={publisherName}
+                                
                             />
                         </div>
                         <div className="flex flex-col mb-6">
@@ -161,7 +153,7 @@ export default function DisplayRecipeMethood({ recipeData, UserId }: Props) {
                                 id="diet"
                                 type="text"
                                 className="border rounded-md px-4 py-2"
-                                defaultValue={recipeData.diet}
+                                defaultValue={diet}
                                 onChange={(e) => setDiet(e.target.value)}
                             />
                         </div>
@@ -172,7 +164,7 @@ export default function DisplayRecipeMethood({ recipeData, UserId }: Props) {
                             <textarea
                                 id="description"
                                 className="border rounded-md px-4 py-2 min-h-[300px]"
-                                defaultValue={recipeData.description}
+                                defaultValue={description}
                                 onChange={(e) => setDescription(e.target.value)}
                             ></textarea>
                         </div>
@@ -184,7 +176,7 @@ export default function DisplayRecipeMethood({ recipeData, UserId }: Props) {
                                 id="tags"
                                 type="text"
                                 className="border rounded-md px-4 py-2"
-                                defaultValue={recipeData.tags}
+                                defaultValue={tags}
                                 onChange={(e) => setTags(e.target.value)}
                             />
                         </div>

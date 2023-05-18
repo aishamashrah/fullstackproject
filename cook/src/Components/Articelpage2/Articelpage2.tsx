@@ -3,7 +3,7 @@ import CookEaseFooter from '../Footer/Footer';
 import CookEaseHeader from '../Header/Header';
 import { ArticelData } from '../../Services/DataService';
 import { Link } from 'react-router-dom';
-import DateComponent from '../Recipes/GetDate';
+import CustomDateComponent from '../Recipes/GetDate';
 
 export default function Articelpage2() {
   const [userID, setuserID] = useState(0);
@@ -23,7 +23,6 @@ export default function Articelpage2() {
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        console.log(reader.result);
         setimage(reader.result as string);
       };
       reader.readAsDataURL(file);
@@ -31,18 +30,15 @@ export default function Articelpage2() {
   };
 
   useEffect(() => {
-    let date = DateComponent();
+    const date = CustomDateComponent();
+    console.log(date)
     setdate(date);
     const userInfoString = localStorage.getItem('UserInfo');
     if (userInfoString) {
       const userInfo = JSON.parse(userInfoString);
-      // You can use the userInfo object here
-      // Example: set the publisherName state
       setpublisherName(userInfo.name);
       setuserID(userInfo.id);
-      console.log(userInfo);
     } else {
-      // User is not logged in
       setIsSignedIn(false);
     }
   }, []);
@@ -61,8 +57,6 @@ export default function Articelpage2() {
       isPublished: isPublished,
       isDeleted: isDeleted,
     };
-
-    console.log(Data);
     ArticelData(Data);
   };
 

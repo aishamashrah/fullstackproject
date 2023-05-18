@@ -29,20 +29,3 @@ const SearchCard: React.FC<SearchCardProps> = ({ id, image, title, description, 
 };
 
 export default SearchCard;
-
-
-
-
-      {/* <Link to={linkTo} state={{ num: id }}>
-        <button className="flex flex-col items-center justify-between w-full h-full border border-gray-300 rounded-lg hover:shadow-md">
-          <div className="relative w-full h-2/5">
-            <img src={image} className="w-full h-full object-cover rounded-t-lg" alt="Recipe Image" />
-            <div className="absolute top-0 left-0 p-2 bg-gray-800 bg-opacity-50 rounded-t-lg">
-              <span className="text-white text-sm">{title}</span>
-            </div>
-          </div>
-          <div className="p-4 flex-grow">
-            <p className="text-gray-700">{description.substring(0, 100)}</p>
-          </div>
-        </button>
-      </Link> */}
