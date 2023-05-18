@@ -15,7 +15,7 @@ interface Props {
 }
 
 const RecipiePostTwo = (props: Props) => {
-  
+
   const [rows, setRows] = useState<Row[]>([{ ingredient: "", Weight: 0 }]);
   const [userID, setuserID] = useState(0);
   const [date, setdate] = useState('');
@@ -48,7 +48,7 @@ const RecipiePostTwo = (props: Props) => {
       setpublisherName(userInfo.username);
       setuserID(userInfo.id);
       console.log(userInfo);
-      
+
     }
   }, []);
 
@@ -62,7 +62,7 @@ const RecipiePostTwo = (props: Props) => {
       reader.readAsDataURL(file);
     }
   }
-  
+
 
 
   const handleSubmit = () => {
@@ -107,131 +107,133 @@ const RecipiePostTwo = (props: Props) => {
   return (
     <>
       <div className="flex justify-center items-center">
-  <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2  w-full max-w-7xl">
-    <div className="bg-[#B8D3C8] p-3 lg:p-6 rounded-lg mx-8 shadow-2xl border-2 border-[#88AA99]">
-      <form className="grid grid-cols-1 gap-4">
-        <div>
-          <label className="font-bold" htmlFor="dishName">Dish Name</label>
-          <input
-            id="dishName"
-            type="text"
-            className="w-full p-2 border border-gray-300 rounded-md"
-            placeholder="Dish"
-            onChange={({ target: { value } }) => settitle(value)}
-          />
-        </div>
-        <div>
-          <label className="font-bold" htmlFor="cuisine">Cuisine</label>
-          <input
-            id="cuisine"
-            type="text"
-            className="w-full p-2 border border-gray-300 rounded-md"
-            placeholder="Italian, Vegetarian"
-            onChange={({ target: { value } }) => setDiet(value)}
-          />
-        </div>
-        <div>
-          <label className="font-bold" htmlFor="tags">Tags</label>
-          <input
-            id="tags"
-            type="text"
-            className="w-full p-2 border border-gray-300 rounded-md"
-            placeholder="healthy, spicy"
-            onChange={({ target: { value } }) => setTags(value)}
-          />
-        </div>
-        <div>
-          <label className="font-bold" htmlFor="region">Region</label>
-          <input
-            id="region"
-            type="text"
-            className="w-full p-2 border border-gray-300 rounded-md"
-            placeholder="Medium"
-            onChange={({ target: { value } }) => setRegion(value)}
-          />
-        </div>
-        <div>
-          <label className="font-bold" htmlFor="procedures">Procedures</label>
-          <textarea
-            id="procedures"
-            className="w-full p-2 border border-gray-300 rounded-md resize-none"
-            rows={6}
-            placeholder=""
-            onChange={({ target: { value } }) => setdescription(value)}
-          />
-        </div>
-        <div className="w-3/4 inline-block">
-  <label className="font-bold mr-2" htmlFor="picture">Image:</label>
-  <input
-    id="picture"
-    type="file"
-    accept="image/*"
-    onChange={handleImage}
-    className="max-w-full"
-  />
-</div>
+        <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2  w-full max-w-7xl">
+          <div className="bg-[#B8D3C8] p-3 lg:p-6 rounded-lg mx-8 shadow-2xl border-2 border-[#88AA99]">
+            <form className="grid grid-cols-1 gap-4">
+              <div>
+                <label className="font-bold" htmlFor="dishName">Dish Name</label>
+                <input
+                  id="dishName"
+                  type="text"
+                  className="w-full p-2 border border-gray-300 rounded-md"
+                  placeholder="Dish"
+                  onChange={({ target: { value } }) => settitle(value)}
+                />
+              </div>
+              <div>
+                <label className="font-bold" htmlFor="cuisine">Cuisine</label>
+                <input
+                  id="cuisine"
+                  type="text"
+                  className="w-full p-2 border border-gray-300 rounded-md"
+                  placeholder="Italian, Vegetarian"
+                  onChange={({ target: { value } }) => setDiet(value)}
+                />
+              </div>
+              <div>
+                <label className="font-bold" htmlFor="tags">Tags</label>
+                <input
+                  id="tags"
+                  type="text"
+                  className="w-full p-2 border border-gray-300 rounded-md"
+                  placeholder="healthy, spicy"
+                  onChange={({ target: { value } }) => setTags(value)}
+                />
+              </div>
+              <div>
+                <label className="font-bold" htmlFor="region">Region</label>
+                <input
+                  id="region"
+                  type="text"
+                  className="w-full p-2 border border-gray-300 rounded-md"
+                  placeholder="Medium"
+                  onChange={({ target: { value } }) => setRegion(value)}
+                />
+              </div>
+              <div>
+                <label className="font-bold" htmlFor="procedures">Procedures</label>
+                <textarea
+                  id="procedures"
+                  className="w-full p-2 border border-gray-300 rounded-md resize-none"
+                  rows={6}
+                  placeholder=""
+                  onChange={({ target: { value } }) => setdescription(value)}
+                />
+              </div>
+              <div className="w-3/4 inline-block">
+                <label className="font-bold mr-2" htmlFor="picture">Image:</label>
+                <input
+                  id="picture"
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImage}
+                  className="max-w-full"
+                />
+              </div>
+            </form>
+          </div>
 
-      </form>
-    </div>
-    <div className="bg-[#B8D3C8] p-3 lg:p-8 rounded-lg mx-8 shadow-2xl border-2 border-[#88AA99] mt-10 lg:mt-0">
-  <div className="grid grid-cols-2 gap-4">
-    <div className="flex items-center">
-      <label className="font-bold text-center" htmlFor="recipeName">Ingredient Name</label>
-    </div>
-    <div className="flex items-center">
-      <label className="font-bold text-center" htmlFor="weight">Weight in Grams</label>
-    </div>
-  </div>
-  {rows.map((row, index) => (
-    <div key={index} className="grid grid-cols-2 gap-5  ">
-      <div className="flex items-center">
-        <input
-          className="w-full p-2 border mt-2 border-gray-300 rounded-md"
-          type="text"
-          placeholder="Ingredient Name"
-          value={row.ingredient}
-          onChange={(event) => handleFieldChange(index, "ingredient", event.target.value)}
-        />
-      </div>
-      <div className="flex items-center mt-2">
-        <input
-          className="w-full p-2 border border-gray-300 rounded-md"
-          type="number"
-          placeholder=""
-          value={row.Weight}
-          onChange={(event) => handleFieldChange(index, "Weight", Number(event.target.value))}
-        />
-        <span className="ml-2">g</span>
-      </div>
-    </div>
-  ))}
-  <div className="flex gap-4 mt-4">
-    <button
-      className="px-4 py-2 text-white bg-blue-500 rounded-md"
-      onClick={handleAddRow}
-    >
-      Add Row
-    </button>
-    <button
-      className="px-4 py-2 text-white bg-red-500 rounded-md"
-      onClick={handleRemoveLastRow}
-    >
-      Remove Row
-    </button>
-  </div>
-</div>
-  </div>
-</div>
-<div className="flex justify-center mt-14">
-  <button
-    onClick={handleSubmit}
-    className="px-4 py-2 text-white bg-green-500 rounded-md w-44 text-2xl"
-  >
-    Save Recipe
-  </button>
-</div>
 
- 
+
+          <div className="bg-[#B8D3C8] p-3 lg:p-8 rounded-lg mx-8 shadow-2xl border-2 border-[#88AA99] mt-10 lg:mt-0">
+            <div className="grid grid-cols-2 gap-4">
+              <div className="flex items-center">
+                <label className="font-bold text-center" htmlFor="recipeName">Ingredient Name</label>
+              </div>
+              <div className="flex items-center">
+                <label className="font-bold text-center" htmlFor="weight">Weight in Grams</label>
+              </div>
+            </div>
+            {rows.map((row, index) => (
+              <div key={index} className="grid grid-cols-2 gap-5  ">
+                <div className="flex items-center">
+                  <input
+                    className="w-full p-2 border mt-2 border-gray-300 rounded-md"
+                    type="text"
+                    placeholder="Ingredient Name"
+                    value={row.ingredient}
+                    onChange={(event) => handleFieldChange(index, "ingredient", event.target.value)}
+                  />
+                </div>
+                <div className="flex items-center mt-2">
+                  <input
+                    className="w-full p-2 border border-gray-300 rounded-md"
+                    type="number"
+                    placeholder=""
+                    value={row.Weight}
+                    onChange={(event) => handleFieldChange(index, "Weight", Number(event.target.value))}
+                  />
+                  <span className="ml-2">g</span>
+                </div>
+              </div>
+            ))}
+            <div className="flex gap-4 mt-4">
+              <button
+                className="px-4 py-2 text-white bg-blue-500 rounded-md"
+                onClick={handleAddRow}
+              >
+                Add Row
+              </button>
+              <button
+                className="px-4 py-2 text-white bg-red-500 rounded-md"
+                onClick={handleRemoveLastRow}
+              >
+                Remove Row
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="flex justify-center mt-14">
+        <button
+          onClick={handleSubmit}
+          className="px-4 py-2 text-white bg-green-500 rounded-md w-44 text-2xl"
+        >
+          Save Recipe
+        </button>
+      </div>
+
+
     </>
   );
 };

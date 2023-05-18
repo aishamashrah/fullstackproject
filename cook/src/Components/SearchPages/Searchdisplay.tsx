@@ -3,57 +3,65 @@ import Searchbar from './searchbar'
 import img from '../../Assets/Unknown.jpeg'
 import CookEaseHeader from '../Header/Header'
 import CookEaseFooter from '../Footer/Footer'
+import { useState, useEffect } from 'react';
+import SearchCard from './SearchCards'
+import { GetAllArticel } from '../../Services/DataService'
+import { GetAllSearchpage } from '../../Services/DataService'
 
 export default function Display() {
+    const [blogItems, setBlogItems] = useState([]);
+    const [articelItems, setArticelItems] = useState([]);
+
+
+    useEffect(() => {
+        const fetchData = async () => {
+            let searchRes = await GetAllSearchpage();
+            setBlogItems(searchRes);
+            console.log(searchRes);
+            let articelRes = await GetAllArticel();
+            setArticelItems(articelRes);
+            console.log(articelRes);
+        };
+        fetchData();
+
+    }, []);
+
 
     return (
         <>
-
-
-
-
             <div>
                 <CookEaseHeader />
             </div>
-            <br></br>
-            <br></br>
-
-            <Searchbar />
-
-            <div className="">
-
-                <div className="grid grid-cols-3">
-                    <Searchpages />
-
-                </div>
-
-
-
-
-
-
+            <div className="mt-24 mb-16">
+                <h1 className="text-5xl p-10 font-semibold pl-10 font-lobster bg-[#B8D3C8] m">Search</h1>
+            </div>
+            <div className='grid grid-cols-1 gap-8 mx-10
+                             sm:gap-8 sm:mx-28
+                            md:grid-cols-2 md:gap- md:mx-10 
+                            lg:grid-cols-3 lg:gap-12  lg:mx-16'>
+                {blogItems.map((item: { id: number, image: string, title: string, description: string }) => (
+                    <SearchCard
+                        key={item.id}
+                        id={item.id}
+                        image={item.image}
+                        title={item.title}
+                        description={item.description}
+                        linkTo='/RecipeDisplay'
+                    />
+                ))}
+                {articelItems.map((item: { id: number, image: string, title: string, description: string }) => (
+                    <SearchCard
+                        key={item.id}
+                        id={item.id}
+                        image={item.image}
+                        title={item.title}
+                        description={item.description}
+                        linkTo='/Article'
+                    />
+                ))}
             </div>
 
-            <nav aria-label="Page navigation example ">
-                <ul className="inline-flex -space-x-px p-5 my-10 sm:mx-40 first-letter  ">
-                    <li>
-                        <a href="#" className=" p-4 sm:px-7 py-2 ml-0 leading-tight  bg-white border text-gray-950  rounded-l-lg  hover:bg-gray-100 hover:text-gray-700  dark:border-gray-700  dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
-                    </li>
-                    <li>
-                        <a href="#" className="px-2 py-2 p leading-tight bg-white border text-gray-950  hover:bg-gray-100 hover:text-gray-700  dark:border-gray-700  dark:hover:bg-gray-700 dark:hover:text-white">1</a>
-                    </li>
-                    <li>
-                        <a href="#" className="px-2 py-2 leading-tight bg-white border text-gray-950  hover:bg-gray-100 hover:text-gray-700  dark:border-gray-700  dark:hover:bg-gray-700 dark:hover:text-white">2</a>
-                    </li>
-                    <li>
-                        <a href="#" className=" p-4 px-2 py-2 leading-tight  bg-white border text-gray-950  hover:bg-gray-100 hover:text-gray-700  dark:border-gray-700 dark:hover:bg-gray-700 dark:hover:text-white">3</a>
-                    </li>
 
-                    <li>
-                        <a href="#" className=" p-4 sm:px-6 py-2 leading-tight  bg-white border text-gray-950 rounded-r-lg hover:bg-gray-100 hover:text-gray-700  dark:border-gray-700  dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
-                    </li>
-                </ul>
-            </nav>
             <div className='mt-2'>
                 <CookEaseFooter />
             </div>
