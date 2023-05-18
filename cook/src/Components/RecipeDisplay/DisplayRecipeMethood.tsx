@@ -40,6 +40,7 @@ export default function DisplayRecipeMethood({ recipeData }: Props) {
     const [region, setRegion] = useState('');
     const [userID, setUserID] = useState(0);
     const [date, setDate] = useState('');
+    const [isSignedIn, setIsSignedIn] = useState(true);
 
 
 
@@ -64,7 +65,7 @@ export default function DisplayRecipeMethood({ recipeData }: Props) {
         // PostRecipeUpdate(Data);
     };
 
-    
+
 
     useEffect(() => {
         const userInfoString = localStorage.getItem('UserInfo');
@@ -72,24 +73,26 @@ export default function DisplayRecipeMethood({ recipeData }: Props) {
           const userInfo = JSON.parse(userInfoString);
           // You can use the userInfo object here
           // Example: set the publisherName state
-          setPublisherName(userInfo.username);
+          setPublisherName(userInfo.name);
           setUserID(userInfo.id);
           console.log(userInfo);
-    
+        } else {
+          // User is not logged in
+          setIsSignedIn(false);
         }
       }, []);
 
-      const handleImage = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleImage = (event: React.ChangeEvent<HTMLInputElement>) => {
         let file = event.target.files?.[0];
         if (file) {
-          const reader = new FileReader();
-          reader.onloadend = () => {
-            console.log(reader.result);
-            setImage(reader.result as string);
-          };
-          reader.readAsDataURL(file);
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                console.log(reader.result);
+                setImage(reader.result as string);
+            };
+            reader.readAsDataURL(file);
         }
-      };
+    };
 
 
 
@@ -117,7 +120,7 @@ export default function DisplayRecipeMethood({ recipeData }: Props) {
 
     return (
         <div className="m-10">
-            <div className="bg-[#B8D3C8]  p-6 md:p-8 rounded-lg shadow-2xl border-2 border-[#88AA99]">
+            <div className="bg-[#B8D3C8]  p-6 md:p-8 rounded-2xl shadow-2xl border-2 border-[#88AA99]">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <div className="flex flex-col mb-6">
@@ -195,18 +198,18 @@ export default function DisplayRecipeMethood({ recipeData }: Props) {
                             id="image"
                             type="file"
                             accept="image/*"
-                            
+
                             className="rounded-md px-4 py-2 mt-2"
-                          onChange={handleImage}
+                            onChange={handleImage}
                         />
                     </div>
                 </div>
                 <div className='flex justify-end'>
-  <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 mt-6 w-full md:w-auto rounded-md shadow-xl"
-  onClick={handleClick}>
-    Save Changes
-  </button>
-</div>
+                    <button className=" bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 mt-6 w-full md:w-auto rounded-md shadow-2xl"
+                        onClick={handleClick}>
+                        Save Changes
+                    </button>
+                </div>
 
             </div>
         </div>

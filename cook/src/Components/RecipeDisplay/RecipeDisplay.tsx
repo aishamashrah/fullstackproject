@@ -35,7 +35,7 @@ export default function RecipeDisplay(props: any) {
         const fetchData = async () => {
             let searchRes = await GetRecipeById(articleId);
             setArticle(searchRes[0]);
-            
+
             setRecipeId(searchRes[0].recipeId)
         };
         fetchData();
@@ -43,28 +43,30 @@ export default function RecipeDisplay(props: any) {
     }, []);
 
     
-       
+
+
+
 
 
     return (
         <div>
 
-            <div className='mb-10'>
-                <CookEaseHeader />
-            </div>
 
-            <div className="text-4xl font-lobster pl-4 pt-3  left-5 sm:block  bg-[#CCE3DE] w-[100%] h-20 border-y-2 shadow-md border-black ">
-                    Recipe
-                </div>
-            
-            <div className=''>
-                   <DisplayRecipeMethood recipeData={article} />
-            {recipeId !== null && <DietTool recipeId={recipeId} />}
+            <CookEaseHeader />
+            <div className="mt-14 mb-16">
+                <h1 className="text-5xl p-10 font-semibold pl-10 font-lobster bg-[#B8D3C8]">Create New Recipe</h1>
             </div>
-         
+            <div>
+                <DisplayRecipeMethood recipeData={article} />
+                <div className="mt-14 mb-16 ">
+                    <h1 className="text-5xl p-10 font-semibold pl-10 font-lobster bg-[#B8D3C8] hidden sm:block">Diet Tool</h1>
+                </div>
+                {recipeId !== null && <DietTool recipeId={recipeId} />}
+            </div>
+            <h1 className="text-5xl p-10 font-semibold pl-10  bg-[#B8D3C8] block sm:hidden text-center">Diet Tool Not Available On Smaller Screens</h1>
 
             <div className='mt-10'>
-            <CookEaseFooter />
+                <CookEaseFooter />
             </div>
         </div>
     )

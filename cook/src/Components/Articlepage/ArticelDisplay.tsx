@@ -27,7 +27,7 @@ const ArticlePage: React.FC<ArticleProps> = ({date, publisherName, title, image,
 </div>
 {Id} {/* Corrected prop name */}
 <div className="w-1/2 mx-auto block relative font-lobster md:text-5xl w-7/12 text-center pt-9">
-  <h1>{title}</h1>
+  <h1>{title} </h1>
 </div>
 <img src={image2} alt="Dashboard icon" className="mx-auto block mt-4 h-10 sm:h-20 lg:h-40" />
 <p className="text-center font-serif">{tags}</p> {/* Corrected prop name */}

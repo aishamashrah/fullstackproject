@@ -28,6 +28,7 @@ const RecipiePostTwo = (props: Props) => {
   const [region, setRegion] = useState('');
   const [isPublished, setisPublished] = useState(true);
   const [isDeleted, setisDeleted] = useState(false);
+  const [isSignedIn, setIsSignedIn] = useState(true);
 
   const handleAddRow = () => {
     setRows([...rows, { ingredient: "", Weight: 0 }]);
@@ -40,15 +41,19 @@ const RecipiePostTwo = (props: Props) => {
   };
 
   useEffect(() => {
+    let date = DateComponent();
+    setdate(date);
     const userInfoString = localStorage.getItem('UserInfo');
     if (userInfoString) {
       const userInfo = JSON.parse(userInfoString);
       // You can use the userInfo object here
       // Example: set the publisherName state
-      setpublisherName(userInfo.username);
+      setpublisherName(userInfo.name);
       setuserID(userInfo.id);
       console.log(userInfo);
-
+    } else {
+      // User is not logged in
+      setIsSignedIn(false);
     }
   }, []);
 
@@ -117,8 +122,7 @@ const RecipiePostTwo = (props: Props) => {
                   type="text"
                   className="w-full p-2 border border-gray-300 rounded-md"
                   placeholder="Dish"
-                  onChange={({ target: { value } }) => settitle(value)}
-                />
+                  onChange={({ target: { value } }) => settitle(value)}/>
               </div>
               <div>
                 <label className="font-bold" htmlFor="cuisine">Cuisine</label>
@@ -127,8 +131,7 @@ const RecipiePostTwo = (props: Props) => {
                   type="text"
                   className="w-full p-2 border border-gray-300 rounded-md"
                   placeholder="Italian, Vegetarian"
-                  onChange={({ target: { value } }) => setDiet(value)}
-                />
+                  onChange={({ target: { value } }) => setDiet(value)}/>
               </div>
               <div>
                 <label className="font-bold" htmlFor="tags">Tags</label>
@@ -137,8 +140,7 @@ const RecipiePostTwo = (props: Props) => {
                   type="text"
                   className="w-full p-2 border border-gray-300 rounded-md"
                   placeholder="healthy, spicy"
-                  onChange={({ target: { value } }) => setTags(value)}
-                />
+                  onChange={({ target: { value } }) => setTags(value)}/>
               </div>
               <div>
                 <label className="font-bold" htmlFor="region">Region</label>
@@ -147,8 +149,7 @@ const RecipiePostTwo = (props: Props) => {
                   type="text"
                   className="w-full p-2 border border-gray-300 rounded-md"
                   placeholder="Medium"
-                  onChange={({ target: { value } }) => setRegion(value)}
-                />
+                  onChange={({ target: { value } }) => setRegion(value)}/>
               </div>
               <div>
                 <label className="font-bold" htmlFor="procedures">Procedures</label>
@@ -157,8 +158,7 @@ const RecipiePostTwo = (props: Props) => {
                   className="w-full p-2 border border-gray-300 rounded-md resize-none"
                   rows={6}
                   placeholder=""
-                  onChange={({ target: { value } }) => setdescription(value)}
-                />
+                  onChange={({ target: { value } }) => setdescription(value)}/>
               </div>
               <div className="w-3/4 inline-block">
                 <label className="font-bold mr-2" htmlFor="picture">Image:</label>
@@ -192,8 +192,7 @@ const RecipiePostTwo = (props: Props) => {
                     type="text"
                     placeholder="Ingredient Name"
                     value={row.ingredient}
-                    onChange={(event) => handleFieldChange(index, "ingredient", event.target.value)}
-                  />
+                    onChange={(event) => handleFieldChange(index, "ingredient", event.target.value)}/>
                 </div>
                 <div className="flex items-center mt-2">
                   <input
@@ -201,8 +200,7 @@ const RecipiePostTwo = (props: Props) => {
                     type="number"
                     placeholder=""
                     value={row.Weight}
-                    onChange={(event) => handleFieldChange(index, "Weight", Number(event.target.value))}
-                  />
+                    onChange={(event) => handleFieldChange(index, "Weight", Number(event.target.value))}/>
                   <span className="ml-2">g</span>
                 </div>
               </div>
@@ -210,14 +208,12 @@ const RecipiePostTwo = (props: Props) => {
             <div className="flex gap-4 mt-4">
               <button
                 className="px-4 py-2 text-white bg-blue-500 rounded-md"
-                onClick={handleAddRow}
-              >
+                onClick={handleAddRow}>
                 Add Row
               </button>
               <button
                 className="px-4 py-2 text-white bg-red-500 rounded-md"
-                onClick={handleRemoveLastRow}
-              >
+                onClick={handleRemoveLastRow}>
                 Remove Row
               </button>
             </div>
@@ -227,8 +223,7 @@ const RecipiePostTwo = (props: Props) => {
       <div className="flex justify-center mt-14">
         <button
           onClick={handleSubmit}
-          className="px-4 py-2 text-white bg-green-500 rounded-md w-44 text-2xl"
-        >
+          className="px-4 py-2 text-white bg-green-500 rounded-md w-44 text-2xl">
           Save Recipe
         </button>
       </div>

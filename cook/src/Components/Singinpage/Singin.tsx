@@ -18,7 +18,13 @@ export default function Signin() {
     let token = await login(userData);
     if (token.token != null) {
       localStorage.setItem("Token", token.token);
-      let userInfo = await getLoggedInUserData(username);
+      let response = await getLoggedInUserData(username);
+      let userInfo = {
+        id: response.id,
+        name: response.username,
+      };
+      console.log(userInfo);
+  
       console.log(userInfo);
       localStorage.setItem("UserInfo", JSON.stringify(userInfo)); // Save the userInfo object to local storage
       navigate('/');
