@@ -7,10 +7,8 @@ import chefHat2 from '../../Assets/profile.png';
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-
-
 export default function Dashboard() {
-  
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [aboutMe, setAboutMe] = useState('');
   const [isEditing, setIsEditing] = useState(false);
   const [currentState, setCurrentState] = useState('');
@@ -19,6 +17,13 @@ export default function Dashboard() {
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setAboutMe(e.target.value);
   };
+  const modalStyles = {
+    content: 'modal',
+    overlay: 'modal-overlay',
+  };
+
+
+
 
   const location = useLocation();
   const { state } = location;
@@ -81,6 +86,9 @@ export default function Dashboard() {
     localStorage.setItem('aboutMe', aboutMe);
   }, [aboutMe]);
 
+  const handleCloseClick = () => {
+    setIsModalOpen(false);
+  };
   interface SearchpagesProps {
     img: string;
     type: string;
@@ -129,24 +137,24 @@ export default function Dashboard() {
               <div className=" p-4 rounded-md bg1">
                 <h3 className="font-serif lg:text-2xl">Your Recipes</h3>
                 <Link to="/Search">
-                <svg xmlns="http://www.w3.org/2000/svg" className=" h-5 w-5 text-black-400 mt-6" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M13.236 14.295a7.5 7.5 0 111.06-1.06l4.242 4.242a.75.75 0 11-1.06 1.06l-4.242-4.242zm-6.736-1.795a5 5 0 100-10 5 5 0 000 10z" clipRule="evenodd" />
-                </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" className=" h-5 w-5 text-black-400 mt-6" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M13.236 14.295a7.5 7.5 0 111.06-1.06l4.242 4.242a.75.75 0 11-1.06 1.06l-4.242-4.242zm-6.736-1.795a5 5 0 100-10 5 5 0 000 10z" clipRule="evenodd" />
+                  </svg>
                 </Link>
                 <p className='p-4 font-serif '>Pasta Primaveria with Grilled Shrimp and Truffle OilPasta Primaveria with Grilled Shrimp and Truffle OilPasta Primaveria with Grilled Shrimp and Truffle Oil</p>
                 <Link to="/Search">
-                <h6 className='text-sm font-serif text-right  hover'>See all</h6>
+                  <h6 className='text-sm font-serif text-right  hover'>See all</h6>
                 </Link>
 
               </div>
-              
+
               <div className=" p-4 rounded-md bg1  ">
                 <h3 className="font-serif  lg:text-2xl">Favorites</h3>
                 <button className=''>
-                <Link to="/Search">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 flex justify-normal w-5 text-black-400 mt-6 " viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M13.236 14.295a7.5 7.5 0 111.06-1.06l4.242 4.242a.75.75 0 11-1.06 1.06l-4.242-4.242zm-6.736-1.795a5 5 0 100-10 5 5 0 000 10z" clipRule="evenodd" />
-                  </svg>
+                  <Link to="/Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 flex justify-normal w-5 text-black-400 mt-6 " viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M13.236 14.295a7.5 7.5 0 111.06-1.06l4.242 4.242a.75.75 0 11-1.06 1.06l-4.242-4.242zm-6.736-1.795a5 5 0 100-10 5 5 0 000 10z" clipRule="evenodd" />
+                    </svg>
                   </Link>
                 </button>
                 <p className='p-4 font-serif'>Pasta Primaveria with Grilled Shrimp and Truffle OilPasta Primaveria with Grilled Shrimp and Truffle OilPasta Primaveria with Grilled Shrimp and Truffle Oil</p>
@@ -161,31 +169,69 @@ export default function Dashboard() {
             <div className=" rounded-md LastBg md:mt-24  md:h-64">
               <div className="flex flex-col md:flex-row justify-between  lg:text-base  md:text-xs p-8">
                 <div className="md:pr-9">
+                <button onClick={handleCloseClick} className="absolute top-2 right-2 text-gray-500">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+                
+                  {isModalOpen && (
+  <div className="fixed inset-0 flex items-center justify-center z-10">
+    <div className="absolute inset-0 bg-gray-900 opacity-50"></div>
+
+    <div className="bg-white p-6 rounded-lg z-20">
+    <h2>Name</h2>
+      <input
+        type="text"
+        value={name}
+        onChange={handleNameChange}
+        className="border border-gray-300 p-2 rounded-md mb-4 w-full"
+      />
+      <div></div>
+      <h2>About Me</h2>
+  <input
+        type="text"
+        value={aboutMe}
+        onChange={handleInputChange}
+        className="border border-gray-300 p-2 rounded-md mb-4 w-full"
+      />
+<h2>State</h2>
+      <input
+        type="text"
+        value={currentState}
+        onChange={handleStateChange}
+        className="border border-gray-300 p-2 rounded-md mb-4 w-full"
+      />
+      
+    
+<button onClick={() => { handleSaveClick(); handleCloseClick(); }} className="bg-blue-500 text-white px-4 py-2 rounded-md">
+  Save
+</button>
+
+    </div>
+  </div>
+)}
+
+                  <h3 className="font-serif  lg:text-2xl  font-bold text-center">{name}</h3>
 
 
-                  {isEditing ? (
-                    <div>
-                      <input
-                        type="text"
-                        value={name}
-                        onChange={handleNameChange}
-                        className="border border-gray-300 p-2 rounded-md mb-4"
-                      />
-                      <button onClick={handleSaveClick} className="bg-blue-500 text-white px-4 py-2 rounded-md">
-                        Save
-                      </button>
-                    </div>
-                  ) : (
-                    <h3 className="font-serif font-bold">Name: {name}</h3>
 
-                  )}
-                  {!isEditing && (
-                    <button onClick={handleEditClick} className="text-blue-500 hover:underline">
-                      Edit
-                    </button>
-
-                  )}
                   <img src={chefHat2} alt="Dashboard icon" className="w-full h-auto md:h-28 mb-10" />
+                  <div className='text-center'>
+                  <button onClick={() => setIsModalOpen(true)} className="text-center text-blue-500   rounded-md">
+              Edit
+                  </button></div>
                 </div>
                 <br></br>
                 <div className="flex justify-center">
@@ -195,26 +241,13 @@ export default function Dashboard() {
                 </div>
                 <div className="w-full md:w-1/3 xl:text-sm lg:text-xs">
                   <h3 className="font-serif font-bold lg:text-2xl lg:mb-6"> State</h3>
-                  {isEditing ? (
-                    <div>
-                      <input
-                        type="text"
-                        value={currentState}
-                        onChange={handleStateChange}
-                        className="border border-gray-300 p-2 rounded-md mb-4"
-                      />
-                      <button onClick={handleSaveClick} className="bg-blue-500 text-white px-4 py-2 rounded-md">
-                        Save
-                      </button>
-                    </div>
-                  ) : (
-                    <p className="font-serif">{currentState}</p>
-                  )}
-                  {!isEditing && (
-                    <button onClick={handleEditClick} className="text-blue-500 hover:underline">
-                      Edit
-                    </button>
-                  )}
+
+
+
+                  <p className="font-serif">{currentState}</p>
+
+
+
                 </div>
                 <div className="flex justify-center">
                   <svg className="w-2 h-full hidden md:block">
@@ -223,26 +256,10 @@ export default function Dashboard() {
                 </div>
                 <div className="w-full md:w-1/3 xl:text-sm lg:text-xs">
                   <h3 className="font-serif font-bold lg:text-2xl lg:mb-6">About Me</h3>
-                  {isEditing ? (
-                    <div>
-                      <input
-                        type="text"
-                        value={aboutMe}
-                        onChange={handleInputChange}
-                        className="border border-gray-300 p-2 rounded-md mb-4"
-                      />
-                      <button onClick={handleSaveClick1} className="bg-blue-500 text-white px-4 py-2 rounded-md">
-                        Save
-                      </button>
-                    </div>
-                  ) : (
-                    <p className="font-serif">{aboutMe}</p>
-                  )}
-                  {!isEditing && (
-                    <button onClick={handleEditClick1} className="text-blue-500 hover:underline">
-                      Edit
-                    </button>
-                  )}
+
+                  <p className="font-serif">{aboutMe}</p>
+
+
                 </div>
               </div>
             </div>
