@@ -168,7 +168,7 @@ const RecipiePostTwo = (props: Props) => {
         </div>
       </form>
     </div>
-    <div className="bg-gray-100 p-8 rounded-lg">
+    <div className="bg-[#B8D3C8] p-8 rounded-lg">
       <div className="grid grid-cols-2 gap-4">
         <div className="flex items-center">
           <label className="font-bold" htmlFor="recipeName">Recipes Name</label>
