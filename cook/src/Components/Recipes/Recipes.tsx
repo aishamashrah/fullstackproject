@@ -40,11 +40,11 @@ export default function Recipes() {
 
             <CookEaseHeader />
 
-            <div className="mt-8">
-                <h1 className="text-4xl font-semibold text-center">Recipes</h1>
+            <div className="mt-24">
+                <h1 className="text-5xl p-10 font-semibold pl-10 font-lobster bg-[#B8D3C8]">Create New Recipe</h1>
             </div>
 
-            <div className="flex justify-center mt-8">
+            <div className="mt-16">
                 <RecipiePostTwo
                     uniqueId={uniqueId}
                     formattedDate={formattedDate}
