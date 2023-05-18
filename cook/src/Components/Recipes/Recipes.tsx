@@ -37,33 +37,24 @@ export default function Recipes() {
 
     return (
         <>
-       
+
             <CookEaseHeader />
-            <br></br>
-            <br></br>
-            <br className="sm:hidden"></br>
-            <br className="sm:hidden"></br>
-            <div className="gap-4 header p-14 mb-30">
-                <div className="flex sm:text-xs items-center relative">
-                    <div className="text-4xl font-lobster absolute left-5">
-                        Recipes
-                    </div>
-                </div>
+
+            <div className="mt-8">
+                <h1 className="text-4xl font-semibold text-center">Recipes</h1>
             </div>
 
-            <div className="">
-
+            <div className="flex justify-center mt-8">
                 <RecipiePostTwo
                     uniqueId={uniqueId}
                     formattedDate={formattedDate}
                 />
-
             </div>
-            <br></br>
-            <br></br>
-            <div className='mt-10'>
+
+            <div className="mt-12">
                 <CookEaseFooter />
             </div>
+
         </>
     )
 }
