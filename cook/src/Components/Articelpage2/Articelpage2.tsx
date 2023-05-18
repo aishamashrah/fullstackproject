@@ -69,7 +69,7 @@ export default function Articelpage2() {
   return (
     <>
       <CookEaseHeader />
-      {isSignedIn && (
+      {isSignedIn ? (
         <div>
           <h1 className="text-5xl p-10 font-semibold pl-10 font-lobster mt-14 mb-16 bg-[#B8D3C8]">
             Create New Article
@@ -158,7 +158,7 @@ export default function Articelpage2() {
             </button>
           </div>
         </div>
-      )} : {(
+      ) : (
         <div className="flex items-center justify-center min-h-screen">
           <div className="bg-[#B8D3C8] p-8 md:p-12 lg:p-20 rounded-lg mx-4 sm:mx-8 lg:mx-64 shadow-2xl border-2 border-[#88AA99]">
             <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 text-center">Please sign in to access this feature.</h1>
