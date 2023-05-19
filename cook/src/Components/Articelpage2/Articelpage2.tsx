@@ -51,7 +51,7 @@ export default function Articelpage2() {
       date: date,
       publisherName: publisherName,
       title: title,
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQPzQarc61tpYiKWyrGlDrUWBkY6alRy9vjw&usqp=CAU",
+      image: image,
       description: description,
       Tags: Tags,
       categories: categories,
@@ -119,6 +119,15 @@ export default function Articelpage2() {
                   onChange={(e) => setdescription(e.target.value)}
                 ></textarea>
               </div>
+              <div>
+                    <label className="font-bold" htmlFor="region">Image</label>
+                    <input
+                      id="region"
+                      type="text"
+                      className="w-full p-2 border border-gray-300 rounded-md"
+                      placeholder="Medium"
+                      onChange={({ target: { value } }) => setimage(value)} />
+                  </div>
               {/* <div className="w-3/4 inline-block">
                 <label htmlFor="image" className="font-bold mr-2 mt-4 text-2xl md:text-3xl">
                   Image:

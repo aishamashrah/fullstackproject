@@ -80,7 +80,7 @@ const RecipiePostTwo = (props: Props) => {
       date: props.formattedDate,
       publisherName: publisherName,
       title: title,
-      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQPzQarc61tpYiKWyrGlDrUWBkY6alRy9vjw&usqp=CAU',
+      image: image,
       description: description,
       Tags: tags,
       diet: diet,
@@ -169,6 +169,15 @@ const RecipiePostTwo = (props: Props) => {
                       rows={6}
                       placeholder=""
                       onChange={({ target: { value } }) => setdescription(value)} />
+                  </div>
+                  <div>
+                    <label className="font-bold" htmlFor="region">Image</label>
+                    <input
+                      id="region"
+                      type="text"
+                      className="w-full p-2 border border-gray-300 rounded-md"
+                      placeholder="Medium"
+                      onChange={({ target: { value } }) => setimage(value)} />
                   </div>
                   {/* <div className="w-3/4 inline-block">
                     <label className="font-bold mr-2" htmlFor="picture">Image:</label>
