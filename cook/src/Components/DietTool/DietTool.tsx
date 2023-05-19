@@ -10,6 +10,7 @@ import { GetRecipeById } from '../../Services/DataService';
 interface Ingredient {
     ingredient: string;
     weight: number;
+    id: number;
 }
 
 interface Props {
@@ -43,9 +44,9 @@ const DietTool: React.FC<Props> = ({ recipeId, userId }) => {
     const [fatArray, setFatArray] = useState<number[]>([]);
     const [sodiumArray, setSodiumArray] = useState<number[]>([]);
     const [publisherName, setPublisherName] = useState('');
-    let [ingredients, setIngredients] = useState<Ingredient[]>([]);
-    let [ingredienUpdate, setIngredientUpdate] = useState<Ingredient[]>([]);
-    let [totalWeight, setTotalWeight] = useState(() => {
+    const [ingredients, setIngredients] = useState<Ingredient[]>([]);
+    const [ingredienUpdate, setIngredientUpdate] = useState<Ingredient[]>([]);
+    const [totalWeight, setTotalWeight] = useState(() => {
         {
             return ingredients.reduce((sum, ingredient) => sum + ingredient.weight, 0);
         }
@@ -105,7 +106,7 @@ const DietTool: React.FC<Props> = ({ recipeId, userId }) => {
             },
         ],
     });
-
+ 
     const [pieChartMacros, setPieChartMacros] = useState({
         labels: ["Protein", "Carbs", "Fat"],
         datasets: [
@@ -125,22 +126,33 @@ const DietTool: React.FC<Props> = ({ recipeId, userId }) => {
         ],
     });
 
-
-
-    function handleWeightChange(ingredientName: string, newWeight: number) {
+    function handleNameChange(id: number, newName: string) {
+        console.log(`DietTool: ${id} ${newName}`)
         const updatedIngredients = ingredients.map(ingredient => {
-            if (ingredient.ingredient === ingredientName) {
+            if (ingredient.id === id) {
+                return { ...ingredient, ingredient: newName };
+            }
+            return ingredient;
+        });
+        console.log(updatedIngredients);
+        setIngredients(updatedIngredients);
+        setIngredientUpdate(updatedIngredients);
+    }
+
+
+
+    function handleWeightChange(id: number, newWeight: number) {
+        const updatedIngredients = ingredients.map(ingredient => {
+            if (ingredient.id === id) {
                 return { ...ingredient, weight: newWeight };
             }
             return ingredient;
         });
-        console.log(updatedIngredients)
+        
         const newTotalWeight = updatedIngredients.reduce(
             (sum, ingredient) => sum + ingredient.weight,
             0
         );
-        console.log(newTotalWeight)
-
         const updatedWeights = updatedIngredients.map((ingredient) => ingredient.weight);
 
         setPieChartWeights({
@@ -183,8 +195,6 @@ const DietTool: React.FC<Props> = ({ recipeId, userId }) => {
         setIngredients(updatedIngredients);
         setTotalWeight(newTotalWeight);
         setIngredientUpdate(updatedIngredients);
-        console.log(updatedWeights)
-
     }
 
     function handleCalorie(index: number, numberToAdd: number) {
@@ -244,6 +254,7 @@ const DietTool: React.FC<Props> = ({ recipeId, userId }) => {
             };
             PostWeightChanges(rowData);
         });
+        window.location.reload();
     }
 
     useEffect(() => {
@@ -327,8 +338,8 @@ const DietTool: React.FC<Props> = ({ recipeId, userId }) => {
                     <div className="bg-[#B8D3C8] rounded-2xl p-10 lg:ml-10n shadow-2xl border-2 border-[#88AA99] hidden sm:block">
                         <div className="bgEAF4F4 p-3 ">
                             <ul className="">
-                                <div className="grid grid-cols-7 gap-4 justify-items-center items-center text-sm sm:text-lg bg-gray-100 rounded-lg p-4">
-                                    <p>Ingredient</p>
+                                <div className="grid grid-cols-8 gap-4 justify-items-center items-center text-sm sm:text-lg bg-gray-100 rounded-lg p-4">
+                                    <p className='col-span-2'>Ingredient</p>
                                     <p>Weight</p>
                                     <p>Calories</p>
                                     <p>Protein</p>
@@ -347,20 +358,22 @@ const DietTool: React.FC<Props> = ({ recipeId, userId }) => {
                                             <DietToolRow
                                                 name={ingredient.ingredient}
                                                 weight={ingredient.weight}
+                                                id={ingredient.id}
                                                 onWeightChange={handleWeightChange}
                                                 onCalorieChange={(numberToAdd) => handleCalorie(index, numberToAdd)}
                                                 onProteinChange={(numberToAdd) => handleProtein(index, numberToAdd)}
                                                 onCarbChange={(numberToAdd) => handleCarb(index, numberToAdd)}
                                                 onFatChange={(numberToAdd) => handleFat(index, numberToAdd)}
                                                 onSodiumChange={(numberToAdd) => handleSodium(index, numberToAdd)}
+                                                onNameChange={handleNameChange}
                                             />
                                         </div>
                                     </li>
                                 ))}
                             </ul>
                             <div className="border-t-2 border-black mt-2 mb-2"></div>
-                            <div className="grid grid-cols-7 gap-4 justify-items-center items-center text-sm sm:text-lg bg-gray-100 rounded-lg p-4">
-                                <p>Totals:</p>
+                            <div className="grid grid-cols-8 gap-4 justify-items-center items-center text-sm sm:text-lg bg-gray-100 rounded-lg p-4">
+                                <p className='col-span-2'>Total Values:</p>
                                 <p>{totalWeight.toFixed(1)}</p>
                                 <p>{totalCalories.toFixed(1)}</p>
                                 <p>{totalProtein.toFixed(1)}</p>
@@ -370,6 +383,7 @@ const DietTool: React.FC<Props> = ({ recipeId, userId }) => {
                             </div>
                         </div>
                         {isPublisher ? (<div className="flex justify-end mt-6">
+                            <div className='mr-2'>An exclamation point and red text indicates an ingredient that is not present in our database. Please double-check your spelling.</div>
                             <button
                                 onClick={handleUpdate}
                                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 shadow-xl">
@@ -396,9 +410,6 @@ const DietTool: React.FC<Props> = ({ recipeId, userId }) => {
             </div>
         </>
     )
-
-
-
 }
 
 

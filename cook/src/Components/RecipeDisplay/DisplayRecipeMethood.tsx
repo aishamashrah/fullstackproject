@@ -64,7 +64,7 @@ export default function DisplayRecipeMethood({ recipeData, UserId }: Props) {
             date: date,
         }
         PostRecipeUpdate(Data);
-        setisClicked(true);
+        window.location.reload();
     };
 
 
@@ -204,7 +204,6 @@ export default function DisplayRecipeMethood({ recipeData, UserId }: Props) {
 
            {isPublisher ? 
            (<div className='flex justify-end'>
-                    {isClicked }
                     <button className=" bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 mt-6 w-full md:w-auto rounded-md shadow-2xl"
                         onClick={handleClick}>
                         Save Changes

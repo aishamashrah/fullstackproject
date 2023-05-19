@@ -4,17 +4,20 @@ import { GetNutritionByName } from '../../Services/DataService';
 interface DietToolRowProps {
   name: string;
   weight: number;
-  onWeightChange: (name: string, newWeight: number) => void;
+  id: number;
+  onWeightChange: (id: number, newWeight: number) => void;
   onCalorieChange: (numberToAdd: number) => void;
   onProteinChange: (numberToAdd: number) => void;
   onCarbChange: (numberToAdd: number) => void;
   onFatChange: (numberToAdd: number) => void;
   onSodiumChange: (numberToAdd: number) => void;
+  onNameChange: (id: number, newName: string) => void;
 }
 
 function DietToolRow(props: DietToolRowProps) {
-  const { name, weight, onWeightChange } = props;
+  const { name, weight, id, onWeightChange, onNameChange } = props;
   const [weightValue, setWeight] = useState(weight);
+  const [nameChange, setNameChane] = useState(name);
   const [fatValue, setFat] = useState(1);
   const [carbsValue, setCarbs] = useState(1);
   const [proteinValue, setProtein] = useState(1);
@@ -39,7 +42,7 @@ function DietToolRow(props: DietToolRowProps) {
   function handleWeightChange(event: React.ChangeEvent<HTMLInputElement>) {
     const newWeight = Number(event.target.value);
     setWeight(newWeight);
-    onWeightChange(name, newWeight);
+    onWeightChange(id, newWeight);
     setCalories(savedCalories * newWeight);
     setProtein(savedProtein * newWeight);
     setFat(savedFat * newWeight);
@@ -50,6 +53,57 @@ function DietToolRow(props: DietToolRowProps) {
     onCarbChange(savedCarbs * newWeight);
     onFatChange(savedFat * newWeight);
     onSodiumChange(savedSodium * newWeight);
+  }
+  function handleNameChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const newName = event.target.value || '';
+    console.log(`dietTOolRow: ${newName}`);
+    setNameChane(newName);
+    onNameChange(id, newName);
+    setWeight(weight);
+
+
+
+      if (searchRes.length > 0) {
+        setCalories(searchRes[0].calories / 100 * weight);
+        setProtein(searchRes[0].protein / 100 * weight);
+        setCarbs(searchRes[0].carbs / 100 * weight);
+        setFat(searchRes[0].fat / 100 * weight);
+        setSodium(searchRes[0].sodium / 100 * weight);
+        setSavedCalories(searchRes[0].calories / 100);
+        setSavedProtein(searchRes[0].protein / 100);
+        setSavedCarbs(searchRes[0].carbs / 100);
+        setSavedFat(searchRes[0].fat / 100);
+        setSavedSodium(searchRes[0].sodium / 100);
+        onCalorieChange(searchRes[0].calories / 100 * weight);
+        onProteinChange(searchRes[0].protein / 100 * weight);
+        onCarbChange(searchRes[0].carbs / 100 * weight);
+        onFatChange(searchRes[0].fat / 100 * weight);
+        onSodiumChange(searchRes[0].sodium / 100 * weight);
+      } else {
+        setTitleBool(true);
+        setWeight(weight);
+        setCalories(0);
+        setProtein(0);
+        setCarbs(0);
+        setFat(0);
+        setSodium(0);
+        setSavedCalories(0);
+        setSavedProtein(0);
+        setSavedCarbs(0);
+        setSavedFat(0);
+        setSavedSodium(0);
+        onCalorieChange(0);
+        onProteinChange(0);
+        onCarbChange(0);
+        onFatChange(0);
+        onSodiumChange(0);
+      }
+
+
+
+
+
+
   }
 
   useEffect(() => {
@@ -99,11 +153,32 @@ function DietToolRow(props: DietToolRowProps) {
 
   return (
     <>
-      <div className="grid grid-cols-7 gap-2 justify-items-center items-center text-sm sm:text-lg bg-gray-100 rounded-lg p-4">
-        <div className={`col-span-2 sm:col-span-1 ${titleBool === true ? 'text-red-400' : ''}`}>
+      <div className="grid grid-cols-8 gap-2 justify-items-center items-center text-sm sm:text-lg bg-gray-100 rounded-lg p-4">
+        {/* <div className={`col-span-2 sm:col-span-1 ${titleBool === true ? 'text-red-400' : ''}`}>
           <label className="font-bold text-center">{name}</label>
-        </div>
-        <div className="col-span-">
+        </div> */}
+
+
+<div className="col-span-2" style={{ height: '40px' }}>
+      <div className="flex items-center">
+        {titleBool && (
+          <span className="text-red-600 font-bold text-4xl mr-2">!</span>
+        )}
+        <input
+          type="text"
+          value={nameChange}
+          onChange={handleNameChange}
+          className="w-full p-2 border border-gray-400 rounded-md"
+          placeholder="Weight in Grams"
+        />
+      </div>
+    </div>
+
+
+
+
+
+        <div className="col-span-1">
           <input
             type="number"
             value={weightValue}
