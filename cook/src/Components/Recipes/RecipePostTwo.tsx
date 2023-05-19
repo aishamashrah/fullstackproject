@@ -176,7 +176,7 @@ const RecipiePostTwo = (props: Props) => {
                       id="region"
                       type="text"
                       className="w-full p-2 border border-gray-300 rounded-md"
-                      placeholder="Medium"
+                      placeholder="Add Image URL"
                       onChange={({ target: { value } }) => setimage(value)} />
                   </div>
                   {/* <div className="w-3/4 inline-block">

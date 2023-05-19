@@ -51,7 +51,7 @@ export default function Searchpages() {
       
 return (
   <>
-  
+ 
   {blogItems.map((item: { id: number, image: string, title: string, description: string }) => (
   <SearchCard
     key={item.id}
@@ -74,6 +74,7 @@ return (
   linkTo='/Article'
 />
 ))}
+
   </>
 );
 }

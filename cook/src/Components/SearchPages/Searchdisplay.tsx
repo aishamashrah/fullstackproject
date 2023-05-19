@@ -60,7 +60,7 @@ export default function Display() {
             </div>
 
 
-            <div className='mt-2'>
+            <div className='mt-32'>
                 <CookEaseFooter />
             </div>
         </>
