@@ -32,6 +32,7 @@ export default function Dashboard() {
       const userInfo = JSON.parse(userInfoString);
       setUserName(userInfo.name);
       setuserID(userInfo.id);
+      setIsSignedIn(true);
     } else {
       setIsSignedIn(false);
     }
