@@ -62,7 +62,7 @@ export default function RecipeDisplay(props: any) {
 
             <CookEaseHeader />
             <div className="mt-14 mb-16">
-                <h1 className="text-5xl p-10 font-semibold pl-10 font-lobster bg-[#B8D3C8]">Create New Recipe</h1>
+                <h1 className="text-5xl p-10 font-semibold pl-10 font-lobster bg-[#B8D3C8]">Recipe</h1>
             </div>
             <div>
                 <DisplayRecipeMethood recipeData={article} UserId={userId}  />

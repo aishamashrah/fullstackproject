@@ -188,6 +188,15 @@ export default function DisplayRecipeMethood({ recipeData, UserId }: Props) {
                                 alt="Recipe Image"
                             />
                         </div>
+                        <div>
+                    <label className="font-bold" htmlFor="region">Image</label>
+                    <input
+                      id="region"
+                      type="text"
+                      className="w-full p-2 border border-gray-300 rounded-md"
+                      placeholder="Add Image URL"
+                      onChange={({ target: { value } }) => setImage(value)} />
+                  </div>
                         {/* <label htmlFor="image" className="text-lg font-bold mt-4">
                             Upload new Image
                         </label>
