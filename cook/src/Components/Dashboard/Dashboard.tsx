@@ -105,6 +105,7 @@ export default function Dashboard() {
     const savedState = localStorage.getItem('state');
     if (savedName) {
       setName(savedName);
+      setIsSignedIn(true);
     }
     if (savedState) {
       setCurrentState(savedState);
