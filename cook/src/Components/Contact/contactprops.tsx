@@ -34,7 +34,7 @@ const MyComponent = () => {
     phoneNumber: '(209)3465079 ',
     role: ' backend Developer ',
     LinkedIn: 'https://www.linkedin.com/in/mark-ramirez-105b21258/',
-    name:'mark Ramirez'
+    name:'Mark Ramirez'
   };
 
   return (
