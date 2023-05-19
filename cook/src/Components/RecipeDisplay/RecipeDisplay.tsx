@@ -42,7 +42,7 @@ export default function RecipeDisplay(props: any) {
         const fetchData = async () => {
             let searchRes = await GetRecipeById(articleId);
             setArticle(searchRes[0]);
-            console.log(searchRes[0]);
+            
             setRecipeId(searchRes[0].recipeId)
             setUserId(searchRes[0].userID)
         };

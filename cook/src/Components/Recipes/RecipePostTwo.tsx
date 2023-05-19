@@ -30,6 +30,7 @@ const RecipiePostTwo = (props: Props) => {
   const [isPublished, setisPublished] = useState(true);
   const [isDeleted, setisDeleted] = useState(false);
   const [isSignedIn, setIsSignedIn] = useState(true);
+  const [isClicked, setIsClicked] = useState(false);
 
   const handleAddRow = () => {
     setRows([...rows, { ingredient: "", Weight: 0 }]);
@@ -79,7 +80,7 @@ const RecipiePostTwo = (props: Props) => {
       date: props.formattedDate,
       publisherName: publisherName,
       title: title,
-      image: image,
+      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQPzQarc61tpYiKWyrGlDrUWBkY6alRy9vjw&usqp=CAU',
       description: description,
       Tags: tags,
       diet: diet,
@@ -88,7 +89,10 @@ const RecipiePostTwo = (props: Props) => {
       isDeleted: isDeleted,
     };
     rows.forEach((row) => {
-      if (row.ingredient.trim() !== "" && row.Weight !== 0) {
+      
+        let count = 0;
+        count++;
+        console.log(`count: ${count}`)
         const rowData = {
           Id: 0,
           RecipeId: props.uniqueId,
@@ -96,10 +100,10 @@ const RecipiePostTwo = (props: Props) => {
         };
         console.log(rowData);
         PostIngredientData(rowData);
-      }
+      
     });
     PostRecipeData(Data)
-    console.log(Data)
+    // setIsClicked(true);
   };
 
   const handleRemoveLastRow = () => {
@@ -108,6 +112,7 @@ const RecipiePostTwo = (props: Props) => {
       newRows.pop();
       setRows(newRows);
     }
+    
   };
 
   return (
@@ -166,16 +171,16 @@ const RecipiePostTwo = (props: Props) => {
                       placeholder=""
                       onChange={({ target: { value } }) => setdescription(value)} />
                   </div>
-                  <div className="w-3/4 inline-block">
+                  {/* <div className="w-3/4 inline-block">
                     <label className="font-bold mr-2" htmlFor="picture">Image:</label>
                     <input
                       id="picture"
                       type="file"
                       accept="image/*"
-                      onChange={handleImage}
+                      
                       className="max-w-full"
                     />
-                  </div>
+                  </div> */}
                 </form>
               </div>
               <div className="bg-[#B8D3C8] p-3 lg:p-8 rounded-lg mx-8 shadow-2xl border-2 border-[#88AA99] mt-10 lg:mt-0">
@@ -214,37 +219,44 @@ const RecipiePostTwo = (props: Props) => {
                     onClick={handleAddRow}>
                     Add Row
                   </button>
-                  <button
-                    className="px-4 py-2 text-white bg-red-500 rounded-md"
-                    onClick={handleRemoveLastRow}>
-                    Remove Row
-                  </button>
+                  {rows.length > 1 && (
+                    <button
+                      className="px-4 py-2 text-white bg-red-500 rounded-md"
+                      onClick={handleRemoveLastRow}>
+                      Remove Row
+                    </button>
+
+                  )}
+
                 </div>
               </div>
             </div>
           </div>
           <div className="flex justify-center mt-14">
-            <button
+            {!isClicked ? (
+                          <button
               onClick={handleSubmit}
               className="px-4 py-2 text-white bg-green-500 rounded-md w-44 text-2xl">
               Save Recipe
             </button>
+            ) : (<p className="text-3xl font-bold">Recipe Saved</p>) }
+
           </div>
         </div>) : (
-          <div className="flex items-center justify-center min-h-screen">
-            <div className="bg-[#B8D3C8] p-8 md:p-12 lg:p-20 rounded-lg mx-4 sm:mx-8 lg:mx-64 shadow-2xl border-2 border-[#88AA99]">
-              <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 text-center">
-                Please sign in to access this feature.
-              </h1>
-              <Link to="/signin">
-                <div className="flex justify-center">
-                  <button className="px-6 py-3 md:px-8 md:py-4 lg:px-10 lg:py-5 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600 shadow-2xl">
-                    Sign In
-                  </button>
-                </div>
-              </Link>
-            </div>
-          </div>)}
+        <div className="flex items-center justify-center min-h-screen">
+          <div className="bg-[#B8D3C8] p-8 md:p-12 lg:p-20 rounded-lg mx-4 sm:mx-8 lg:mx-64 shadow-2xl border-2 border-[#88AA99]">
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 text-center">
+              Please sign in to access this feature.
+            </h1>
+            <Link to="/signin">
+              <div className="flex justify-center">
+                <button className="px-6 py-3 md:px-8 md:py-4 lg:px-10 lg:py-5 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600 shadow-2xl">
+                  Sign In
+                </button>
+              </div>
+            </Link>
+          </div>
+        </div>)}
 
 
     </>

@@ -75,7 +75,7 @@ function DietToolRow(props: DietToolRowProps) {
         onSodiumChange(searchRes[0].sodium / 100 * weight);
       } else {
         setTitleBool(true);
-        setWeight(0);
+        setWeight(weight);
         setCalories(0);
         setProtein(0);
         setCarbs(0);

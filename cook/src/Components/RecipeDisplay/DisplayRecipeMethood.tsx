@@ -43,6 +43,7 @@ export default function DisplayRecipeMethood({ recipeData, UserId }: Props) {
     const [userID, setUserID] = useState(0);
     const [date, setDate] = useState('');
     const [isPublisher, setisPublisher] = useState(false);
+    const [isClicked, setisClicked] = useState(false);
 
 
 
@@ -62,8 +63,8 @@ export default function DisplayRecipeMethood({ recipeData, UserId }: Props) {
             userID: userID,
             date: date,
         }
-        console.log(Data);
         PostRecipeUpdate(Data);
+        setisClicked(true);
     };
 
 
@@ -75,7 +76,6 @@ export default function DisplayRecipeMethood({ recipeData, UserId }: Props) {
         if (file) {
             const reader = new FileReader();
             reader.onloadend = () => {
-                console.log(reader.result);
                 setImage(reader.result as string);
             };
             reader.readAsDataURL(file);
@@ -85,7 +85,6 @@ export default function DisplayRecipeMethood({ recipeData, UserId }: Props) {
 
 
     useEffect(() => {
-        console.log(recipeData);
         if (recipeData) {
           setId(recipeData.id);
           setRecipeId(recipeData.recipeId);
@@ -189,7 +188,7 @@ export default function DisplayRecipeMethood({ recipeData, UserId }: Props) {
                                 alt="Recipe Image"
                             />
                         </div>
-                        <label htmlFor="image" className="text-lg font-bold mt-4">
+                        {/* <label htmlFor="image" className="text-lg font-bold mt-4">
                             Upload new Image
                         </label>
                         <input
@@ -199,12 +198,13 @@ export default function DisplayRecipeMethood({ recipeData, UserId }: Props) {
 
                             className="rounded-md px-4 py-2 mt-2"
                             onChange={handleImage}
-                        />
+                        /> */}
                     </div>
                 </div>
 
            {isPublisher ? 
            (<div className='flex justify-end'>
+                    {isClicked }
                     <button className=" bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 mt-6 w-full md:w-auto rounded-md shadow-2xl"
                         onClick={handleClick}>
                         Save Changes

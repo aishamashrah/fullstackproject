@@ -242,7 +242,6 @@ const DietTool: React.FC<Props> = ({ recipeId, userId }) => {
             const rowData = {
                 ...row,
             };
-            console.log(rowData);
             PostWeightChanges(rowData);
         });
 
@@ -253,8 +252,6 @@ const DietTool: React.FC<Props> = ({ recipeId, userId }) => {
         const userInfoString = localStorage.getItem('UserInfo');
         if (userInfoString) {
             const userInfo = JSON.parse(userInfoString);
-            // You can use the userInfo object here
-            // Example: set the publisherName state
             setPublisherName(userInfo.name);
             setLocalId(userInfo.id);
             
@@ -271,8 +268,6 @@ const DietTool: React.FC<Props> = ({ recipeId, userId }) => {
 
     useEffect(() => {
         setStateRecipeId(recipeId);
-
-
         setPieChartCalories({
             labels: ingredients.map((data) => data.ingredient),
             datasets: [
@@ -325,16 +320,8 @@ const DietTool: React.FC<Props> = ({ recipeId, userId }) => {
         const fetchData = async () => {
             let searchRes = await GetIngredientsByRecipeId(recipeId);
             setIngredients(searchRes);
-
         };
         fetchData();
-
-
-
-
-
-
-
     }, []);
 
 

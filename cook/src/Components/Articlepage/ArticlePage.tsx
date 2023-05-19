@@ -13,7 +13,7 @@ export default function ArticlePage(props: any) {
     const location = useLocation();
 const articleId = location.state?.num;
 
-{console.log(articleId)}
+
 
    
 
@@ -31,10 +31,10 @@ const articleId = location.state?.num;
     useEffect(() => {
         const fetchData = async () => {
             let searchRes = await GetArticleById(articleId);
-            
+            console.log(searchRes[0])
             setArticle(searchRes[0]);
             const todaysDate = DateComponent();
-            setArticle({...article, date: todaysDate});
+            
             
         };
         fetchData();

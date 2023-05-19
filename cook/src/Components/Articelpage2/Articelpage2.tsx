@@ -17,6 +17,7 @@ export default function Articelpage2() {
   const [isPublished, setisPublished] = useState(true);
   const [isDeleted, setisDeleted] = useState(false);
   const [isSignedIn, setIsSignedIn] = useState(true);
+  const [isClicked, setIsClicked] = useState(false);
 
   const handleImage = (event: React.ChangeEvent<HTMLInputElement>) => {
     let file = event.target.files?.[0];
@@ -50,7 +51,7 @@ export default function Articelpage2() {
       date: date,
       publisherName: publisherName,
       title: title,
-      image: image,
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQPzQarc61tpYiKWyrGlDrUWBkY6alRy9vjw&usqp=CAU",
       description: description,
       Tags: Tags,
       categories: categories,
@@ -58,6 +59,7 @@ export default function Articelpage2() {
       isDeleted: isDeleted,
     };
     ArticelData(Data);
+    setIsClicked(true);
   };
 
   return (
@@ -128,7 +130,7 @@ export default function Articelpage2() {
                   onChange={(e) => setdescription(e.target.value)}
                 ></textarea>
               </div>
-              <div className="w-3/4 inline-block">
+              {/* <div className="w-3/4 inline-block">
                 <label htmlFor="image" className="font-bold mr-2 mt-4 text-2xl md:text-3xl">
                   Image:
                 </label>
@@ -139,10 +141,14 @@ export default function Articelpage2() {
                   className="max-w-full p-2 border border-gray-300 rounded-md"
                   onChange={handleImage}
                 />
-              </div>
+              </div> */}
             </div>
           </div>
 
+
+
+        {!isClicked ? (  
+          
           <div className="flex justify-center mt-12 mb-16">
             <button
               className="px-4 py-2 text-white bg-green-500 rounded-md w-24 sm:w-32 md:w-40 text-lg"
@@ -150,7 +156,11 @@ export default function Articelpage2() {
             >
               Save
             </button>
-          </div>
+          </div>) : (<div className="flex justify-center mt-12 mb-16"><p className='text-3xl font-bold'>Article Saved</p></div>)}
+
+
+
+
         </div>
       ) : (
         <div className="flex items-center justify-center min-h-screen">

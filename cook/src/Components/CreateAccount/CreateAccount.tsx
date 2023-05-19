@@ -36,7 +36,6 @@ export default function CreateAccount() {
                     localStorage.removeItem("UserInfo");
 
                     let response = await getLoggedInUserData(Username);
-                    console.log(response)
                     let userInfo = {
                         id: response.id,
                         name: response.username,

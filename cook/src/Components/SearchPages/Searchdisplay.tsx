@@ -18,7 +18,6 @@ export default function Display() {
             let searchRes = await GetAllSearchpage();
             setBlogItems(searchRes);
             let articelRes = await GetAllArticel();
-            console.log('test')
             setArticelItems(articelRes);
         };
         fetchData();
