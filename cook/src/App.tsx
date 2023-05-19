@@ -19,6 +19,7 @@ import Articelpage2 from './Components/Articelpage2/Articelpage2';
 import RecipePost from './Components/Recipes/RecipePost';
 import RecipePostTwo from './Components/Recipes/RecipePostTwo';
 
+import MyComponent from './Components/Contact/contactprops'
 import FeaturedNews from './Components/Articlepage/Articel'
 function App() {
   return (
@@ -28,8 +29,8 @@ function App() {
    <BrowserRouter>
       <Routes>
        
-        
-       
+
+<Route path='/Contact' element={<MyComponent/>} />
         <Route path='/News' element={<Articelpage2/>} />
         <Route path='/Dash' element={<Dashboard/>} />
         <Route path='/RecipeBook' element={<Recipes/>} />
