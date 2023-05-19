@@ -70,7 +70,7 @@ export default function Signin() {
         </label>
       </div>
       <p className="text-center text-xs ml-28 ">Don’t have an account? 
-      <Link to="/signup">
+      <Link to="/Create">
             <button className="text-blue-600">sign up</button>
             </Link>
             </p>
