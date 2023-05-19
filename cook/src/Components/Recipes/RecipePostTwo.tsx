@@ -103,7 +103,7 @@ const RecipiePostTwo = (props: Props) => {
       
     });
     PostRecipeData(Data)
-    // setIsClicked(true);
+    setIsClicked(true);
   };
 
   const handleRemoveLastRow = () => {
