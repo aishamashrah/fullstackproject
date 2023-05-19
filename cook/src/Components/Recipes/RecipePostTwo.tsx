@@ -90,9 +90,7 @@ const RecipiePostTwo = (props: Props) => {
     };
     rows.forEach((row) => {
       
-        let count = 0;
-        count++;
-        console.log(`count: ${count}`)
+      if (row.ingredient !== "") {
         const rowData = {
           Id: 0,
           RecipeId: props.uniqueId,
@@ -100,6 +98,7 @@ const RecipiePostTwo = (props: Props) => {
         };
         console.log(rowData);
         PostIngredientData(rowData);
+      }
       
     });
     PostRecipeData(Data)
