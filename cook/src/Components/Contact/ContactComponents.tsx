@@ -7,15 +7,17 @@ interface AboutUsCardProps {
   phoneNumber: string;
   role: string;
   LinkedIn:string;
+  name:string;
 }
 
 
-const AboutUsCard: React.FC<AboutUsCardProps> = ({ email, image, about, phoneNumber, role,LinkedIn }) => {
+const AboutUsCard: React.FC<AboutUsCardProps> = ({ email, image, about, phoneNumber, role,LinkedIn,name }) => {
   return (
     <div className='justify-center mt-9'>
     <div className="flex flex-col md:flex-row p-10 ">
     <div className="md:w-1/3 mb-4 md:mb-0 flex flex-col items-center">
   <img src={image} alt="Profile" className="rounded-xl w-40 h-44 mx-auto" />
+  <p className="text-center mt-2 font-bold">{name}</p>
   <p className="text-center mt-2 font-bold">{role}</p>
   <a className='text-blue-600' href={LinkedIn}>LinkedIn</a>
 </div>
