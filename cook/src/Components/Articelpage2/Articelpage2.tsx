@@ -85,17 +85,6 @@ export default function Articelpage2() {
                 />
               </div>
               <div>
-                <label htmlFor="publisher" className="font-bold mt-4 text-2xl md:text-3xl">
-                  Publisher
-                </label>
-                <input
-                  id="publisher"
-                  type="text"
-                  defaultValue={publisherName}
-                  className="w-full p-2 border border-gray-300 rounded-md mt-2 lg:h-12"
-                />
-              </div>
-              <div>
                 <label htmlFor="categories" className="font-bold mt-4 text-2xl md:text-3xl">
                   Categories
                 </label>
