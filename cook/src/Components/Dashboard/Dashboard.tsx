@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState, ChangeEvent,useEffect } from 'react';
 import CookEaseHeader from '../Header/Header';
 import CookEaseFooter from '../Footer/Footer';
 import img from '../../Assets/cook-book-removebg-preview.png';
@@ -6,13 +6,35 @@ import img2 from '../../Assets/211209-delish-quarterly-pasta-chicken-parm-pasta-
 import chefHat2 from '../../Assets/profile.png';
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { GetAllArticel } from '../../Services/DataService';
+import { GetAllSearchpage } from '../../Services/DataService';
 
 export default function Dashboard() {
+
+
+
+  const [blogItems, setBlogItems] = useState([]);
+  const [articelItems, setArticelItems] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [aboutMe, setAboutMe] = useState('');
   const [isEditing, setIsEditing] = useState(false);
   const [currentState, setCurrentState] = useState('');
   const [name, setName] = useState('');
+
+  
+
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      let articelRes = await GetAllArticel();
+      setArticelItems(articelRes);
+      console.log(articelRes);
+    };
+    fetchData();
+  }, []);
+
+  
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setAboutMe(e.target.value);
@@ -117,52 +139,58 @@ export default function Dashboard() {
           </h1>
           <img src={img} alt="Dashboard icon" className="w-20 h-20 mr-3 p-2 mt-5" />
         </div>
-
+  
         <div className="grid grid-cols-1 md:grid-cols-3 md:gap-20 p-5 gap-y-6 md:p-14">
-          <div className="col1 rounded-md p-4 col-span-1">
-            <h3 className="font-serif">Last Viewed</h3>
-            <div className="flex text-center flex-col items-center mt-4 lg:text-base md:text-xs">
-              <img src={img2} alt="Dashboard icon" className="object-cover w-96 h-28 mr-3 p-2 md:ml-3" />
-              <p className="font-serif mr-6 md:ml-3">Pasta Primaveria with Grilled Shrimp and Truffle Oil</p>
-              <img src={img2} alt="Dashboard icon" className="object-cover w-96 h-28 mr-3 p-2 md:ml-3" />
-              <p className="font-serif mr-6 md:ml-3">Pasta Primaveria with Grilled Shrimp and Truffle Oil</p>
-              <img src={img2} alt="Dashboard icon" className="object-cover w-96 h-28 mr-3 p-2 md:ml-3" />
-              <p className="font-serif mr-6 md:ml-3">Pasta Primaveria with Grilled Shrimp and Truffle Oil</p>
-            </div>
-          </div>
+      <div className="col1 rounded-md p-4 col-span-1">
+        <h3 className="font-serif">Last Viewed</h3>
+        <div className="flex text-center flex-col items-center mt-4 lg:text-base md:text-xs">
+        {articelItems.slice(0, 2).map((item: { image: string, title: string, description: string }, index: number) => (
+            <React.Fragment key={index}>
+              <img src={item.image} alt="" className="object-cover w-96 h-28 mr-3 p-2 md:ml-3" />
+              <h5 className='font-serif lg:text-lg ' >{item.title}</h5>
+              <p className="font-serif mr-6 md:ml-3">{item.description}</p>
+            </React.Fragment>
+          ))}
+        </div>
+ 
+        </div>
+        <div className="w-full col-span-2">
+      <div className="flex flex-col lg:text-base md:text-xs md:flex-row gap-4">
+        <div className="flex-1 p-4 rounded-md bg1">
+          <h3 className="font-serif lg:text-2xl">Your Recipes</h3>
+          <Link to="/Search">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-black-400 mt-6" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M13.236 14.295a7.5 7.5 0 111.06-1.06l4.242 4.242a.75.75 0 11-1.06 1.06l-4.242-4.242zm-6.736-1.795a5 5 0 100-10 5 5 0 000 10z" clipRule="evenodd" />
+            </svg>
+          </Link>
+          {articelItems.slice(0, 1).map((item: { image: string, title: string, description: string }, index: number) => (
+            <p key={index} className="p-4 font-serif">
+              {item.description}
+            </p>
+          ))}
+          <Link to="/Search">
+            <h6 className="text-sm font-serif text-right hover">See all</h6>
+          </Link>
+        </div>
 
-
-          <div className="w-full  col-span-2 ">
-            <div className="flex flex-col lg:text-base md:text-xs  md:flex-row gap-4 ">
-              <div className=" p-4 rounded-md bg1">
-                <h3 className="font-serif lg:text-2xl">Your Recipes</h3>
-                <Link to="/Search">
-                  <svg xmlns="http://www.w3.org/2000/svg" className=" h-5 w-5 text-black-400 mt-6" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M13.236 14.295a7.5 7.5 0 111.06-1.06l4.242 4.242a.75.75 0 11-1.06 1.06l-4.242-4.242zm-6.736-1.795a5 5 0 100-10 5 5 0 000 10z" clipRule="evenodd" />
-                  </svg>
-                </Link>
-                <p className='p-4 font-serif '>Pasta Primaveria with Grilled Shrimp and Truffle OilPasta Primaveria with Grilled Shrimp and Truffle OilPasta Primaveria with Grilled Shrimp and Truffle Oil</p>
-                <Link to="/Search">
-                  <h6 className='text-sm font-serif text-right  hover'>See all</h6>
-                </Link>
-
-              </div>
-
-              <div className=" p-4 rounded-md bg1  ">
-                <h3 className="font-serif  lg:text-2xl">Favorites</h3>
-                <button className=''>
-                  <Link to="/Search">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 flex justify-normal w-5 text-black-400 mt-6 " viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M13.236 14.295a7.5 7.5 0 111.06-1.06l4.242 4.242a.75.75 0 11-1.06 1.06l-4.242-4.242zm-6.736-1.795a5 5 0 100-10 5 5 0 000 10z" clipRule="evenodd" />
-                    </svg>
-                  </Link>
-                </button>
-                <p className='p-4 font-serif'>Pasta Primaveria with Grilled Shrimp and Truffle OilPasta Primaveria with Grilled Shrimp and Truffle OilPasta Primaveria with Grilled Shrimp and Truffle Oil</p>
-                <Link to="/Search">
-                  <h6 className='text-sm font-serif text-right hover'>See all</h6>
-                </Link>
-              </div>
-              <br></br>
+        <div className="flex-1 p-4 rounded-md bg1">
+          <h3 className="font-serif lg:text-2xl">Favorites</h3>
+          <button>
+            <Link to="/Search">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 flex justify-normal w-5 text-black-400 mt-6" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M13.236 14.295a7.5 7.5 0 111.06-1.06l4.242 4.242a.75.75 0 11-1.06 1.06l-4.242-4.242zm-6.736-1.795a5 5 0 100-10 5 5 0 000 10z" clipRule="evenodd" />
+              </svg>
+            </Link>
+          </button>
+          <p className="p-4 font-serif">Pasta Primaveria with Grilled Shrimp and Truffle OilPasta Primaveria with Grilled Shrimp and Truffle OilPasta Primaveria with Grilled Shrimp and Truffle Oil</p>
+          <Link to="/Search">
+            <h6 className="text-sm font-serif text-right hover">See all</h6>
+          </Link>
+       
+        </div>
+      
+ 
+           
               <br></br>
             </div>
 
