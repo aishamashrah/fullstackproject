@@ -7,7 +7,7 @@ import cookpic from '../../Assets/cooking.png'
 export default function CookEaseFooter() {
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 bg-gray-200 w-full md:h-36 border-t-2 border-black">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 bg-gray-200 w-full md:h-36 border-t-2 border-black">
             <div className="flex  justify-center md:justify-center md:ml-8 lg:mt-0 mt-8  ">
                 <button>
                     <img className="h-16 mb-2 md:mb-0 md:rotate-10" src={chefHat} alt="Chef Hat" />
@@ -23,14 +23,7 @@ export default function CookEaseFooter() {
                 </div>
             </div>
 
-            <div className="lg:pl-44 pt-3 md:pl-20 md:p-2 md:justify-center">
-                <div>
-                    <p className="text-center md:text-left">Search</p>
-                    <p className="text-center md:text-left">News</p>
-                    <p className="text-center md:text-left">Kitchen Tips</p>
-                    <p className="text-center md:text-left">About Us</p>
-                </div>
-            </div>
+
 
             <div className="lg:p-1 flex p-2  justify-center md:justify-center md:ml-8  ">
                 <button>
@@ -38,7 +31,7 @@ export default function CookEaseFooter() {
                 </button>
             </div>
 
-            <div className="lg:p-4  ">
+            <div className="lg:p-4 md:flex md:justify-end md:mr-14  ">
                 <div >
                     <p className="text-center md:text-left">Contact Us</p>
                     <p className="text-center md:text-left">Community Guidelines</p>
