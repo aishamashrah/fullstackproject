@@ -12,6 +12,7 @@ export default function CreateAccount() {
     const [Password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [navBool, setNavBool] = useState(false);
+    const [buttonBool, setButtonBool] = useState(false);
 
     const navigate = useNavigate();
     const handleSubmit = async () => {
@@ -44,7 +45,7 @@ export default function CreateAccount() {
 
                     localStorage.setItem("UserInfo", JSON.stringify(userInfo)); // Save the userInfo object to local storage
                     navigate('/');
-                    
+
 
                 }
             }
@@ -56,6 +57,7 @@ export default function CreateAccount() {
                 setErrorMessage('An unknown error occurred');
             }
         }
+        setButtonBool(true);
     };
 
 
@@ -95,14 +97,22 @@ export default function CreateAccount() {
                     <button className="text-blue-600">login</button>
                 </Link>
             </p>
-            <div className="flex items-center justify-center p-5">
 
+
+
+
+            {!buttonBool ? (
+
+                <div className="flex justify-center mt-12 mb-16">
                 <button className="px-4 py-2 justify-stretch text-white font-semibold bg-blue-600 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue active:bg-blue-800 transition duration-150 ease-in-out w-72 "
-                    onClick={handleSubmit}
-                >
-                    SIGN IN
+                    onClick={handleSubmit}>
+                    Create Account 
                 </button>
-            </div>
+                </div>) : (<div className="flex justify-center mt-12 mb-16"><p className='text-3xl font-bold font-lobster'>Account Created</p></div>)}
+
+
+
+
         </>
     );
 

@@ -147,20 +147,16 @@ export default function Articelpage2() {
 
 
 
-        {!isClicked ? (  
-          
-          <div className="flex justify-center mt-12 mb-16">
-            <button
-              className="px-4 py-2 text-white bg-green-500 rounded-md w-24 sm:w-32 md:w-40 text-lg"
-              onClick={handleSubmit}
-            >
-              Save
-            </button>
-          </div>) : (<div className="flex justify-center mt-12 mb-16"><p className='text-3xl font-bold'>Article Saved</p></div>)}
+          {!isClicked ? (
 
-
-
-
+            <div className="flex justify-center mt-12 mb-16">
+              <button
+                className="px-4 py-2 text-white bg-green-500 rounded-md w-24 sm:w-32 md:w-40 text-lg"
+                onClick={handleSubmit}
+              >
+                Save
+              </button>
+            </div>) : (<div className="flex justify-center mt-12 mb-16"><p className='text-3xl font-bold'>Article Saved</p></div>)}
         </div>
       ) : (
         <div className="flex items-center justify-center min-h-screen">

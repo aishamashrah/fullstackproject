@@ -21,27 +21,9 @@ export default function HomePage() {
 
         <HamburgerMenu />
       <div className='text-center mt-10 mb-10'>
-        <HomeCarousel
-          img1={food}
-          img2={food}
-          img3={food}
-          img4={achatz}
-          img5={achatz}
-          img6={achatz}
 
-          text1='Bacon Avocado and Spinach Sand-which Topped with Soft Boiled Egg'
-          text2='Bacon Avocado and Spinach Sand-which Topped with Soft Boiled Egg'
-          text3='Bacon Avocado and Spinach Sand-which Topped with Soft Boiled Egg'
-
-          text4='Grant Achatz is an innovative American chef and restaurateur...'
-          text5='Grant Achatz is an innovative American chef and restaurateur...'
-          text6='Grant Achatz is an innovative American chef and restaurateur...'
-
-
-        />
       </div>
       <div className='lg:flex mx-10'>
-
         <div className=' flex justify-center'>
           <FeaturedNews
             img={img1} text="Here is a bunch of text to try and take up space"

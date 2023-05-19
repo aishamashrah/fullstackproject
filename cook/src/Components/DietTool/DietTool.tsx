@@ -107,7 +107,7 @@ const DietTool: React.FC<Props> = ({ recipeId, userId }) => {
     });
 
     const [pieChartMacros, setPieChartMacros] = useState({
-        labels: ["Protein", "Carbs", "Fat", "Sodium"],
+        labels: ["Protein", "Carbs", "Fat"],
         datasets: [
             {
                 label: "Total Calories",
@@ -244,8 +244,6 @@ const DietTool: React.FC<Props> = ({ recipeId, userId }) => {
             };
             PostWeightChanges(rowData);
         });
-
-
     }
 
     useEffect(() => {
@@ -254,13 +252,10 @@ const DietTool: React.FC<Props> = ({ recipeId, userId }) => {
             const userInfo = JSON.parse(userInfoString);
             setPublisherName(userInfo.name);
             setLocalId(userInfo.id);
-            
-
             if (userInfo.id == userId) {
                 setisPublisher(true);
             }
         }
-
     }, []);
 
 
@@ -283,16 +278,15 @@ const DietTool: React.FC<Props> = ({ recipeId, userId }) => {
                     ],
                     borderColor: "black",
                     borderWidth: 2,
-
                 },
             ],
         });
         setPieChartMacros({
-            labels: ["Protein", "Carbs", "Fat", "Sodium"],
+            labels: ["Protein", "Carbs", "Fat"],
             datasets: [
                 {
                     label: "Total Macro",
-                    data: [totalProtein, totalCarbs, totalFat, totalSodium],
+                    data: [totalProtein, totalCarbs, totalFat,],
                     backgroundColor: [
                         "rgba(75,192,192,1)",
                         "#ecf0f1",
@@ -305,12 +299,7 @@ const DietTool: React.FC<Props> = ({ recipeId, userId }) => {
                 },
             ],
         });
-
-
-
-
-
-    }, [calorieArray]);
+   }, [calorieArray]);
 
 
 
@@ -323,14 +312,6 @@ const DietTool: React.FC<Props> = ({ recipeId, userId }) => {
         };
         fetchData();
     }, []);
-
-
-
-
-
-
-
-
 
 
 
