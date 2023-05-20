@@ -27,29 +27,29 @@ const SeasonSection: React.FC<SeasonProps> = ({ img1, img2, img3, img4, tag1, ta
     return (
         <>
             <div className="header p-8  w-full border-black border   ">
-                <div className="text-5xl font-lobster flex justify-center">Spring Dishes</div>
+                <div className="text-5xl font-lobster flex justify-center">Summer Dishes</div>
             </div>
 
-            <div className='flex justify-center gap-4 md:gap-10 mt-20 mx-10'>
+            <div className='flex justify-center gap-4 md:gap-14 mt-20 mx-10'>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <Link to="/RecipeDisplay" state={{ num: 1 }}>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-24">
+                <Link to="/RecipeDisplay" state={{ num: 9 }}>
                     <button className="text-left">                    
-                        <img src={img1} className='rounded-xl w-96' />
+                        <img src={img1} className='rounded-xl w-96 object-cover h-56'  />
                         <p className='font-Noto font-semibold text-lg'>{tag1}</p>
                         <p className='mt-2 font-Noto text-xl'>{text1}</p>
                     </button>
                     </Link> 
-                    <Link to="/RecipeDisplay" state={{ num: 2 }}>
+                    <Link to="/RecipeDisplay" state={{ num: 10 }}>
                     <button className="text-left">                   
-                        <img src={img2} className='rounded-xl w-96' />
+                        <img src={img2} className='rounded-xl w-96 object-cover h-56' />
                         <p className='font-Noto font-semibold text-lg'>{tag2}</p>
                         <p className='mt-2 font-Noto text-xl'>{text2}</p>
                     </button>
                     </Link>
-                    <Link to="/RecipeDisplay" state={{ num: 3 }}>
+                    <Link to="/RecipeDisplay" state={{ num: 11 }}>
                     <button className="text-left">                    
-                        <img src={img3} className='rounded-xl w-96' />
+                        <img src={img3} className='rounded-xl w-96 object-cover h-56' />
                         <p className='font-Noto font-semibold text-lg'>{tag3}</p>
                         <p className='mt-2 font-Noto text-xl'>{text3}</p>
                     </button>

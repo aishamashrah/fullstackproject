@@ -75,11 +75,28 @@ const DietTool: React.FC<Props> = ({ recipeId, userId }) => {
                 label: "Total Calories",
                 data: calorieArray.map((data) => data),
                 backgroundColor: [
-                    "rgba(75,192,192,1)",
-                    "#ecf0f1",
-                    "#50AF95",
-                    "#f3ba2f",
-                    "#2a71d0",
+                    "#FF6F61",
+                    "#6B5B95",
+                    "#88B04B",
+                    "#F7CAC9",
+                    "#B3B3CC",
+                    "#E7A4FF",
+                    "#9FD8CB",
+                    "#FFB347",
+                    "#83D0C9",
+                    "#FF8C42",
+                    "#FFD166",
+                    "#5CDB95",
+                    "#A05195",
+                    "#2EC4B6",
+                    "#FF7A5C",
+                    "#8AC6D1",
+                    "#FF80AB",
+                    "#4CB8C4",
+                    "#FFD700",
+                    "#9BC53D"
+
+
                 ],
                 borderColor: "black",
                 borderWidth: 2,
@@ -106,7 +123,7 @@ const DietTool: React.FC<Props> = ({ recipeId, userId }) => {
             },
         ],
     });
- 
+
     const [pieChartMacros, setPieChartMacros] = useState({
         labels: ["Protein", "Carbs", "Fat"],
         datasets: [
@@ -148,7 +165,7 @@ const DietTool: React.FC<Props> = ({ recipeId, userId }) => {
             }
             return ingredient;
         });
-        
+
         const newTotalWeight = updatedIngredients.reduce(
             (sum, ingredient) => sum + ingredient.weight,
             0
@@ -180,11 +197,26 @@ const DietTool: React.FC<Props> = ({ recipeId, userId }) => {
                     label: "Total Calories",
                     data: calorieArray.length > 0 ? calorieArray.map((data) => data) : [1, 2, 3, 4,],
                     backgroundColor: [
-                        "rgba(75,192,192,1)",
-                        "#ecf0f1",
-                        "#50AF95",
-                        "#f3ba2f",
-                        "#2a71d0",
+                        "#FF6F61",
+                        "#6B5B95",
+                        "#88B04B",
+                        "#F7CAC9",
+                        "#B3B3CC",
+                        "#E7A4FF",
+                        "#9FD8CB",
+                        "#FFB347",
+                        "#83D0C9",
+                        "#FF8C42",
+                        "#FFD166",
+                        "#5CDB95",
+                        "#A05195",
+                        "#2EC4B6",
+                        "#FF7A5C",
+                        "#8AC6D1",
+                        "#FF80AB",
+                        "#4CB8C4",
+                        "#FFD700",
+                        "#9BC53D"
                     ],
                     borderColor: "black",
                     borderWidth: 2,
@@ -252,6 +284,7 @@ const DietTool: React.FC<Props> = ({ recipeId, userId }) => {
             const rowData = {
                 ...row,
             };
+            
             PostWeightChanges(rowData);
         });
         window.location.reload();
@@ -281,11 +314,45 @@ const DietTool: React.FC<Props> = ({ recipeId, userId }) => {
                     label: "Total Calories",
                     data: calorieArray.length > 0 ? calorieArray.map((data) => data) : [1, 2, 3, 4,],
                     backgroundColor: [
-                        "rgba(75, 192, 192, 1)",
-                        "#ecf0f1",
-                        "#50AF95",
-                        "#f3ba2f",
-                        "#2a71d0",
+                        "#FF6F61",
+                        "#6B5B95",
+                        "#88B04B",
+                        "#F7CAC9",
+                        "#B3B3CC",
+                        "#E7A4FF",
+                        "#9FD8CB",
+                        "#FFB347",
+                        "#83D0C9",
+                        "#FF8C42",
+                        "#FFD166",
+                        "#5CDB95",
+                        "#A05195",
+                        "#2EC4B6",
+                        "#FF7A5C",
+                        "#8AC6D1",
+                        "#FF80AB",
+                        "#4CB8C4",
+                        "#FFD700",
+                        "#9BC53D"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     ],
                     borderColor: "black",
                     borderWidth: 2,
@@ -299,18 +366,16 @@ const DietTool: React.FC<Props> = ({ recipeId, userId }) => {
                     label: "Total Macro",
                     data: [totalProtein, totalCarbs, totalFat,],
                     backgroundColor: [
-                        "rgba(75,192,192,1)",
-                        "#ecf0f1",
-                        "#50AF95",
-                        "#f3ba2f",
-                        "#2a71d0",
+                        "#FFA500",
+                        "#009688",
+                        "#E91E63"
                     ],
                     borderColor: "black",
                     borderWidth: 2,
                 },
             ],
         });
-   }, [calorieArray]);
+    }, [calorieArray]);
 
 
 
