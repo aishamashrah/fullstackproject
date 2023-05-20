@@ -29,7 +29,7 @@ const FavoriteSection: React.FC<FavoriteProps> = ({ img1, img2, img3, tag1, tag2
             <div className='flex justify-center gap-4 md:gap-10 mt-20 mx-10'>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <Link to="/RecipeDisplay" state={{ num: 5 }}>
+                <Link to="/RecipeDisplay" state={{ num: 4 }}>
                     <button className="text-left">
                         <img src={img1} className='rounded-xl w-96' />
                         <p className='font-Noto font-semibold text-lg'>{tag1}</p>

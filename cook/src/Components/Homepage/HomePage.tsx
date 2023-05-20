@@ -26,11 +26,11 @@ export default function HomePage() {
       <div className='lg:flex mx-10'>
         <div className=' flex justify-center'>
           <FeaturedNews
-            img={img1} text="Here is a bunch of text to try and take up space"
+            img={img1} text="Uncovering the Truth About Superfoods"
             img2={img1} text2="Here is a bunch of text to try and take up space"
-            img3={img1} text3="Here is a bunch of text to try and take up space"
-            img4={img1} text4="Here is a bunch of text to try and take up space"
-            img5={img1} text5="Here is a bunch of text to try and take up space"
+            img3={img1} text3="From Farm to Fork: The Journey of Organic Food"
+            img4={img1} text4="The Science Behind Food Cravings"
+            img5={img1} text5="The Rise of Plant-Based Diets"
           />
         </div>
         <div className='lg:w-3/4 flex justify-center mt-20 lg:mt-0 mb-10'>

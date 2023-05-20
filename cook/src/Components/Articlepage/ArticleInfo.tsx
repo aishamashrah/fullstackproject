@@ -41,7 +41,7 @@ const ArticleInfo: React.FC<Props> = (props: Props) => {
             <p className="text-sm md:text-lg text-gray-600">{props.tags}</p>
           </div>
           <div className="mt-6">
-            <p className="text-lg md:text-2xl leading-relaxed">{props.description}</p>
+            <p className="text-lg md:text-2xl leading-relaxed md:mx-32">{props.description}</p>
           </div>
         </div>
       </div>

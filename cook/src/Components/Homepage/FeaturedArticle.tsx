@@ -25,7 +25,7 @@ const FeaturedArticle: React.FC<ArticleProps> = ({ title, tag, content }) => {
                     {content}
                 </p>
                 <div className='ml-auto font-Noto'>
-                    <Link to="/Article" state={{ num: 2 }} className="justify- text-blue-500">
+                    <Link to="/Article" state={{ num: 8 }} className="justify- text-blue-500">
                         click for more
                     </Link>
                 </div>

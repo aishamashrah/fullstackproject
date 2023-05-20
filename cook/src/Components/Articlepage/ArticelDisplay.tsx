@@ -44,7 +44,7 @@ const ArticlePage: React.FC<ArticleProps> = ({date, publisherName, title, image,
   <line x1="0" y1="0" x2="100%" y2="0" stroke="currentColor" strokeWidth="2" />
 </svg>
 <p className="px-6 mx-auto xl:ml-32">Chef Restaurant Article Fine Dining</p>
-<p className="mx-auto xl:mx-96 pt-28 px-6 ">{description}</p>
+<p className="mx-auto xl:mx-96 pt-28 px-6  ">{description}</p>
 
     </>
   );
