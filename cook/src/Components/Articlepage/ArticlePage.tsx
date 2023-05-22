@@ -9,11 +9,11 @@ import DateComponent from '../Recipes/GetDate';
 
 export default function ArticlePage(props: any) {
     const location = useLocation();
-const articleId = location.state?.num;
+    const articleId = location.state?.num;
 
 
 
-   
+
 
     const [article, setArticle] = useState({
         date: 'Loading...',
@@ -24,22 +24,90 @@ const articleId = location.state?.num;
         image2: 'url-to-image2',
         tags: 'Loading...',
         Id: 0
-      })
-
+    })
     useEffect(() => {
         const fetchData = async () => {
             let searchRes = await GetArticleById(articleId);
-            console.log(searchRes[0])
+    
             setArticle(searchRes[0]);
             const todaysDate = DateComponent();
-            
-            
+          
+
+
+
+
+
+
+
+
+
+            const lastViewed = {
+                title: searchRes[0].title,
+                publisherName: searchRes[0].publisherName,
+                image: searchRes[0].image,
+                id: searchRes[0].id,
+                description: searchRes[0].description,
+              };
+              
+              let lastViewedArticles = JSON.parse(
+                localStorage.getItem('lastViewedArticles') ||
+                  '[{"title": "No articles viewed", "publisherName": "No articles viewed", "image": "No articles viewed", "id": 0, "description": "No articles viewed"}, {"title": "No articles viewed", "publisherName": "No articles viewed", "image": "No articles viewed", "id": 0, "description": "No articles viewed"}, {"title": "No articles viewed", "publisherName": "No articles viewed", "image": "No articles viewed", "id": 0, "description": "No articles viewed"}]'
+              );
+              
+              
+              // Check if the current article title is equal to the title in the first position
+              if (lastViewedArticles[0].title !== article.title) {
+                lastViewedArticles.unshift(lastViewed);
+              
+                if (lastViewedArticles.length > 3) {
+                  lastViewedArticles.pop();
+                }
+              
+                localStorage.setItem('lastViewedArticles', JSON.stringify(lastViewedArticles));
+              }
+              
+              console.log(lastViewedArticles);
+
+
+
+
+
+
+
+
+
+
+
+
         };
+
+        
+
+
+
+
+        
+
+
+
+    
         fetchData();
+    }, []);
+    
+
+useEffect(() => {
+
+
+
+
+
+// How do i make it so this code is called only once
+
+  
 
     }, []);
 
-  
+
 
 
     return (
@@ -56,7 +124,7 @@ const articleId = location.state?.num;
                 tags={article.tags}
                 Id={article.Id}
             />
-                
+
         </div>
     )
 }

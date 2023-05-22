@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import { GetAllArticel } from '../../Services/DataService';
 import { GetAllSearchpage } from '../../Services/DataService';
 
+
 export default function Dashboard() {
 
 
@@ -23,11 +24,17 @@ export default function Dashboard() {
   const [userName, setUserName] = useState('');
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [userID, setuserID] = useState('');
+  const [lastViewedArticles, setLastViewedArticles] = useState([])
 
 
   useEffect(() => {
 
     const userInfoString = localStorage.getItem('UserInfo');
+    const lastViewedArticlesString = localStorage.getItem('lastViewedArticles') || '[]'; 
+    const lastTwoArticles = JSON.parse(lastViewedArticlesString).splice(1,2);
+    
+    setLastViewedArticles(lastTwoArticles);
+    
     if (userInfoString) {
       const userInfo = JSON.parse(userInfoString);
       setUserName(userInfo.name);
@@ -43,7 +50,6 @@ export default function Dashboard() {
     const fetchData = async () => {
       let articelRes = await GetAllArticel();
       setArticelItems(articelRes);
-      console.log(articelRes);
     };
     fetchData();
   }, []);
@@ -132,6 +138,8 @@ export default function Dashboard() {
     text: string;
   }
 
+
+  console.log(lastViewedArticles)
   return (
     <div>
       <CookEaseHeader />
@@ -160,12 +168,14 @@ export default function Dashboard() {
           <div className="grid grid-cols-1 md:grid-cols-3 md:gap-20 p-5 gap-y-6 md:p-14">
             <div className="col1 rounded-md p-4 col-span-1">
               <h3 className="font-serif">Last Viewed</h3>
-              <div className="flex text-center flex-col items-center mt-4 lg:text-base md:text-xs">
-                {articelItems.slice(0, 2).map((item: { image: string, title: string, description: string }, index: number) => (
+              <div className="flex flex-col items-center mt-4 lg:text-base md:text-xs">
+                {lastViewedArticles.map((item: {id:string, image: string, title: string, description: string }, index: number) => (
                   <React.Fragment key={index}>
-                    <img src={item.image} alt="" className="object-cover w-96 h-28 mr-3 p-2 md:ml-3" />
-                    <h5 className='font-serif lg:text-lg ' >{item.title}</h5>
-                    <p className="font-serif mr-6 md:ml-3">{item.description}</p>
+                    <Link to={"/Article"} state={{ num: parseInt(item.id) }}>
+                    <img src={item.image} alt="" className="object-cover w-full h-28  p-2  rounded-xl mt-2" />
+                    <h5 className='font-serif lg:text-lg text-center ' >{item.title}</h5>
+                    <p className="font-serif mr-6 md:ml-3 text-s p-1">{item.description.slice(0, 120)}</p>
+                    </Link>
                   </React.Fragment>
                 ))}
               </div>
