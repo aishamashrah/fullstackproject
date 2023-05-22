@@ -170,10 +170,25 @@ async function GetIngredientsByRecipeId(Id: number) {
     let data = await response.json();
     return data;
   }
+  async function GetRecipeUsername(title: string) {
+    let response = await fetch(`https://cookeaseapi.azurewebsites.net/Recipe/GetItemsByPublisherName/${title}`);
+    let data = await response.json();
+    return data;
+  }
 
   
   async function GetRecipeById(id: number) {
     let response = await fetch(`https://cookeaseapi.azurewebsites.net/Recipe/GetItemsByRecipeId/${id}`);
+    let data = await response.json();
+    return data;
+  }
+  async function GetArticleByTitle(title: string) {
+    let response = await fetch(`https://cookeaseapi.azurewebsites.net/Article/GetItemsByTitle/${title}`);
+    let data = await response.json();
+    return data;
+  }
+  async function GetArticleByUsername(user: string) {
+    let response = await fetch(`https://cookeaseapi.azurewebsites.net/Article/GetItemsByPublisherName/${user}`);
     let data = await response.json();
     return data;
   }
@@ -224,7 +239,7 @@ async function GetIngredientsByRecipeId(Id: number) {
 
 
 
-export { CreateAccountFetch, login, getLoggedInUserData, GetAllSearchpage,GetAllArticel,ArticelData,GetAllbyId, PostRecipeData, PostIngredientData, GetNutritionByName, GetIngredientsByRecipeId, GetArticleById, GetRecipeByName, GetRecipeById, PostWeightChanges, PostRecipeUpdate };
+export { CreateAccountFetch, login, getLoggedInUserData, GetAllSearchpage,GetAllArticel,ArticelData,GetAllbyId, PostRecipeData, PostIngredientData, GetNutritionByName, GetIngredientsByRecipeId, GetArticleById, GetRecipeByName, GetRecipeById, PostWeightChanges, PostRecipeUpdate, GetRecipeUsername, GetArticleByTitle, GetArticleByUsername };
 
 
 
