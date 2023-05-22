@@ -44,13 +44,13 @@ const MyComponent = () => {
          <div className="mt-24 mb-16 ">
                 <h1 className="text-5xl p-10 font-semibold pl-10 font-lobster bg-[#B8D3C8]">Contact</h1>
             </div>
-        <div className='bg-[#B8D3C8] mx-40 mt-10 text-black  rounded-xl shadow-2xl border-2 border-[#88AA99]'>
+        <div className='bg-[#B8D3C8] md:mx-40 mx-6 mt-10 text-black  rounded-xl shadow-2xl border-2 border-[#88AA99]'>
       <AboutUsCard {...person1Props} />
      </div>
-      <div className='bg-[#B8D3C8] mt-10  mx-40 text-black rounded-xl  shadow-2xl border-2 border-[#88AA99]'>
+      <div className='bg-[#B8D3C8] mt-10  md:mx-40 mx-6 text-black rounded-xl  shadow-2xl border-2 border-[#88AA99]'>
        <AboutUsCard {...aboutCardProps1} />
        </div>
-       <div className='bg-[#B8D3C8] mt-10  mx-40 text-black rounded-xl  shadow-2xl border-2 border-[#88AA99] '>
+       <div className='bg-[#B8D3C8] mt-10  md:mx-40 mx-6 text-black rounded-xl  shadow-2xl border-2 border-[#88AA99] '>
       <AboutUsCard {...person2Props} />
       </div>
       <div className='mt-20'>
