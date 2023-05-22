@@ -36,14 +36,16 @@ export default function CookEaseFooter() {
         </button>
       </div>
       <div className="lg:p-4 md:flex md:justify-end md:mr-14 mt-2">
-        <div>
+        <div className='mx-auto'>
           <Link to="/Contact">
             <p className="text-center md:text-left text-blue-600">About Us</p>
           </Link>
-          <button
-          onClick={handleSignOut}>
-            <p className="text-center md:text-left mb-8 text-blue-600">Sign Out</p>
+          <div className='text-center md:mr-28 mb-8'> 
+             <button className='' onClick={handleSignOut}>
+            <p className=" text-blue-600">Sign Out</p>
           </button>
+          </div>
+
 
           <p className="text-center md:text-left">&copy; 2023 DanIsCool, LLC</p>
         </div>
