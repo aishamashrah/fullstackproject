@@ -14,12 +14,7 @@ export default function Display() {
   const [showArticle, setShowArticle] = useState(true);
   const [showRecipe, setShowRecipe] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
-  const options = [
-    { value: 'option1', label: 'Option 1' },
-    { value: 'option2', label: 'Option 2' },
-    { value: 'option3', label: 'Option 3' },
-    // Add more options as needed
-  ];
+
 
 
 
@@ -61,25 +56,25 @@ export default function Display() {
 
 
 
-      <div className="relative mt-24 mb-16 bg-[#B8D3C8] h-32 flex flex-col md:flex-row items-center justify-center">
-        <h1 className="absolute text-2xl sm:text-5xl p-10 font-semibold pl-10 font-lobster left-0 hidden sm:block">Search</h1>
+      <div className="relative mt-24 mb-16 bg-[#B8D3C8] h-32">
+        <h1 className="absolute text-2xl sm:text-5xl p-10 font-semibold pl-10 font-lobster left-0 hidden md:block">Search</h1>
 
-        <div className="flex flex-col">
-          <div className=" mb-4">
+        <div className="">
+          <div className="flex flex-col md:flex-row justify-center items-center pt-4 md:pt-10">
             <div>
             <label htmlFor="searchBy" className="px-2">Search by:</label>
             <select
               id="searchBy"
-              className="px-2 py-1 border rounded   md:w-24"
+              className="px-2 py-1 border rounded  mr-[68px] md:mr-0 md:w-24 mb-1 md:mb-0"
               onChange={handleSelectChange}
             >
-              <option value="">Select</option>
+              <option value="">Select</option> 
               <option value="username">Username</option>
               <option value="title">Title</option>
             </select>
             </div>
 
-            <div className=" ml-2 pt-1">
+            <div className=" ml-2 ">
               <div className="flex">
                 <input
                   type="text"
@@ -99,13 +94,14 @@ export default function Display() {
             </div>
           </div>
 
-          {/* <div className="flex items-center pl-20">
-      <div className="flex items-center mr-2">
+          <div className="flex flex-row gap-1 justify-center pt-1 mr-8 md:mr-14">
+      <div className="mr-2 ">
         <input
           type="checkbox"
           id="articleToggle"
           checked={showArticle}
           onChange={handleArticle}
+          className=''
         />
         <label htmlFor="articleToggle">Show Articles</label>
       </div>
@@ -119,7 +115,7 @@ export default function Display() {
         />
         <label htmlFor="recipeToggle">Show Recipe</label>
       </div>
-    </div> */}
+    </div>
         </div>
       </div>
 
