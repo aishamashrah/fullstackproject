@@ -38,6 +38,7 @@ export default function RecipeDisplay(props: any) {
         // Initialize other properties here as needed
     })
 
+ 
     useEffect(() => {
         const fetchData = async () => {
             let searchRes = await GetRecipeById(articleId);
@@ -45,6 +46,46 @@ export default function RecipeDisplay(props: any) {
             
             setRecipeId(searchRes[0].recipeId)
             setUserId(searchRes[0].userID)
+
+
+
+
+            
+            const lastViewed = {
+                title: searchRes[0].title,
+                publisherName: searchRes[0].publisherName,
+                image: searchRes[0].image,
+                id: searchRes[0].id,
+                description: searchRes[0].description,
+              };
+              
+              let lastViewedRecipes = JSON.parse(
+                localStorage.getItem('lastViewedRecipes') ||
+                  '[{"title": "No Recipes viewed", "publisherName": "No Recipes viewed", "image": "No Recipes viewed", "id": 0, "description": "No Recipes viewed"}, {"title": "No Recipes viewed", "publisherName": "No Recipes viewed", "image": "No Recipes viewed", "id": 0, "description": "No Recipes viewed"}, {"title": "No Recipes viewed", "publisherName": "No Recipes viewed", "image": "No Recipes viewed", "id": 0, "description": "No Recipes viewed"}]'
+              );
+              
+              
+              // Check if the current article title is equal to the title in the first position
+              if (lastViewedRecipes[0].title !== article.title) {
+                lastViewedRecipes.unshift(lastViewed);
+              
+                if (lastViewedRecipes.length > 3) {
+                  lastViewedRecipes.pop();
+                }
+              
+                localStorage.setItem('lastViewedRecipes', JSON.stringify(lastViewedRecipes));
+              }
+              
+              console.log(lastViewedRecipes);
+
+
+
+
+
+
+
+
+
         };
         fetchData();
 
