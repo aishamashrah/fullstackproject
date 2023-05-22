@@ -4,8 +4,6 @@ import { GetArticleById } from '../../Services/DataService'
 import { useLocation } from 'react-router-dom';
 import DateComponent from '../Recipes/GetDate';
 
-// import { useHistory } from 'react-router-dom'
-import { useParams } from 'react-router-dom';
 
 
 
@@ -18,13 +16,13 @@ const articleId = location.state?.num;
    
 
     const [article, setArticle] = useState({
-        date: 'May 14, 2023',
-        publisherName: 'John Doe',
-        title: 'Featured News Title',
-        description: 'This is a featured news article',
+        date: 'Loading...',
+        publisherName: 'Loading',
+        title: 'Loading...',
+        description: 'Loading...',
         image: 'url-to-image',
         image2: 'url-to-image2',
-        tags: 'tag1, tag2, tag3',
+        tags: 'Loading...',
         Id: 0
       })
 
