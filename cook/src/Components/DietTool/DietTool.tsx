@@ -405,12 +405,13 @@ const DietTool: React.FC<Props> = ({ recipeId, userId }) => {
                             <ul className="">
                                 <div className="grid grid-cols-8 gap-4 justify-items-center items-center text-sm sm:text-lg bg-gray-100 rounded-lg p-4">
                                     <p className='col-span-2'>Ingredient</p>
-                                    <p>Weight</p>
-                                    <p>Calories</p>
-                                    <p>Protein</p>
-                                    <p>Carbs</p>
-                                    <p>Fat</p>
+                                    <p>Weight(g)</p>
+                                    <p>Calories(g)</p>
+                                    <p>Protein(g)</p>
+                                    <p>Carbs(g)</p>
+                                    <p>Fat(g)</p>
                                     <p>Sodium</p>
+                                
                                 </div>
                                 {ingredients.map((ingredient, index) => (
                                     <li key={index}>
@@ -445,6 +446,7 @@ const DietTool: React.FC<Props> = ({ recipeId, userId }) => {
                                 <p>{totalCarbs.toFixed(1)}</p>
                                 <p>{totalFat.toFixed(1)}</p>
                                 <p>{totalSodium.toFixed(1)}</p>
+                              
                             </div>
                         </div>
                         {isPublisher ? (<div className="flex justify-end mt-6">
