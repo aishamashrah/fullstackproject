@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import chefHat from '../../Assets/chef.png';
 import facebook from '../../Assets/facebook.png';
@@ -8,11 +8,29 @@ import instagram from '../../Assets/instagram.png';
 import cookpic from '../../Assets/cooking.png';
 
 export default function CookEaseFooter() {
+  const [isSignedIn, setIsSignedIn] = React.useState(false);
+
+
   const handleSignOut = () => {
     localStorage.removeItem("UserInfo");
     window.location.href = '/';
   };
 
+
+
+  useEffect(() => {
+
+    const userInfoString = localStorage.getItem('UserInfo');
+
+
+    if (userInfoString) {
+      const userInfo = JSON.parse(userInfoString);
+
+      setIsSignedIn(true);
+    } else {
+      setIsSignedIn(false);
+    }
+  }, []);
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 bg-gray-200 w-full md:h-36 border-t-2 border-black">
@@ -40,10 +58,21 @@ export default function CookEaseFooter() {
           <Link to="/Contact">
             <p className="text-center md:text-left text-blue-600">About Us</p>
           </Link>
-          <div className='text-center md:mr-28 mb-8'> 
-             <button className='' onClick={handleSignOut}>
-            <p className=" text-blue-600">Sign Out</p>
-          </button>
+          <div className='text-center md:mr-28 mb-8'>
+
+
+            {isSignedIn ? (
+              <button className='' onClick={handleSignOut}><p className=" text-blue-600">Sign Out</p></button>) :
+              <Link to="/signin">
+
+                <div className="flex justify-center">
+                  <button className="text-blue-600">
+                    Sign In
+                  </button>
+                </div>
+              </Link>
+            }
+
           </div>
 
 

@@ -235,7 +235,7 @@ const RecipiePostTwo = (props: Props) => {
                     </button>
 
                   )}
-
+                  <div>Enter whole food ingredient in the left field and the weight in grams on the right</div>
                 </div>
               </div>
             </div>

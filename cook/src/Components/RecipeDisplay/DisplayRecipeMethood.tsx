@@ -210,7 +210,6 @@ export default function DisplayRecipeMethood({ recipeData, UserId }: Props) {
                         /> */}
                     </div>
                 </div>
-
            {isPublisher ? 
            (<div className='flex justify-end'>
                     <button className=" bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 mt-6 w-full md:w-auto rounded-md shadow-2xl"

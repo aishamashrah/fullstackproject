@@ -101,6 +101,7 @@ const CookEaseHeader: React.FC = () => {
                         <Link to="/Dash" className="nav-link">
                     <button className="profile-button hidden sm:block pr-4">
                         <img className="h-10 sm:h-12" src={profile} alt="Profile" />
+                        <p className='text-[16px] leading-3'>Dash</p>
                     </button>
                 </Link>
                         </li>

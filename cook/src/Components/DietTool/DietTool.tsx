@@ -400,7 +400,8 @@ const DietTool: React.FC<Props> = ({ recipeId, userId }) => {
         <>
             <div>
                 <div className="mx-10">
-                    <div className="bg-[#B8D3C8] rounded-2xl p-10 lg:ml-10n shadow-2xl border-2 border-[#88AA99] hidden sm:block">
+                    <div className="bg-[#B8D3C8] rounded-2xl p-6 lg:ml-10n shadow-2xl border-2 border-[#88AA99] hidden sm:block">
+                        <p className='pb-6 text-center'>Weight, Calories, and Macros dipslayed in grams. Salt displayed in Miligrams</p>
                         <div className="bgEAF4F4 p-3 ">
                             <ul className="">
                                 <div className="grid grid-cols-8 gap-4 justify-items-center items-center text-sm sm:text-lg bg-gray-100 rounded-lg p-4">
@@ -410,7 +411,7 @@ const DietTool: React.FC<Props> = ({ recipeId, userId }) => {
                                     <p>Protein(g)</p>
                                     <p>Carbs(g)</p>
                                     <p>Fat(g)</p>
-                                    <p>Sodium</p>
+                                    <p>Sodium(mg)</p>
                                 
                                 </div>
                                 {ingredients.map((ingredient, index) => (
@@ -461,7 +462,7 @@ const DietTool: React.FC<Props> = ({ recipeId, userId }) => {
                 </div>
             </div>
             <div className="mt-14 mb-16">
-                <h1 className="text-5xl p-10 font-semibold pl-10 font-lobster bg-[#B8D3C8] hidden sm:block">Data Visual</h1>
+                <h1 className="text-5xl p-10 font-semibold pl-10 font-lobster bg-[#B8D3C8] hidden sm:block">Nutrional Breakdown</h1>
             </div>
             <div>
                 <div className=" justify-center mx-10 hidden sm:block">
