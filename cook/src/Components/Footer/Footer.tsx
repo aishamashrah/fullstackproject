@@ -15,6 +15,7 @@ export default function CookEaseFooter() {
     localStorage.removeItem("UserInfo");
     window.location.href = '/';
   };
+  
 
 
 

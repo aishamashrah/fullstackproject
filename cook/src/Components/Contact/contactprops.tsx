@@ -1,8 +1,8 @@
 import React from 'react';
 import AboutUsCard from '../Contact/ContactComponents';
 import img1 from '../../Assets/img1.png';
-import img2 from '../../Assets/img2.jpg'
-import img3 from '../../Assets/img3.jpg'
+import img2 from '../../Assets/img2.jpg';
+import img3 from '../../Assets/img3.jpg';
 import CookEaseHeader from '../Header/Header';
 import CookEaseFooter from '../Footer/Footer';
 
