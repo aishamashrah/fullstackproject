@@ -5,7 +5,7 @@ interface DietToolRowProps {
   name: string;
   weight: number;
   id: number;
-  onWeightChange: (id: number, newWeight: number) => void;
+  onWeightChange: ( arg0: number, newWeight: number) => void;
   onCalorieChange: (numberToAdd: number) => void;
   onProteinChange: (numberToAdd: number) => void;
   onCarbChange: (numberToAdd: number) => void;
