@@ -1,6 +1,6 @@
 import React from 'react';
 import AboutUsCard from '../Contact/ContactComponents';
-import img1 from '../../Assets/img1.png';
+
 import img2 from '../../Assets/img2.jpg';
 import img3 from '../../Assets/img3.jpg';
 import CookEaseHeader from '../Header/Header';
@@ -9,7 +9,7 @@ import CookEaseFooter from '../Footer/Footer';
 const MyComponent = () => {
   const aboutCardProps1 = {
     email: 'aishamashrah@gmail.com',
-    image: img1,
+    image: '',
     about: 'I am a software engineer with a strong foundation in various programming languages and technologies. My expertise includes C#, HTML, CSS, JavaScript, React, TypeScript, and RESTful API development. With over 1100 hours of coding experience at Codestack Academy, I have gained a deep understanding of software engineering principles and best practices. My problem-solving skills and ability to thrive in fast-paced and challenging environments enable me to deliver high-quality solutions.',
     phoneNumber: '(209)450-6879',
     role: 'Frontend Developer',
